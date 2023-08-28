@@ -1,0 +1,16 @@
+{% extends 'doctor/basic_doctor.html'%}
+
+{% block title %} Doctor Diagnostic {% endblock %}
+
+{% block body %} 
+<br><br><br><br><br><br><br>
+<h1 style="text-align: center;">Welcome to Doctor Diagnostic Tool</h1> <br><br><br><br><br><br><br><br><br>
+
+<script>
+    // JavaScript for delayed redirect
+    setTimeout(function () {
+        window.location.href = "{% url 'DoctorMainPage' %}";
+    }, 2000); // Redirect after 2 seconds
+</script>
+
+{% endblock %} 

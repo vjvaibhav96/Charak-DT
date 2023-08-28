@@ -1,0 +1,63 @@
+{% extends 'doctor/basic_doctor.html' %}
+
+{% block title %} Doctor User Login Page {% endblock %}
+
+{% block css %} 
+
+<style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2 {
+      color: black;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+    }
+
+  </style>
+
+{% endblock %}
+
+{% block body %} 
+
+<div class="container1">
+    <h3>Doctor User Login Page</h3>
+</div>
+<div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+  <form action="{% url 'DoctorUserLogin' %}" method="POST"> {% csrf_token %}
+    <div class="mb-2">
+      <label for="exampleInputNumber1" class="form-label"> Email ID</label>
+      <input type="text" class="form-control" id="exampleInputNumber1" placeholder="Enter id" name="phone" autocomplete="off">
+    </div>
+    <div class="mb-2">
+      <label for="exampleInputNumber1" class="form-label"> Password</label>
+      <input type="text" class="form-control" id="exampleInputNumber1" placeholder="Enter password" name="phone" autocomplete="off">
+    </div>
+    
+    <button type="submit" style="margin-top: 20px; margin-left: 290px;" class="btn btn-primary" id = "lxc">Login</button> <br>
+
+<h5 class="my-4" style="color: black; text-align: center;">Click on login to access, edit and add prescription to user</h5>
+</div>
+</form>
+{% endblock %}

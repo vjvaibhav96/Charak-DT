@@ -1,0 +1,139 @@
+{% extends 'user/basic_user.html' %}  
+
+{% block title %} User Health Data {% endblock %}
+
+{% block css %} 
+<style>
+        #container1{
+            margin-top: 20px;
+        }
+        #container2{
+            margin-top: 10px;
+        }
+       .container1 {
+            display: flex;
+            text-decoration-line: underline;
+            font-weight: bolder;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            color: rgb(232, 30, 16)
+    }
+      .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px
+    }
+      .container3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1px
+    }    
+    </style> 
+    {% endblock %}
+    
+{% block body %} 
+    <h3 style="color: black; font-family: 'Montserrat'; text-align:center">Your Health Data</h3>
+    <table id ="container1" class = "table table-dark  table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Gender [0-Male / 1-Female]</th>
+            <th>Address</th>
+            <th>Blood Pressure</th>
+            <th>Glucose</th>
+            <th>Insulin</th>
+            <th>Cholestrol</th>
+            <th>Heart Rate</th>
+            <th>Step Count</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in report %}
+          <tr>
+            <td>{{ report.id }}</td>
+            <td>{{ report.ufullname }}</td>
+            <td>{{ report.age }}</td>
+            <td>{{ report.gender }}</td>
+            <td>{{ report.fulladdress }}</td>
+            <td>{{ report.bloodpressure }}</td>
+            <td>{{ report.glucose }}</td>
+            <td>{{ report.insulin }}</td>
+            <td>{{ report.cholestrol }}</td>
+            <td>{{ report.heart_rate }}</td>
+            <td>{{ report.step_count }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+    <table id ="container2" class = "table table-dark  table-hover">
+        <thead>
+        <tr>
+            <th>Diabetes [0-No / 1-Yes]</th>
+            <th>Heart Abnormalities [0-No / 1-Yes]</th>
+            <th>CP Type </th>
+            <th>BMI</th>
+            <th>Daily Exercise [hrs]</th>
+            <th>Brushing Habit [times/day]</th>
+            <th>Prescription</th>
+            <th>Test Recommendation</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in report %}
+        <tr>
+            <td>{{report.diabetes_outcome}}</td>
+            <td>{{report.heart_outcome}}</td>
+            <td>{{report.cptype}}</td>
+            <td>{{report.bodymassindex}}</td>
+            <td>{{report.dexercise}}</td>
+            <td>{{report.brushhabit}}</td>
+            <td>{{report.prescription}}</td>
+            <td>{{report.test_recommendation}}</td>
+        </tr>
+        {% endfor %}        
+   </tbody>
+    </table>
+    <div class="container1">
+        <h2>Medical Report's</h2>
+    </div>
+    
+    <div class="container2">
+        <embed src="data:application/pdf;base64,{{base64Data}}" width="60%" height="700px" />
+    </div>
+    <div class="container3">
+        <a href="data:application/pdf;base64,{{base64Data}}" download="file.pdf">Download Report</a>
+    </div>
+    <div class="container2">
+        <embed src="data:image/jpg;base64,{{base64Data1}}" width="60%" height="700px" />
+    </div>
+    <div class="container3">
+        <a href="data:image/jpg;base64,{{base64Data1}}" download="file.jpg">Download X-ray</a>
+    </div>
+    <!-- <div id ="cright">
+        <h6 style="margin-top: 60px;"> Copyright &copy 2023 Developed by Indian Institute of Technology Indore | All rights reserved</h6>
+    </div>   -->
+{% endblock %}
+
+{% block js %}
+
+<script>
+  $("#home").click(function () {
+    location.href = "http://localhost:2500"
+  })
+  $("#homenamel").click(function () {
+    location.href = "http://localhost:2500"
+  })
+  $("#uhome").click(function () {
+    location.href = "http://localhost:3050"
+  })
+  
+</script>
+{% endblock %}

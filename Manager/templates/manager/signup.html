@@ -1,0 +1,41 @@
+{% extends 'manager/index.html' %}
+
+{% block body %}
+<div class="container my-3">
+    <form action="{% url 'ManagerSignup' %}" method="post"> {% csrf_token %}
+    <!-- <form action="/manager/login/" method="post"> {% csrf_token %} -->
+        <div class="form-group">
+            <label for="usernamne">Name</label>
+            <input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="password">E-mail</label>
+            <input class="form-control" type="email" name="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Username</label>
+            <input class="form-control" type="text" name="username" id="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="text" name="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Confirm Password</label>
+            <input class="form-control" type="text" name="confirmpassword" id="confirmpassword" placeholder="Re-enter your password" required>
+        </div>
+    <!-- </form> -->
+    <div>
+        <!-- <a href="{% url 'ManagerLogin' %}"> <button href="manager/login" type="submit" class="btn btn-success"> Submit </button> </a> -->
+        <a href="{% url 'ManagerLogin' %}"> <button type="submit" style="margin-top: 20px; margin-left: 31rem;" class="btn btn-primary" id = "bxc">Submit</button> </a>
+
+    </div>
+    </form>
+    <hr>
+    <div style="padding-left: 25rem;">
+        <span> <medium>Already a User</medium> <a href="{% url 'ManagerLogin' %}"><strong>Click Here for login</strong> </a> </span>
+    </div>
+
+</div>
+
+{% endblock %}

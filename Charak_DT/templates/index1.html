@@ -1,0 +1,247 @@
+<html>
+<head>
+    {% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<title>DT Homepage</title>
+
+<!-- <link rel="stylesheet" href="../static/style1.css"> -->
+<!-- <link rel="stylesheet" href="{% static 'style1.css' %}"> -->
+<style>
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+.logo{
+    display: flex;
+    color: white;
+    align-items: center;
+    margin: 0px 14px;
+    margin-right: 40px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.logo img{
+    height: 42px;
+    filter: invert(1);
+}
+
+#navbar{
+    background-color: #c12d2d;
+    font-family: 'Yeon Sung' ;
+    padding: 18px, 14px;
+}
+#navbar ul{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+}
+#navbar li{
+    list-style: none;
+}
+#navbar li a{ 
+   text-decoration: none;
+    padding: 13px 20px;
+    font-size: 1.4rem;
+    color: white;
+}
+#navbar li a:hover{
+    color: black;  
+}
+#introSection{
+    padding-bottom: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'ZCOOL QingKe HuangYou';
+    font-size: 40px;
+    align-items: center;
+    background: center/cover no-repeat url("/static/bg.jpg") ;
+    height: 425px;
+    background-color: red;
+}
+#introSection div.small{
+    font-size: 27px;
+    background: center/cover no-repeat url("/static/bg.jpg") ;
+    padding: 5px;
+}
+#introSection div.large{
+    font-size: 40px;
+    background: center/cover no-repeat url("/static/bg.jpg") ;
+    padding: 5px;
+    color: yellow;
+}
+#missionSection{
+    padding-top: 10px;
+    height: 220px;
+    text-align: center;
+    margin: auto;
+    background-color: rgb(243, 246, 239);
+}
+.card{
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 20%;
+    margin: 10px 15px;
+    height: 150px;
+    background-color: white;
+}
+.card h4{
+    text-align: center;
+    margin: 12px;
+    color: green;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.card-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-img{
+    align-items: baseline;
+    height: 90px;
+    padding: 0 14px;
+    margin: 2px 10px;
+}
+.card-img img{
+    height: inherit; 
+}
+
+.card-content{
+    padding: 0 10px;
+}
+.card-content p{
+    font-size: 19px;
+}
+
+#sponsorsSection{
+    height: 170px;
+    background-color: #fbd6d6c7;
+}
+#sponsorsSection h2 {
+    font-family: "Yeon Sung";
+    text-align: center;
+    padding-top: 20px;
+
+}
+#sponsors{
+    height: 120px;
+    max-width: 1000px;
+    margin: auto
+    
+}
+.spImage{
+    height: 80px;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+#footer{
+    background-color: black;
+    height: 60px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Yeon Sung";
+}
+</style>
+</head>
+<body>
+     <div class="nav-bar">
+         <img src="{% static 'img/drishti_logo.png' %}" alt="img error">
+         <div class="menu-right">
+            <ul id="menu">
+            <li id = "homename">CHARAK</li>
+             <li id = "home">Home</li>          
+             <li id = "home">About</li> 
+             <li id = "home">Our Team</li>   
+             <li id = "home">Contact</li>   
+             </ul>
+         </div>
+     </div>   
+     <div>
+        <marquee id = "marq" behavior="" direction="left"> Welcome to Human Digital Twin Creation Platform</marquee>
+     </div>
+     <div class="dropdown">
+        <button class="dropbtn">Choose Your Role</button>
+        <div class="dropdown-content">
+        <a href="http://localhost:3000">Admin</a>
+        <a href="http://localhost:3050">User</a>
+        <a href="http://localhost:3005">Doctor</a>
+        <a href="http://localhost:3010">Pathologist</a>
+        </div>
+    </div>
+    <div class ="back">
+        <img src="{% static '/img/hdt.jpg' %}" id = "back" alt="logo">
+    </div>
+    <section id="missionSection">
+    <h2>Features</h2>
+
+    <div class="card">
+      <h4>Collaboration</h4>
+      <div class="card-box">
+        <div class="card-img">
+          <img src="{% static '/img/colla.png' %}" alt="Image 1">
+        </div>
+        <div class="card-content">
+          <p>Enables a collaborative platform for healthcare professionals and humans</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Diagnostic Tool</h4>
+      <div class="card-box">
+        <div class="card-img">
+          <img src="{% static 'img/diagnostic.png' %}" alt="Image 2">
+        </div>
+        <div class="card-content">
+          <p>Assist both doctor and human in health monitoring</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Integration with IoT Device</h4>
+      <div class="card-box">
+        <div class="card-img">
+          <img src="{% static '/img/iot.avif' %}" alt="Logo">
+        </div> 
+        <div class="card-content">
+          <p>Data collection from health sensor, clinical communication, etc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section id="missionSection1">
+        <h2>About</h2>
+        <p id="about">This tool serves as a collaborative platform,
+            facilitating interaction and cooperation among various users, including
+            individuals, doctors, and pathologists, to enhance the provision of healthcare
+            services. It offers a comprehensive solution for monitoring the health status of
+            individuals, empowering doctors to deliver accurate prescriptions and
+            recommendations through the Human Digital Twin (HDT) interface.
+        </p>
+    </section>
+    <div class ="cright">
+        <h3> Copyright &copy 2023 Developed by Indian Institute of Technology Indore | All rights reserved</h3>
+    </div>
+</body>
+<script>
+    $("#home").click(function () {
+    location.href = "http://localhost:2500"
+  })
+  $("#homename").click(function () {
+    location.href = "http://localhost:2500"
+  })
+</script>
+</html>

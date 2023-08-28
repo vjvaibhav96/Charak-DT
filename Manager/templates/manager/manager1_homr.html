@@ -1,0 +1,287 @@
+<!-- {% extends 'manager/index2.html'%} -->
+
+{% block title %} Create DT {% endblock %}
+{% block css %}
+<!-- Bootstrap CSS -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+ integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> -->
+ *
+{
+    margin: 0;
+    padding: 0; 
+    background-color: rgb(248, 249, 250);
+}
+.nav-bar{
+    background: #1d4052;
+    color:rgb(248, 249, 250);
+    font-weight: bold;
+    padding: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.nav-bar img{
+    height: 45px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#homename {
+    margin-right: 750px;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    border-radius: 10px;
+    text-decoration: rgb(248, 249, 250);
+    background-color: #1d4052;
+    cursor: pointer;
+}
+#marq {
+    margin-top: 10px;
+    font-size: 20px;
+    font-style: normal;
+    font-family: "Poppins";
+}
+#home {
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #1d4052;
+}
+#menu {
+    background-color:#1d4052 ;
+}
+.menu-right{
+    text-align: right;
+}
+ul li{
+    display: inline-block;
+    margin: 15px;
+    list-style: none; 
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 100px;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    margin-top: 40px;
+    color: white;
+    padding: 12px;
+    width: 160px;
+    height: 35px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px blanchedalmond;
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+.container1 {
+  align-items: center;
+  display: flex;
+  height: 1vh;
+  color: black;
+}
+.menu-right li:hover{
+    background-color:grey;
+}
+#heading{
+    margin-top: 30px;
+    margin-right: 50px;
+    margin-left: 450px;
+}
+.back{
+    background:  no-repeat;
+    height: 400px;
+    width: 800px;
+    margin-left: 350px;
+    background-color: rgb(248, 249, 250);
+}
+.cright{
+    font-family: 'Montserrat';
+    font-size: 10px;
+    color:black;
+    text-align: center;
+}
+#missionSection{
+    padding-top: 85px;
+    height: 220px;
+    text-align: center;
+    margin: auto;
+    background-color: rgb(248, 249, 250);
+}
+#missionSection1{
+    padding-top: 15px;
+    height: 220px;
+    text-align: center;
+    margin: auto;
+    background-color: rgb(248, 249, 250);
+}
+.card{
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 25%;
+    margin: 10px 15px;
+    height: 150px;
+    background-color: rgb(248, 249, 250);
+}
+.card h4{
+    text-align: center;
+    margin: 12px;
+    color: green;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.card-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-img{
+    align-items: baseline;
+    height: 90px;
+    padding: 0 14px;
+    margin: 2px 10px;
+}
+.card-img img{
+    height: inherit; 
+}
+.card-content{
+    padding: 0 10px;
+}
+.card-content p{
+    font-size: 19px;
+}
+#about {
+    text-align:inherit;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 19px;
+    font-family: 'Montserrat';
+}
+@media only screen and (max-width: 700px){
+    span
+    {
+        display: block;
+    }
+    ul li{
+        display: block;
+    }
+    ul{
+        display: none;
+    }
+}
+ {% endblock %}
+ <!-- <link rel="stylesheet" href="../static/style.css"> -->
+
+{% block body %}
+<!-- 
+<div class="container"><br>
+    <div class="row">
+        <h3>Enter User Details for Registration</h3>
+    </div>
+    <div class="container my-3">
+        <form action="" method="post"> {% csrf_token %}
+            <div class="form-group">
+                <label for="usernamne">Name</label>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Enter user name">
+            </div>
+            <div class="form-group">
+                <label for="password">Phone Number</label>
+                <input class="form-control" type="text" name="phone" id="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="password">Username</label>
+                <input class="form-control" type="text" name="username" id="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="text" name="password" id="password" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input class="form-control" type="text" name="confirmpassword" id="confirmpassword" placeholder="Re-enter your password">
+            </div>
+        </form>
+    </div>
+</div> -->
+<!-- 
+<body id = "body"> -->
+    <div class="nav-bar">
+         <img src="../static/img/drishti_logo.png">
+         <div class="menu-right">
+            <ul id="menu">
+            <li id = "homenamel">CHARAK</li>
+             <li id = "home">Home</li>          
+             <li id = "home">About</li> 
+             <li id = "home">Our Team</li>   
+             <li id = "home">Contact</li>   
+             </ul>
+         </div>
+     </div>   
+    <div class="container mt-3 shadow-lg p-4" style="width: 35%;">
+      <h2 class="text-center"> DT User SignUp</h2>
+      <form action="/userregister" method="POST">
+        <div class="mb-2">
+          <label for="exampleInputName1" class="form-label">User Name</label>
+          <input type="text" class="form-control" id="exampleInputName1" name="uusername" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="uemail" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="upassword" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword2" name="ucpassword" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="exampleInputNumber2" class="form-label">Mobile Number</label>
+          <input type="number" class="form-control" id="exampleInputNumber2" name="umobnum" autocomplete="off
+          ">
+        </div>
+        
+        <button type="submit" style="margin-top: 20px; margin-left: 190px;" class="btn btn-primary" id = "bxc">Create</button>
+      </form>
+    </div>
+    <div id ="cright">
+        <h6 style="margin-top: 20px;"> Copyright &copy 2023 Developed by Indian Institute of Technology Indore | All rights reserved</h6>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+
+{% endblock %}

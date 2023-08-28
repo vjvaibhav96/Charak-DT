@@ -1,0 +1,130 @@
+{% extends 'doctor/basic_doctor.html' %}
+
+{% block title %} User Health Data {% endblock %}
+
+{% block css %} 
+
+<link rel="stylesheet" href="../static/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <style>
+        #container1{
+            margin-top: 20px;
+        }
+        #container2{
+            margin-top: 10px;
+        }
+       .container1 {
+            display: flex;
+            text-decoration-line: underline;
+            font-weight: bolder;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            color: rgb(232, 30, 16)
+    }
+      .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px
+    }
+      .container3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1px
+    }    
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</style>
+{% endblock %}
+
+{% block body %} 
+
+<h3 style="color: black; text-align:center">User Health Data</h3>
+    <table id ="container1" class = "table table-dark  table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Gender [0-Male / 1-Female]</th>
+            <th>Address</th>
+            <th>Blood Pressure</th>
+            <th>Glucose</th>
+            <th>Insulin</th>
+            <th>Cholestrol</th>
+            <th>Heart Rate</th>
+            <th>Step Count</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in report %}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.ufullname}}</td>
+            <td>{{this.age}}</td>
+            <td>{{this.gender}}</td>
+            <td>{{this.fulladdress}}</td>
+            <td>{{this.bloodpressure}}</td>
+            <td>{{this.glucose}}</td>
+            <td>{{this.insulin}}</td>
+            <td>{{this.cholestrol}}</td>
+            <td>{{this.heart_rate}}</td>
+            <td>{{this.step_count}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <table id ="container2" class = "table table-dark  table-hover">
+        <thead>
+        <tr>
+            <th>Diabetes [0-No / 1-Yes]</th>
+            <th>Heart Abnormalities [0-No / 1-Yes]</th>
+            <th>CP Type </th>
+            <th>BMI</th>
+            <th>Daily Exercise [hrs]</th>
+            <th>Brushing Habit [times/day]</th>
+            <th>Prescription</th>
+            <th>Test Recommendation</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in report %}
+        <tr>
+            <td>{{this.diabetes_outcome}}</td>
+            <td>{{this.heart_outcome}}</td>
+            <td>{{this.cptype}}</td>
+            <td>{{this.bodymassindex}}</td>
+            <td>{{this.dexercise}}</td>
+            <td>{{this.brushhabit}}</td>
+            <td>{{this.prescription}}</td>
+            <td>{{this.test_recommendation}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <div class="container1">
+        <h2>Medical Report's</h2>
+    </div>
+    
+    <div class="container2">
+        <embed src="data:application/pdf;base64,{{base64Data}}" width="60%" height="700px" />
+    </div>
+    <div class="container3">
+        <a href="data:application/pdf;base64,{{base64Data}}" download="file.pdf">Download Report</a>
+    </div>
+    <div class="container2">
+        <embed src="data:image/jpg;base64,{{base64Data1}}" width="60%" height="700px" />
+    </div>
+    <div class="container3">
+        <a href="data:image/jpg;base64,{{base64Data1}}" download="file.jpg">Download X-ray</a>
+    </div>
+
+{% endblock %}

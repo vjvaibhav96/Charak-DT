@@ -1,0 +1,91 @@
+{% extends 'manager/basic_manager.html'%}
+    
+{% block title %}User Attributes{% endblock %}
+
+{% block body %} 
+    <div class="container mt-3 shadow-lg p-4" style="width: 35%;">
+      <h2 class="text-center"> Information Attributes</h2>
+      <form action="{% url 'ManagerAttributes' %}" method="POST"> {% csrf_token %}
+        <div class="mb-2">
+          <label for="fullname" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="age" class="form-label">Age</label>
+          <input type="number" class="form-control" id="age" name="age" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="fulladdress" class="form-label">Full Address</label>
+          <input type="text" class="form-control" id="fulladdress" name="fulladdress" autocomplete="off">
+          
+        </div>
+        <div class="mb-2">
+          <label for="gender" class="form-label">Gender [0-Male, 1-Female]</label>
+          <input type="number" class="form-control" id="gender" name="gender" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="chestpaintype" class="form-label">Chest Pain Type</label>
+          <input type="number" class="form-control" id="chestpaintype" name="chestpaintype" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="glucosevalue" class="form-label">Glucose Value</label>
+          <input type="number" class="form-control" id="glucosevalue" name="glucosevalue" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="bloodpressure" class="form-label">Blood Pressure Value</label>
+          <input type="number" class="form-control" id="bloodpressure" name="bloodpressure" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="insulinvalue" class="form-label">Insulin Value</label>
+          <input type="number" class="form-control" id="insulinvalue" name="insulinvalue" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="bmi" class="form-label">Body Mass Index</label>
+          <input type="number" class="form-control" id="bmi" name="bmi" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="prediabetic" class="form-label">Prediabetic [0-No, 1-Yes]</label>
+          <input type="number" class="form-control" id="prediabetic" name="prediabetic" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="dpf" class="form-label">Diabetic Pedigree Function</label>
+          <input type="number" class="form-control" id="dpf" name="dpf" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="cholestrol" class="form-label">Cholestrol Level</label>
+          <input type="number" class="form-control" id="cholestrol" name="cholestrol" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="dailyexercise" class="form-label">Daily Exercise [hrs/day]</label>
+          <input type="number" class="form-control" id="dailyexercise" name="dailyexercise" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="sleepinghabit" class="form-label">Sleeping Habits</label>
+          <input type="number" class="form-control" id="sleepinghabit" name="sleepinghabit" autocomplete="off
+          ">
+        </div>
+        <div class="mb-2">
+          <label for="brushinghabits" class="form-label">Brushing Habits [times/day]</label>
+          <input type="number" class="form-control" id="brushinghabits" name="brushinghabits" autocomplete="off
+          ">
+        </div>
+        
+        <button type="submit" style="margin-top: 20px; margin-left: 190px;" class="btn btn-primary" id = "bxc">Create</button>
+      </form>
+    </div>
+    
+{% endblock %}

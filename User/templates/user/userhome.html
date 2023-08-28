@@ -1,0 +1,162 @@
+{% extends 'user/basic_user.html' %}  
+
+{% block title %} User Page {% endblock %}
+
+{% block css %} 
+<style>
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  margin-top: 10px;
+  color: black;
+}
+.container1 {
+  display: flex;
+  font-family: 'Montserrat';
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  margin-top: 30px;
+  color: black
+}
+.container3 {
+  display: flex;
+  padding-left: 50px;
+  margin-left: 350px;
+  margin-right: 350px;
+  background-color: grey;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  margin-top: 30px;
+}
+.card{
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 23%;
+    margin: 130px 15px;
+    height: 150px;
+    background-color: whitesmoke;
+}
+.card h5{
+text-align: center;
+margin: 12px;
+color: black;
+font-size: 20px;
+font-weight: bold;
+font-family: 'Montserrat';
+}
+#axc {
+    text-align:center;
+    margin: 27px;
+    font-size: 15px;
+    color:red;
+    font-style: oblique;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#exc {
+    text-align:center;
+    margin: 27px;
+    font-size: 15px;
+    color:red;
+    font-style: oblique;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#dcxc {
+    text-align:center;
+    margin: 27px;
+    font-size: 15px;
+    color:red;
+    font-style: oblique;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#moxc {
+    text-align:center;
+    margin: 27px;
+    font-size: 15px;
+    color:red;
+    font-style: oblique;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#pxc {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+  font-family: cursive;
+  font-style: italic;
+  color: azure;
+  text-decoration: underline;
+  cursor: pointer;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container1"><br><br>
+        <h1>Digital Twin User Interface</h1>
+    </div>
+    <div class="card">
+  <div class="cardbody">
+    <a href="{% url 'HealthData' %}">
+    <h5 class="cardtitle">Access Health Data</h5>
+    <marquee id = "axc">Click here to access health data</marquee></a>
+  </div>
+</div>
+<div class="card">
+  <div class="cardbody">
+    <a href="{% url 'EditHealthData' %}">
+    <h5 class="cardtitle">Edit Health Data</h5>
+    <marquee id = "exc">Click here to edit health data</marquee> </a>
+  </div>
+</div>
+<div class="card">
+  <div class="cardbody">
+    <a href="{% url 'ConnectSmartWatch' %}">
+    <h5 class="cardtitle">Connect Smartwatch</h5>
+    <marquee id = "dcxc">Click here to connect your smartwatch</marquee> </a>
+  </div>
+</div>
+<div class="card">
+  <div class="cardbody">
+    <a href="{% url 'DiagnosticTool' %}">
+    <h5 class="cardtitle">Diagnostic Tool</h5>
+    <marquee id = "moxc">Click here to open diagnostic tool</marquee> </a>
+  </div>
+</div>
+  <!-- <div id ="cright">
+        <h6 style="margin-top: 60px; margin-left: 37rem;"> Copyright &copy 2023 Developed by Indian Institute of Technology Indore | All rights reserved</h6>
+    </div>   -->
+
+{% endblock %}
+
+<script>
+    $('#exc').click(function(){
+        location.href = "{% url 'EditHealthData' %}"
+    })
+    $('#axc').click(function(){
+        location.href = "{% url 'AccessHealthData' %}"
+    })
+    $('#dcxc').click(function(){
+        location.href = "http://localhost:1234/gfitsecret"
+    })
+    $('#moxc').click(function(){
+        location.href = "http://localhost:8501"
+    })
+    $("#home").click(function () {
+    location.href = "http://localhost:2500"
+  })
+  $("#homenamel").click(function () {
+    location.href = "http://localhost:2500"
+  })
+  
+</script>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'pathologist/basic_patho.html' %}
+
+{% block title %} Pathologist User Access Login {% endblock %}
+
+{% block css %} 
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<style>
+    #container1{
+        margin-top: 20px;
+    }
+    #container2{
+        margin-top: 10px;
+    }
+   .container1 {
+        display: flex;
+        text-decoration-line: underline;
+        font-weight: bolder;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        color: rgb(232, 30, 16)
+}
+  .container2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px
+}
+  .container3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1px
+}    
+</style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+{% endblock %}
+
+{% block body %}
+
+<h3 style="color: black; text-align:center">Doctor Reccomendation</h3>
+    <table id ="container1" class = "table table-dark  table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Gender [0-Male / 1-Female]</th>
+            <th>Address</th>
+            <th>Test Recommendation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in report %}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.ufullname}}</td>
+            <td>{{this.age}}</td>
+            <td>{{this.gender}}</td>
+            <td>{{this.fulladdress}}</td>
+            <td>{{this.test_recommendation}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}
