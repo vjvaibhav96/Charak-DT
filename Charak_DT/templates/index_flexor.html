@@ -120,7 +120,6 @@
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container">
-
         <div class="row">
           <div class="col-xl-4 col-lg-5">
           <!-- <div class="col-xl-4 col-lg-5" data-aos="fade-up"> -->
@@ -133,16 +132,16 @@
               </p>
               <div class="text-center">
                 <!-- <a href="{% url 'ManagerLogin' %}" class="more-btn">Go to Admin Section <i class="bx bx-chevron-right"></i></a> -->
-                
                 <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#ManagerLoginModal">
                    Go To Admin Section 
                 </button> 
-
               </div>
             </div>
           </div>
           <div class="col-xl-8 col-lg-7 d-flex">
+
             <div class="icon-boxes d-flex flex-column justify-content-center">
+
               <div class="row">
                 <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                   <div class="icon-box mt-4 mt-xl-0">
@@ -183,7 +182,9 @@
                   </div>
                 </div>
               </div>
+
             </div>
+            
           </div>
         </div>
 
@@ -986,47 +987,130 @@
 
 <!-- modal for Admin Signup  -->
 <div class="modal fade" id="ManagerSignupModal" tabindex="-1" aria-labelledby="ManagerSignupModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="ManagerSignupModal">Welcome Admin, please fill the details below for Signup</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+       
       <div class="modal-body">
-        <form action="{% url 'ManagerSignup' %}" id="ManagerSignupForm" method="post"> {% csrf_token %}
-          <div class="mb-3">
-            <label for="managername" class="form-label">Name</label>
-            <input type="text" class="form-control" id="managername" name="managername" aria-describedby="emailHelp" placeholder="Enter your name" required>
-            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-          </div>
-          <div class="mb-3">
-            <label for="managerusername" class="form-label">Username</label>
-            <input type="text" class="form-control" id="managerusername" name="managerusername" aria-describedby="emailHelp" placeholder="Enter your username" required>
-            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-          </div>
-          <div class="mb-3">
-            <label for="manageremail" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="manageremail" name="manageremail" aria-describedby="emailHelp" placeholder="Enter your email name" required>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-          </div>
-          <div class="mb-3">
-            <label for="managerpassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="managerpassword" name="managerpassword" aria-describedby="emailHelp" placeholder="Enter a password" required>
-            <div id="emailHelp" class="form-text">password must have small, capital letters, alphanumeric & special characters.</div>
-          </div>
-          <div class="mb-3">
-            <label for="managerconfirmpassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="managerconfirmpassword" name="managerconfirmpassword" placeholder="Re-Enter your password" required>
-            <div id="emailHelp" class="form-text">Must match with the password entered above.</div>
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="managersingupcheck">
-            <label class="form-check-label" for="managersingupcheck">Check me out</label>
-          </div>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Submit</button>
-      </form>
+        <div class="row">
+          <div class="col-lg-6"> 
+            <form action="{% url 'ManagerSignup' %}" id="ManagerSignupForm" method="post"> {% csrf_token %}
+              <div class="mb-3">
+                <label for="managerfirstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="managerfirstname" name="managerfirstname" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managermiddlename" class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="managermiddlename" name="managermiddlename" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerlastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="managerlastname" name="managerlastname" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerdob" class="form-label">DOB</label>
+                <input type="date" class="form-control" id="managerdob" name="managerdob" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">password must have small, capital letters, alphanumeric & special characters.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="manageremail" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="manageremail" name="manageremail" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerpassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="managerpassword" name="managerpassword" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managercpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="managercpassword" name="managercpassword" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+          </div>  
+
+            <div class="col-lg-6">  
+              <div class="mb-3">
+                <label for="managermobile" class="form-label">Mobile Number</label>
+                <input type="number" class="form-control" id="managermobile" name="managermobile" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerqualification" class="form-label">Highest Qualification</label>
+                <input type="text" class="form-control" id="managerqualification" name="managerqualification" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerfacilityname" class="form-label">Facility Name</label>
+                <input type="text" class="form-control" id="managerfacilityname" name="managerfacilityname" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerstate" class="form-label">State</label>
+                <select id="state" name="managerstate">
+                  <option value="andhra pradesh">Andhra Pradesh</option>
+                  <option value="arunachal pradesh">Arunachal Pradesh</option>
+                  <option value="assam">Assam</option>
+                  <option value="bihar">Bihar</option>
+                  <option value="chhattisgarh">Chhattisgarh</option>
+                  <option value="goa">Goa</option>
+                  <option value="gujarat">Gujarat</option>
+                  <option value="haryana">Haryana</option>
+                  <option value="himachal pradesh">Himachal Pradesh</option>
+                  <option value="jammu and kashmir">Jammu and Kashmir</option>
+                  <option value="jharkhand">Jharkhand</option>
+                  <option value="karnataka">Karnataka</option>
+                  <option value="kerala">Kerala</option>
+                  <option value="madhya pradesh">Madhya Pradesh</option>
+                  <option value="maharashtra">Maharashtra</option>
+                  <option value="manipur">Manipur</option>
+                  <option value="meghalaya">Meghalaya</option>
+                  <option value="mizoram">Mizoram</option>
+                  <option value="nagaland">Nagaland</option>
+                  <option value="odisha">Odisha</option>
+                  <option value="punjab">Punjab</option>
+                  <option value="rajasthan">Rajasthan</option>
+                  <option value="sikkim">Sikkim</option>
+                  <option value="tamil nadu">Tamil Nadu</option>
+                  <option value="telangana">Telangana</option>
+                  <option value="tripura">Tripura</option>
+                  <option value="uttar pradesh">Uttar Pradesh</option>
+                  <option value="uttarakhand">Uttarakhand</option>
+                  <option value="west bengal">West Bengal</option>
+                  <!-- Add more state options as needed -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="managerdistrict" class="form-label">District</label>
+                <input type="text" class="form-control" id="managerdistrict" name="managerdistrict" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managercity" class="form-label">City</label>
+                <input type="text" class="form-control" id="managercity" name="managercity" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerpin" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="managerpin" name="managerpin" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="managersingupcheck">
+                <label class="form-check-label" for="managersingupcheck">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Submit</button>
+            </div>  
+          </form>
+      </div> 
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-  footer"> -->
           <!-- <span style="text-align: center;"> <medium> For Login </medium> <a href="{% url 'ManagerSignup' %}"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> </span> -->
       <!-- </div> -->
         <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Login</button> -->
@@ -1156,10 +1240,9 @@
       <div class="modal-footer">
          <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
       <!-- </div> -->
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
-       
+        <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
       </div>
     </div>
   </div>
@@ -1194,44 +1277,354 @@
       <div class="modal-footer">
          <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
       <!-- </div> -->
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
          <!-- <button type="button" class="btn btn-primary">Save changes</button>  -->
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+        <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
        
       </div>
     </div>
   </div>
 </div>
 
+<!-- Pathologist Singup Modal  -->
+<div class="row"> 
+<div class="modal fade" id="PathologistSingupModal" tabindex="-1" aria-labelledby="PathologistSingupModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="PathologistSingupModal">Welcome Pathologist, please fill the details below for singup</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- the modal body starts here -->
+      <div class="modal-body">
+        <!-- modal body is contained in a row and that row is divided into two columns-->
+      <div class="row "> 
+      <!--  first column starts here   -->
+      <div class="col-lg-6">   
+        <form action="{% url 'PathoSingup' %}" id="PathologistSingupForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="pathofirstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="pathofirstname" name="pathofirstname" aria-describedby="pathofirstname" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathomiddlename" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="pathomiddlename" name="pathomiddlename" aria-describedby="pathomiddlename" required>
+          </div>
+          <div class="mb-3">
+            <label for="patholastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="patholastname" name="patholastname" aria-describedby="patholastname" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathodob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="pathodob" name="pathodob" aria-describedby="pathodob" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathomobile" class="form-label">Mobile Number</label>
+            <input type="number" class="form-control" id="pathomobile" name="pathomobile" aria-describedby="pathomobile" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoemail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="pathoemail" name="pathoemail" aria-describedby="pathoemail" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathopassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pathopassword" name="pathopassword" aria-describedby="pathopassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoconfirmpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="pathoconfirmpassword" name="pathoconfirmpassword" aria-describedby="pathoconfirmpassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="patholabname" class="form-label">Path Lab Name</label>
+            <input type="name" class="form-control" id="patholabname" name="patholabname" aria-describedby="patholabname" required>
+          </div>
 
-<!-- <script> -->
-<!-- // // Assuming you are using Bootstrap modals as an example
-// $('#ManagerSingupModal').click(function() {
-//     // Hide the signup modal
-//     $('#ManagerSingupModal').modal('hide');
-    
-//     // Show the login modal
-//     $('#ManagerLoginModal').modal('show');
-// }); -->
-<!-- </script> -->
-<!-- <script>
-  $(document).ready(function() {
-      // Check if the session variable exists
-      var redirectFlag = {{ request.session.redirect_to_login|default:"false" }};
-      
-      if (redirectFlag) {
-          $('#ManagerLoginModal').modal('show'); // Show the login modal
-      }
-  });
-</script> -->
-<!-- <script>
-  // Check the variable and open the modal
-  window.addEventListener('DOMContentLoaded', function () {
-      if (loginmodal === 1) { // Replace 'yourVariable' with the actual variable name
-          $('#ManagerLoginModal').modal('show'); // Show the login modal
-      }
-  });
-</script> -->
+        </div> 
+        <!--  first column ends here   -->
+
+        <!--  second column starts here   -->
+        <div class="col-lg-6"> 
+          <div class="mb-3">
+            <label for="pathoregistrationcouncil" class="form-label">Registration Council</label>
+            <input type="number" class="form-control" id="pathoregistrationcouncil" name="pathoregistrationcouncil" aria-describedby="pathoregistrationcouncil" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoregistrationnumber" class="form-label">Registration Number</label>
+            <input type="number" class="form-control" id="pathoregistrationnumber" name="pathoregistrationnumber" aria-describedby="pathoregistrationnumdber" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathovalidfrom" class="form-label">Registration Valid From</label>
+            <input type="date" class="form-control" id="pathovalidfrom" name="pathovalidfrom" aria-describedby="pathovalidfrom" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathovalidto" class="form-label">Registration Valid To</label>
+            <input type="date" class="form-control" id="pathovalidto" name="pathovalidto" aria-describedby="pathovalidto" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathostate" class="form-label">State</label>
+            <select id="state" name="pathostate">
+              <option value="andhra pradesh">Andhra Pradesh</option>
+              <option value="arunachal pradesh">Arunachal Pradesh</option>
+              <option value="assam">Assam</option>
+              <option value="bihar">Bihar</option>
+              <option value="chhattisgarh">Chhattisgarh</option>
+              <option value="goa">Goa</option>
+              <option value="gujarat">Gujarat</option>
+              <option value="haryana">Haryana</option>
+              <option value="himachal pradesh">Himachal Pradesh</option>
+              <option value="jammu and kashmir">Jammu and Kashmir</option>
+              <option value="jharkhand">Jharkhand</option>
+              <option value="karnataka">Karnataka</option>
+              <option value="kerala">Kerala</option>
+              <option value="madhya pradesh">Madhya Pradesh</option>
+              <option value="maharashtra">Maharashtra</option>
+              <option value="manipur">Manipur</option>
+              <option value="meghalaya">Meghalaya</option>
+              <option value="mizoram">Mizoram</option>
+              <option value="nagaland">Nagaland</option>
+              <option value="odisha">Odisha</option>
+              <option value="punjab">Punjab</option>
+              <option value="rajasthan">Rajasthan</option>
+              <option value="sikkim">Sikkim</option>
+              <option value="tamil nadu">Tamil Nadu</option>
+              <option value="telangana">Telangana</option>
+              <option value="tripura">Tripura</option>
+              <option value="uttar pradesh">Uttar Pradesh</option>
+              <option value="uttarakhand">Uttarakhand</option>
+              <option value="west bengal">West Bengal</option>
+              <!-- Add more state options as needed -->
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="pathodistrict" class="form-label">District</label>
+            <input type="name" class="form-control" id="pathodistrict" name="pathodistrict" aria-describedby="pathodistrict" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathocity" class="form-label">City</label>
+            <input type="name" class="form-control" id="pathocity" name="pathocity" aria-describedby="pathocity" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathopin" class="form-label">Pin Code</label>
+            <input type="name" class="form-control" id="pathopin" name="pathopin" aria-describedby="pathopin" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathotestfacility" class="form-label">Test Facilities Available</label>
+            <input type="name" class="form-control" id="pathotestfacility" name="pathotestfacility" aria-describedby="pathotestfacility" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-left: 14rem;">Submit</button>
+        </div>
+        <!--  second column ends here   -->
+      </form>
+      </div>
+      <!-- <div class="modal-footer">
+         <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> 
+      </div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-primary">Save changes</button>  --> 
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+       
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+ <!-- Doctor Singup Modal  -->
+<div class="row"> 
+  <div class="modal fade" id="DoctorSingupModal" tabindex="-1" aria-labelledby="DoctorSingupModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="DoctorSingupModal">Welcome Doctor, please fill the details below for singup</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- the modal body starts here -->
+        <div class="modal-body">
+          <!-- modal body is contained in a row and that row is divided into two columns-->
+        <div class="row "> 
+        <!--  first column starts here   -->
+        <div class="col-lg-6">   
+          <form action="{% url 'DoctorSingup' %}" id="DoctorSingupForm" method="post"> {% csrf_token %}
+            <div class="mb-3">
+              <label for="doctorfirstname" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="doctorfirstname" name="doctorfirstname" aria-describedby="doctorfirstname">
+            </div>
+            <div class="mb-3">
+              <label for="doctormiddlename" class="form-label">Middle Name</label>
+              <input type="text" class="form-control" id="doctormiddlename" name="doctormiddlename" aria-describedby="doctormiddlename" >
+            </div>
+            <div class="mb-3">
+              <label for="doctorlastname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="doctorlastname" name="doctorlastname" aria-describedby="doctorlastname" >
+            </div>
+            <div class="mb-3">
+              <label for="doctordob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="doctordob" name="doctordob" aria-describedby="doctordob" >
+            </div>
+            <div class="mb-3">
+              <label for="doctormobile" class="form-label">Mobile Number</label>
+              <input type="number" class="form-control" id="doctormobile" name="doctormobile" aria-describedby="doctormobile" >
+            </div>
+            <div class="mb-3">
+              <label for="doctoremail" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="doctoremail" name="doctoremail" aria-describedby="doctoremail">
+            </div>
+            <div class="mb-3">
+              <label for="doctorpassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="doctorpassword" name="doctorpassword" aria-describedby="doctopassword">
+            </div>
+            <div class="mb-3">
+              <label for="doctorcpassword" class="form-label"> Confirm Password</label>
+              <input type="password" class="form-control" id="doctorcpassword" name="doctorcpassword" aria-describedby="doctorcpassword">
+            </div>
+            <div class="mb-3">
+              <label for="doctorregistrationcouncil" class="form-label">Registration Council</label>
+              <select id="medical_council" name="doctorregistrationcouncil">
+                <option value="mci">Medical Council of India (MCI)</option>
+                <option value="nmc">National Medical Commission (NMC)</option>
+                <option value="dci">Dental Council of India (DCI)</option>
+                <option value="pci">Pharmacy Council of India (PCI)</option>
+                <!-- Add more council options here -->
+                <option value="other">Other</option>
+            </select>
+              <div class="form-label" id="other_council_field" style="display: none;">
+               <label for="other_council">Enter Council Name:</label>
+               <input type="text" id="other_council" name="other_council">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="doctorregistrationnumber" class="form-label">Registration Number</label>
+              <input type="number" class="form-control" id="doctorregistrationnumber" name="doctorregistrationnumber" aria-describedby="doctorregistrationnumber">
+            </div>
+             
+          </div>
+          <!--  first column ends here   -->
+  
+          <!--  second column starts here   -->
+          <div class="col-lg-6"> 
+          <div class="mb-3">
+            <label for="doctorqualification" class="form-label">Highest Qualification</label>
+            <input type="text" class="form-control" id="doctorqualification" name="doctorqualification" aria-describedby="doctorqualification" >
+          </div>
+          <div class="mb-3">
+            <label for="doctoruniversity" class="form-label">University Name</label>
+            <input type="text" class="form-control" id="doctoruniversity" name="doctoruniversity" aria-describedby="doctoruniversity" >  
+          </div>
+          <div class="mb-3">
+            <label for="doctoruniversity" class="form-label">University Name</label>
+            <input type="text" class="form-control" id="doctoruniversity" name="doctoruniversity" aria-describedby="doctoruniversity" >  
+          </div>
+          <div class="mb-3">
+            <label for="doctorpassingyear" class="form-label">Year of Passing</label>
+            <input type="number" class="form-control" id="doctorpassingyear" name="doctorpassingyear" aria-describedby="doctorpassingyear">  
+          </div> 
+            <div class="mb-3">
+              <label for="doctorclinicname" class="form-label">Clinic Name</label>
+              <input type="text" class="form-control" id="doctorclinicname" name="doctorclinicname" aria-describedby="doctorclinicname" >
+            </div>
+            <div class="mb-3">
+              <label for="state" class="form-label">State</label>
+              <select id="state" name="doctorstate" onchange="updateNameAttribute(this);">
+                <option value="andhra pradesh">Andhra Pradesh</option>
+                <option value="arunachal pradesh">Arunachal Pradesh</option>
+                <option value="assam">Assam</option>
+                <option value="bihar">Bihar</option>
+                <option value="chhattisgarh">Chhattisgarh</option>
+                <option value="goa">Goa</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="haryana">Haryana</option>
+                <option value="himachal pradesh">Himachal Pradesh</option>
+                <option value="jammu and kashmir">Jammu and Kashmir</option>
+                <option value="jharkhand">Jharkhand</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="kerala">Kerala</option>
+                <option value="madhya pradesh">Madhya Pradesh</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="manipur">Manipur</option>
+                <option value="meghalaya">Meghalaya</option>
+                <option value="mizoram">Mizoram</option>
+                <option value="nagaland">Nagaland</option>
+                <option value="odisha">Odisha</option>
+                <option value="punjab">Punjab</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="sikkim">Sikkim</option>
+                <option value="tamil nadu">Tamil Nadu</option>
+                <option value="telangana">Telangana</option>
+                <option value="tripura">Tripura</option>
+                <option value="uttar pradesh">Uttar Pradesh</option>
+                <option value="uttarakhand">Uttarakhand</option>
+                <option value="west bengal">West Bengal</option>
+                <!-- Add more state options as needed -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="doctordistrict" class="form-label">District</label>
+              <input type="text" class="form-control" id="doctordistrict" name="doctordistrict" aria-describedby="doctordistrict">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctorcity" class="form-label">City</label>
+              <input type="text" class="form-control" id="doctorcity" name="doctorcity" aria-describedby="doctorcity" >
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctorpincode" class="form-label">Pin Code</label>
+              <input type="number" class="form-control" id="doctorpincode" name="doctorpincode" aria-describedby="doctorpincode" >
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctortestfacility" class="form-label">Test Facilities Available</label>
+              <input type="text" class="form-control" id="doctortestfacility" name="doctortestfacility" aria-describedby="doctortestfacility" >
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 14rem;">Submit</button>
+          </div>
+          <!--  second column ends here   -->
+        </form>
+        </div>
+        <!-- <div class="modal-footer">
+           <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> 
+        </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> 
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function updateNameAttribute(selectElement) {
+  var selectedValue = selectElement.value;
+  var nameAttribute = "doctor" + selectElement.id; // Generate a unique name attribute
+  selectElement.name = nameAttribute;
+}
+
+// javascript for selecting the medical council with an other option
+document.getElementById("medical_council").addEventListener("change", function() {
+    var selectedOption = this.value;
+    var otherCouncilField = document.getElementById("other_council_field");
+
+    if (selectedOption === "other") {
+        otherCouncilField.style.display = "block";
+    } else {
+        otherCouncilField.style.display = "none";
+    }
+});
+
+</script>
 
 </body>
 
