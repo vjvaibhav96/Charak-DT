@@ -1,12 +1,25 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Registered_Admin(models.Model):
     admin_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=250, default="")
-    username = models.CharField(max_length=250, default="")
-    email = models.CharField(max_length=250, default="")
-    password = models.CharField(max_length=250, default="")
+    mfirstname = models.CharField(max_length=250, default="")
+    mmiddlename = models.CharField(max_length=250, default="")
+    mlastname = models.CharField(max_length=250, default="")
+    memail = models.CharField(max_length=250, default="")
+    mpassword = models.CharField(max_length=250, default="")
+    mcpassword = models.CharField(max_length=250, default="")
+    mmobile = models.IntegerField(default="")
+    mdob = models.DateField(default="")
+    mqualification = models.CharField(max_length=150, default="")
+    mfacilityname = models.CharField(max_length=150, default="")
+    mstate = models.CharField(max_length=150, default="")
+    mdistrict = models.CharField(max_length=150, default="")
+    mcity = models.CharField(max_length=150, default="")
+    mpincode = models.IntegerField(default="")
+    manager_flag = models.IntegerField(default=0)
+    mdatetime = models.DateTimeField(default=timezone.now)
 
 class Patient_data(models.Model):
     patient_id = models.AutoField(primary_key=True)

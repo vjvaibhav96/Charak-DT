@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User 
 from django.contrib import messages
 from django.http import HttpResponse
+from datetime import datetime
 
 # Create your views here.
 def index(request):
@@ -12,15 +13,27 @@ def index(request):
 def signup(request):
     if request.method == "POST":
         print(request)
-        admin_id = request.POST.get('admin_id')
-        name = request.POST.get('name')
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        email = request.POST.get('email')
-        confirmpassword = request.POST.get('confirmpassword')
+        # admin_id = request.POST.get('admin_id')
+        managerfirstname = request.POST.get('managerfirstname')
+        managermiddlename = request.POST.get('managermiddlename')
+        managerlastname = request.POST.get('managerlastname')
+        manageremail = request.POST.get('manageremail')
+        managermobile = request.POST.get('managermobile')
+        managerpassword = request.POST.get('managerpassword')
+        managercpassword = request.POST.get('managercpassword')
+        managerdob = request.POST.get('managerdob')
+        managerqualification = request.POST.get('managerqualification')
+        managerfacilityname = request.POST.get('managerfacilityname')
+        managerstate = request.POST.get('managerstate')
+        managerdistrict = request.POST.get('managerdistrict')
+        managercity = request.POST.get('managercity')
+        managerpin = request.POST.get('managerpin')
+        managerdatetime = datetime.now()
+        manager_flag = 0
 
+        admin = Registered_Admin(mfirstname=managerfirstname, mmiddlename=managermiddlename, mlastname=managerlastname, memail=manageremail, mpassword=managerpassword, mcpassword=managercpassword, mmobile=managermobile, mdob=managerdob, mqualification=managerqualification, mstate=managerstate, mdistrict=managerdistrict, mcity=managercity, mpincode=managerpin, mfacilityname=managerfacilityname, mdatetime=managerdatetime, manager_flag=manager_flag)
+        admin.save()
         # #create Admin 
-        # registered_admin = User.objects.create_user(username, email, password)
         # registered_admin.save()
         # messages.success(request, "Your account has been created") 
 

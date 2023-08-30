@@ -1,11 +1,43 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse 
+from .models import Registered_Doctor
+import datetime
 
 # Create your views here.
 def doctorlogin(request):
     if request.method == "POST":
         return redirect('DoctorUserLogin')
     return render(request, 'doctor/doctorlogin.html')
+
+def doctorsingup(request):
+    if request.method == "POST":
+        doctorfirstname = request.POST.get('doctorfirstname')
+        doctormiddlename = request.POST.get('doctormiddlename')
+        doctorlastname = request.POST.get('doctorlastname')
+        doctordob = request.POST.get('doctordob')
+        doctormobile = request.POST.get('doctormobile')
+        doctoremail = request.POST.get('doctoremail')
+        doctorpassword = request.POST.get('doctorpassword')
+        doctorcpassword = request.POST.get('doctorcpassword')
+        doctorregistrationcouncil = request.POST.get('doctorregistrationcouncil')
+        doctorothercouncil = request.POST.get('other_council')
+        doctorregistrationnumber = request.POST.get('doctorregistrationnumber')
+        doctoruniversity = request.POST.get('doctoruniversity')
+        doctorpassingyear = request.POST.get('doctorpassingyear')
+        doctorclinicname = request.POST.get('doctorclinicname')
+        doctorstate = request.POST.get('doctorstate')
+        doctordistrict = request.POST.get('doctordistrict')
+        doctorcity = request.POST.get('doctorcity')
+        doctorpincode = request.POST.get('doctorpincode')
+        doctortestfacility = request.POST.get('doctortestfacility')
+        doctordatetime = datetime.datetime.now()
+        doctorflag = 0
+
+        doctor = Registered_Doctor(dfirstname=doctorfirstname, dmiddlename=doctormiddlename, dlastname=doctorlastname, dpassword=doctorpassword, dconfirmpassword=doctorcpassword, ddob=doctordob, dmobile=doctormobile, demail=doctoremail, dregistrationcouncil=doctorregistrationcouncil, dothercouncil=doctorothercouncil, dregistrationnumber=doctorregistrationnumber, duniversityname=doctoruniversity, dpassingyear=doctorpassingyear, dclinicname=doctorclinicname, dstate=doctorstate, ddistrict=doctordistrict, dcity=doctorcity, dpincode=doctorpincode, dtestfacility=doctortestfacility, ddatetime=doctordatetime, doctorflag=doctorflag)
+        # doctor = Registered_Doctor (dfirstname=doctorfirstname)
+        doctor.save()
+        return redirect('CharakHome')
+    return render(request, 'doctor/doctorsingup.html')
 
 def doctoruserlogin(request):
     if request.method == "POST":

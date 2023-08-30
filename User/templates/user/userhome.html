@@ -1,9 +1,25 @@
-{% extends 'user/basic_user.html' %}  
+{% extends 'user/basic_user.html' %}  {% load static %}
 
 {% block title %} User Page {% endblock %}
 
 {% block css %} 
-<style>
+
+<!-- Vendor CSS Files -->
+<link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+<!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet"> -->
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- <style>
 .container2 {
   display: flex;
   justify-content: center;
@@ -96,12 +112,12 @@ font-family: 'Montserrat';
   text-decoration: underline;
   cursor: pointer;
 }
-</style>
-{% endblock %}
+</style> -->
+<!-- {% endblock %} -->
 
 {% block body %}
 
-    <div class="container1"><br><br>
+    <!-- <div class="container1"><br><br>
         <h1>Digital Twin User Interface</h1>
     </div>
     <div class="card">
@@ -131,10 +147,85 @@ font-family: 'Montserrat';
     <h5 class="cardtitle">Diagnostic Tool</h5>
     <marquee id = "moxc">Click here to open diagnostic tool</marquee> </a>
   </div>
-</div>
+</div> -->
   <!-- <div id ="cright">
         <h6 style="margin-top: 60px; margin-left: 37rem;"> Copyright &copy 2023 Developed by Indian Institute of Technology Indore | All rights reserved</h6>
     </div>   -->
+
+    <main id="main">
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-xl-4 col-lg-5">
+          <!-- <div class="col-xl-4 col-lg-5" data-aos="fade-up"> -->
+            <div class="content">
+              <h3>Admin</h3>
+              <!-- <h3>Why Choose Flexor for your company website?</h3> -->
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+              </p>
+              <div class="text-center">
+                <!-- <a href="{% url 'ManagerLogin' %}" class="more-btn">Go to Admin Section <i class="bx bx-chevron-right"></i></a> -->
+                
+                <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#ManagerLoginModal">
+                   Go To Admin Section 
+                </button> 
+
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-8 col-lg-7 d-flex">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>User</h4>
+                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <div class="text-center">
+                      <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#UserLoginModal">
+                        Go To User Section 
+                     </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>Doctor</h4>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    <div class="text-center">
+                      <!-- <a href="{% url 'DoctorLogin' %}" class="more-btn">Go to Doctor Section <i class="bx bx-chevron-right"></i></a> -->
+                      <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#DoctorLoginModal">
+                        Go To Doctor Section 
+                     </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-images"></i>
+                    <h4>Pathologist</h4>
+                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    <div class="text-center">
+                      <!-- <a href="{% url 'PathoLogin' %}" class="more-btn">Go to Pathologist Section <i class="bx bx-chevron-right"></i></a> -->
+                      <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#PathologistLoginModal">
+                        Go To Pathologist Section 
+                     </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>   
+    </main> 
+    <!-- End Why Us Section -->
 
 {% endblock %}
 
