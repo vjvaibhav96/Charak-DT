@@ -49,51 +49,52 @@
       <form action="{% url 'EditHealthData' %}" method="POST"> {% csrf_token %}
         <div class="mb-2">
           <label for="exampleInputUserid1" class="form-label">User ID</label>
-          <input type="number" class="form-control" id="exampleInputUserid1" name="uid" autocomplete="off">
+          <input type="number" class="form-control" id="exampleInputUserid1" name="uid" autocomplete="off" value="{{user_data.patient_id}}">
+          <!-- <input type="number" class="form-control" id="exampleInputUserid1" name="uid" autocomplete="off" > -->
         </div>
         <div class="mb-2">
           <label for="exampleChestPain2" class="form-label">Chest Pain Type</label>
-          <input type="number" class="form-control" id="exampleChestpain2" name="cptype" autocomplete="off">
+          <input type="number" class="form-control" id="exampleChestpain2" name="cptype" autocomplete="off" value="0000">
         </div>
         <div class="mb-2">
           <label for="exampleGlucose2" class="form-label">Glucose Value</label>
-          <input type="number" class="form-control" id="exampleGlucose2" name="glucose" autocomplete="off">
+          <input type="number" class="form-control" id="exampleGlucose2" name="glucose" autocomplete="off" value="{{user_data.glucosevalue}}">
         </div>
         <div class="mb-2">
           <label for="exampleHeartRate2" class="form-label">Heart Rate</label>
-          <input type="number" class="form-control" id="exampleHeartRate2" name="heartrate" autocomplete="off">
+          <input type="number" class="form-control" id="exampleHeartRate2" name="heartrate" autocomplete="off" value="0000">
         </div>
         <div class="mb-2">
           <label for="exampleBloodPressure2" class="form-label">Blood Pressure Value</label>
-          <input type="number" class="form-control" id="exampleBloodPressure2" name="bloodpressure" autocomplete="off">
+          <input type="number" class="form-control" id="exampleBloodPressure2" name="bloodpressure" autocomplete="off" value="{{user_data.bloodpressure}}">
         </div>
         <div class="mb-2">
           <label for="exampleInsulin2" class="form-label">Insulin Value</label>
-          <input type="number" class="form-control" id="exampleInsulin2" name="insulin" autocomplete="off">
+          <input type="number" class="form-control" id="exampleInsulin2" name="insulin" autocomplete="off" value="{{user_data.insulinvalue}}">
         </div>
         <div class="mb-2">
           <label for="exampleBodyMassIndex2" class="form-label">Body Mass Index</label>
-          <input type="number" class="form-control" id="exampleBodyMassIndex2" name="bodymassindex" autocomplete="off">
+          <input type="number" class="form-control" id="exampleBodyMassIndex2" name="bodymassindex" autocomplete="off" value="{{user_data.insulinvalue}}">
         </div>
         <div class="mb-2">
           <label for="examplePrediabetic2" class="form-label">Prediabetic [0-No, 1-Yes]</label>
-          <input type="number" class="form-control" id="examplePrediabetic2" name="prediabetic" autocomplete="off">
+          <input type="number" class="form-control" id="examplePrediabetic2" name="prediabetic" autocomplete="off" value="0000">
         </div>
         <div class="mb-2">
           <label for="exampleDiabeticPedigreeFunction2" class="form-label">Diabetic Pedigree Function</label>
-          <input type="number" class="form-control" id="exampleDiabeticPedigreeFunction2" name="diabeticpedigreefunc" autocomplete="off">
+          <input type="number" class="form-control" id="exampleDiabeticPedigreeFunction2" name="diabeticpedigreefunc" autocomplete="off" value="{{user_data.dpf}}">
         </div>
         <div class="mb-2">
           <label for="exampleCholestrolLevel2" class="form-label">Cholestrol Level</label>
-          <input type="number" class="form-control" id="exampleCholestrolLevel2" name="cholestrol" autocomplete="off">
+          <input type="number" class="form-control" id="exampleCholestrolLevel2" name="cholestrol" autocomplete="off" value="{{user_data.cholestrol}}">
         </div>
         <div class="mb-2">
           <label for="exampleDailyExercise2" class="form-label">Daily Exercise [hrs/day]</label>
-          <input type="number" class="form-control" id="exampleDailyExercise2" name="dexercise" autocomplete="off">
+          <input type="number" class="form-control" id="exampleDailyExercise2" name="dexercise" autocomplete="off" value="{{user_data.dailyexercise}}">
         </div>
         <div class="mb-2">
           <label for="exampleTreco1" class="form-label">Test Recommendation</label>
-          <input type="text" class="form-control" id="exampleTreco1" name="testreco" autocomplete="off">
+          <input type="text" class="form-control" id="exampleTreco1" name="testreco" autocomplete="off" value="NA_DB">
         </div>
         <button type="submit" style="margin-top: 20px; margin-left: 290px;" class="btn btn-primary" id = "bxc">Save</button>
         <!-- </div> -->

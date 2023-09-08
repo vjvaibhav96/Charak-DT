@@ -898,10 +898,12 @@ section {
   border: 0;
   padding: 160px 20px 20px 20px;
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
+  width: 20%;
+  height: 200px;
 }
 
 .values .card-body {

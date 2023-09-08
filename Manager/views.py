@@ -111,7 +111,7 @@ def attributes(request):
         sleepinghabit  = request.POST.get('sleepinghabit')
         brushinghabit = request.POST.get('brushinghabits')
 
-        #export data to User_data table
+        #export data to Patient/User_data table
         
         user_attributes = Patient_data(fullname=fullname, email=email, age=age, fulladdress=fulladdress, gender=gender, chestpaintype=chestpaintype, glucosevalue=glucosevalue, bloodpressure=bloodpressure, insulinvalue=insulinvalue, bmi=bmi, prediabetic=prediabetic, dpf=dpf, cholestrol=cholestrol, dailyexercise=dailyexercise, sleepinghabits=sleepinghabit, brushinghabits=brushinghabit)
         user_attributes.save()

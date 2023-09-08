@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chatbot</title> {% load static %}
+
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+
+    #chat-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    #chat-container {
+        display: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    </style>
+    </head>
+ <body>
+    
+<div id="chat-widget">
+    <button id="chat-button">Chat</button>
+    <div id="chat-container">
+            <div id="chat">
+                <p class="bold-message">{{result}}</p>
+            </div>
+            <div id="userInputContainer">
+                <input type="text" id="userInput" placeholder="Type your query..." onkeyup="handleKeyPress(event)">
+                <button id="sendButton" onclick="sendMessage()">Send</button>
+            </div>
+    </div>
+</div>
+
+<!-- JavaScript for sending messages and receiving responses -->
+<script>
+
+    const chatButton = document.getElementById('chat-button');
+    const chatContainer = document.getElementById('chat-container');
+
+    chatButton.addEventListener('click', () => {
+        if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+            chatContainer.style.display = 'block';
+        } else {
+            chatContainer.style.display = 'none';
+        }
+    });
+    function sendMessage() {
+        // Get user input
+        var userInput = document.getElementById("userInput").value;
+
+        // Add user message to the chat interface
+        var chatDiv = document.getElementById("chat");
+        chatDiv.innerHTML += '<p>User: ' + userInput + '</p>';
+
+        // Clear the input field
+        document.getElementById("userInput").value = '';
+
+        // Create a JSON object with the "message" key
+        var jsonData = { message: userInput };
+        print(jsonData);
+        var csrftoken = getCookie('csrftoken');
+
+        // Send the JSON object to the server (Flask app) for processing
+        fetch('/healthchatbot/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(jsonData) 
+        }) 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            // Display only the "text" value from the JSON response
+            var chatbotResponse = data.response.text; // Assuming "text" is the key in your JSON response
+            chatDiv.innerHTML += '<p>Chatbot: ' + chatbotResponse + '</p>';
+        });
+    }
+
+    // Function to retrieve a cookie by name
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    // Function to handle Enter key press
+    function handleKeyPress(event) {
+            if (event.keyCode === 13) { // 13 is the key code for Enter
+                sendMessage();
+            }
+        }
+</script>
+   
+</body>
+</html>

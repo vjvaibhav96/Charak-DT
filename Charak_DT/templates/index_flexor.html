@@ -27,13 +27,18 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'css/stylex.css' %}" rel="stylesheet"> -->
+  <!-- <link href="{% static 'css/chatbot.css' %}" rel="stylesheet"> -->
 
-  <!-- Include jQuery and Bootstrap
+  <!-- Include jQuery and Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
+<!-- for jquery and bootstrap for chatbot modal  -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<!-- Bootstrap JavaScript (optional, for some components) -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   <!-- =======================================================
   * Template Name: Flexor
   * Updated: Jul 27 2023 with Bootstrap v5.3.1
@@ -41,9 +46,171 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <!-- <style>
+
+  body {
+        margin: 0;
+        padding: 0;
+    }
+    #chat {
+      padding-left: 5px;
+      padding-right: 7px;
+    }
+    #chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        text-align: justify;
+        z-index: 9999;
+    }
+    #chat-button {
+        background-color: #ff5821;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    #chat-container {
+        display: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        height: 400px;
+        overflow-y: auto;
+    }
+    #userInput {
+      /* line-height: 3rem; */
+      padding-left: 5rem;
+      padding-top: 1rem;
+      margin-bottom: 0rem;
+    }
+    #userInputContainer{
+      padding-left: 1rem;
+      margin-top: 13rem;
+      text-align: center;
+    }
+    #sendButton{
+      padding-left: 1rem;
+      padding-top: 1rem;
+      text-align: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .hidden {
+    display: none;
+    }
+    #chat-box{
+      overflow-y:auto;
+    }
+  </style> -->
+
+  <style>
+    #CharakBotButton{
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column-reverse;
+      cursor: pointer;
+      background-color: darkorchid;
+    }
+    #modal-positioning{
+      position: fixed;
+      right: 20px;
+      bottom: 85px;
+      width: 400px;
+      height: 450px;
+      border-radius: 20px;
+
+    }
+    #model-heading{
+      color: whitesmoke;
+      background-color: teal;
+      border-radius: 20px; 
+      padding-right: 10px; 
+      padding-left: 10px;
+      text-align: justify;
+    }
+    /* MESSAGES */
+  .chatbox__messages {
+    margin-top: auto;
+    display: flex;
+    width: 380px;
+    height: 250px;
+    overflow-y: scroll;
+    flex-direction: column-reverse;
+  }
+  .modal-title {
+    height: 70px;
+    font-size: large;
+  }
+  .modal-header .close {
+    padding: 2rem 10px;
+  }
+  hr {
+    margin-top: 1px;
+    margin-bottom: 0rem;
+  }
+  #userInputContainer{
+      position: fixed;
+      bottom: 90px;
+      height: 30px;
+      padding-left: 15px;
+    }
+    .modal-footer{
+      height: 55px;
+      justify-content: flex-start;
+      border-top: 2px solid black;
+    }
+    #userInput{
+      justify-content: center;
+      align-items: center;
+      width: 18rem;
+      border-radius: 10px;
+    }
+    .modal-body{
+      /* overflow: overlay; */
+      position: relative;
+      border-top: 2px solid black;
+    }
+    #sendButton{
+      border-radius: 10px;
+    }
+    /* .modal-backdrop{
+      z-index: 1040;
+    } */
+    #DoctorSingupModal{
+      z-index: 10100;
+      /* overflow: scroll; */
+    }
+    .modal{
+      overflow: scroll;
+    }
+    #ManagerLoginModal{
+      border-radius: 20px;
+    }
+  </style>
+
 </head>
 
 <body>
+
+  <!-- === Charak Bot Modal ===  -->
+    <div id="CharakBotButton"> 
+      <a href="#ChatBotModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChatBotModal">
+           Chat with our Expert || Charak Bot <br>
+           <small>  <strong style="color: black;"> Powered by : </strong> Digi-Attorney </small> 
+        </button> 
+      </a>
+    </div>
 
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
@@ -63,10 +230,23 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
+      <!-- <a class="btn btn-info btn-lg btn-block" data-mdb-toggle="collapse" href="{% url 'HealthChatBot' %}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <span>Chat Bot</span>
+                      <i class="fas fa-chevron-down"></i>
+                  </div>
+      </a> -->
+      <!-- <div> <a href="#ChatBotModal">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChatBotModal">
+        Chat Bot modal
+      </button> </a>
+    </div> -->
+
       <div class="logo">
         <!-- <h1><a href="index_flexor.html">Flexor</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="/"><img src="{% static 'img/drishti_logo.png' %}" alt="" class="img-fluid"></a>
+        <a  href="https://drishticps.iiti.ac.in/" target="_blank"><img src="{% static 'img/drishti_logo.png' %}" alt="" class="img-fluid"></a>
+        <!-- <a style="padding-left: 12px;" href="https://www.iiti.ac.in/" target="_blank"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid"></a> -->
       </div>
 
       <nav id="navbar" class="navbar">
@@ -78,19 +258,30 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <!-- <li>
+            <a class="btn btn-info btn-lg btn-block" data-mdb-toggle="collapse" href="#collapseExample"
+                role="button" aria-expanded="false" aria-controls="collapseExample">
+                   <div class="d-flex justify-content-between align-items-center">
+                      <span>Collapsible Chat App</span>
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+            </a> -->
+          </li>
+          <li class="dropdown"><a href="#"><span>Health Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li>
+              <!-- <li><a href="#ChatBotModal">Chat Bot</a></li>  for modal --> 
+              <!-- <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li> -->
+              <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
                   <li><a href="#">Deep Drop Down 3</a></li>
                   <li><a href="#">Deep Drop Down 4</a></li>
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
+              </li> -->
+              <li><a href="{% url 'Esiofy' %}">Esiofy</a></li>
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul>
@@ -99,6 +290,9 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
+      <div class="logo">
+        <a style="padding-left: 25px;" href="https://www.iiti.ac.in/" target="_blank"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid"></a>
+    </div>
 
     </div>
   </header><!-- End Header -->
@@ -356,10 +550,10 @@
     </section><!-- End Values Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    <section id="testimonials" class="testimonials" style="position: unset;">
       <div class="container position-relative" data-aos="fade-up">
 
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonials-slider swiper"  data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
             <div class="swiper-slide">
@@ -931,7 +1125,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+ 
+
 
   <!-- Vendor JS Files -->
   <script src="{% static 'vendor/aos/aos.js' %}"></script>
@@ -947,14 +1142,20 @@
 
 <!-- modal for Admin Login  -->
 <div class="modal fade" id="ManagerLoginModal" tabindex="-1" aria-labelledby="ManagerLoginModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="ManagerLoginModal">Welcome Admin, please enter your details below for login</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
       <div class="modal-body">
-        <form action="{% url 'ManagerLogin' %}" id="ManagerLoginForm" method="post"> {% csrf_token %}
+      <div class="row">
+        <!-- <div class="col-lg-5"> -->
+        <div class="col-lg-5" style=" background-color :#003959 ; center; justify-content: center; text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+           
+          <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+          <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+          <!-- </div> -->
+      </div> 
+        <div class="col-lg-7" style="padding-left: 10px;">
+        <form action="{% url 'ManagerLogin' %}" id="ManagerLoginForm" method="post" style="margin-left: 15px;"> {% csrf_token %}
           <div class="mb-3">
             <label for="managerloginemail" class="form-label">Email address</label>
             <input type="email" class="form-control" id="managerloginemail" name="managerloginemail" aria-describedby="emailHelp" required>
@@ -969,18 +1170,23 @@
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
           </div>
           <!-- <button type="submit" class="btn btn-more">Submit</button> -->
-          <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+          <button type="submit" class="btn btn-primary">Submit</button> 
+          <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> <br>
+            <button type="button" style="padding-top: 5px; margin-top: 10px;" class="btn btn-light" style="color: blue; margin-top: -2px; " data-bs-toggle="modal" data-bs-target="#ManagerSignupModal">Signup</button>
+            </div>
+        </form>
+        </div>
+    </div>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
          <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
       <!-- </div> -->
         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ManagerSignupModal">Signup</button> -->
        <!-- <span style="text-align: center;"> For Sing Up <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> <strong> Click Here </strong> </button> </span> -->
-       <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#ManagerSignupModal">Signup</button>
-      </div>
+       
     </div>
   </div>
 </div>
@@ -1123,38 +1329,54 @@
 
 <!-- User Login Modal  -->
 <div class="modal fade" id="UserLoginModal" tabindex="-1" aria-labelledby="UserLoginModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
         <h1 class="modal-title fs-5" id="UserLoginModal">Welcome User, please enter your details below for login</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </div> -->
       <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 9rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
         <form action="{% url 'UserLogin' %}" id="UserLoginForm" method="post"> {% csrf_token %}
           <div class="mb-3">
-            <label for="managerloginemail" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="managerloginemail" name="managerloginemail" aria-describedby="emailHelp" required>
+            <label for="userloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="userloginemail" name="userloginemail" aria-describedby="emailHelp" required>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
-            <label for="managerloginpassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="managerloginpassword" name="managerloginpassword" required>
+            <label for="userloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="userloginpassword" name="userloginpassword" required>
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
+            <input type="checkbox" class="form-check-input" id="usercheckbox">
+            <label class="form-check-label" for="usercheckbox">Check me out</label>
+          </div> 
+          <br>
           <button type="submit" class="btn btn-primary">Submit</button>
+           <br> <br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Close</button>
+          </div>
       </form>
       </div>
-      <div class="modal-footer">
+    </div>
+  </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
          <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
       <!-- </div> -->
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
        
-      </div>
+     
     </div>
   </div>
 </div>
@@ -1201,7 +1423,7 @@
           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#UserLoginModal">Submit</button>
       </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
           <!-- <span style="text-align: center;"> <medium> For Login </medium> <a href="{% url 'ManagerSignup' %}"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> </span> -->
       <!-- </div> -->
         <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Login</button> -->
@@ -1213,13 +1435,22 @@
 
 <!-- Doctor Login Modal  -->
 <div class="modal fade" id="DoctorLoginModal" tabindex="-1" aria-labelledby="DoctorLoginModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
         <h1 class="modal-title fs-5" id="DoctorLoginModal">Welcome Doctor, please enter your details below for login</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </div> -->
       <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
         <form action="{% url 'DoctorLogin' %}" id="DoctorLoginForm" method="post"> {% csrf_token %}
           <div class="mb-3">
             <label for="managerloginemail" class="form-label">Email address</label>
@@ -1233,30 +1464,44 @@
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> <br>
+          <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-light" style="color: blue; margin-top: 12px;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       </div>
-      <div class="modal-footer">
+    </div>
+  </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
          <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
       <!-- </div> -->
         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
-      </div>
+        <!-- <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
+      </div> -->
     </div>
   </div>
 </div>
 
 <!-- Pathologist Login Modal  -->
 <div class="modal fade" id="PathologistLoginModal" tabindex="-1" aria-labelledby="PathologistLoginModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
         <h1 class="modal-title fs-5" id="PathologistLoginModal">Welcome Pathologist, please enter your details below for login</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </div> -->
       <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
         <form action="{% url 'PathoLogin' %}" id="PathologistLoginForm" method="post"> {% csrf_token %}
           <div class="mb-3">
             <label for="managerloginemail" class="form-label">Email address</label>
@@ -1270,18 +1515,23 @@
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> <br>
+          <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-light" style="color: blue; margin-top: 12px;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       </div>
-      <div class="modal-footer">
+      </div>
+      </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
          <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
       <!-- </div> -->
         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
          <!-- <button type="button" class="btn btn-primary">Save changes</button>  -->
-        <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
+        <!-- <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
        
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -1447,7 +1697,7 @@
         <!-- the modal body starts here -->
         <div class="modal-body">
           <!-- modal body is contained in a row and that row is divided into two columns-->
-        <div class="row "> 
+        <div class="row"> 
         <!--  first column starts here   -->
         <div class="col-lg-6">   
           <form action="{% url 'DoctorSingup' %}" id="DoctorSingupForm" method="post"> {% csrf_token %}
@@ -1625,6 +1875,107 @@ document.getElementById("medical_council").addEventListener("change", function()
 });
 
 </script>
+
+
+<!-- Chabot Modal  -->
+<!-- </section id="ChatBotModal"> -->
+<!-- <div class="row"> -->
+<div class="modal fade" id="ChatBotModal" tabindex="-1" role="dialog" aria-labelledby="ChatBotModal" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div id="modal-positioning" class="modal-content">
+      <div id="model-heading" class="modal-header">
+        <h5 class="modal-title" id="ChatBotModal"> <small> Hello,  I am <strong> Charak Bot </strong>, an AI powered assistant. I am here to help you with your queries. Please enter your query below to proceed.</small></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+      <!-- <hr style="border: 2px solid black;"> -->
+      <div class="modal-body">
+
+        <div id="chat-container">
+          <div id="chatbox__messages">
+              <p class="bold-message" style="align-items: center; justify-content: center;">{{result}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div id="userInputContainer">
+          <input type="text" id="userInput" placeholder="Type your query..." onkeyup="handleKeyPress(event)">
+          <button id="sendButton" onclick="sendMessage()">Send</button>
+      </div>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for sending messages and receiving responses -->
+        
+<script>
+  function sendMessage() {
+      // Get user input
+      var userInput = document.getElementById("userInput").value;
+
+      // Add user message to the chat interface
+      var chatDiv = document.getElementById("chatbox__messages");
+      chatDiv.innerHTML += '<p>User: ' + userInput + '</p>';
+
+      // Clear the input field
+      document.getElementById("userInput").value = '';
+
+      // Create a JSON object with the "message" key
+      var jsonData = { message: userInput };
+      print(jsonData);
+      var csrftoken = getCookie('csrftoken');
+
+      // Send the JSON object to the server (Flask app) for processing
+      fetch('/healthchatbot/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrftoken
+          },
+          body: JSON.stringify(jsonData) 
+      }) 
+      .then(function(response) {
+          return response.json();
+      })
+      .then(function(data) {
+          // Display only the "text" value from the JSON response
+          var chatbotResponse = data.response.text; // Assuming "text" is the key in your JSON response
+          chatDiv.innerHTML += '<p>Chatbot: ' + chatbotResponse + '</p>';
+
+          // alternative to the above chatDiv line is this code till chadDiv.appendChild
+          // var chatMessage = document.createElement('p');
+          // chatMessage.textContent = 'Chatbot: ' + chatbotResponse;
+          
+          // // Apply styles
+          // chatMessage.style.display = 'flex'; // To enable flexbox layout
+          // chatMessage.style.justifyContent = 'center'; // Center content horizontally
+          // chatMessage.style.alignItems = 'center'; // Center content vertically
+          
+          // // Append the styled chat message to the chatDiv
+          // chatDiv.appendChild(chatMessage);
+            });
+  }
+
+  // Function to retrieve a cookie by name
+  function getCookie(name) {
+      var value = "; " + document.cookie;
+      var parts = value.split("; " + name + "=");
+      if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  // Function to handle Enter key press
+  function handleKeyPress(event) {
+          if (event.keyCode === 13) { // 13 is the key code for Enter
+              sendMessage();
+          }
+      }
+</script>
+
+
 
 </body>
 

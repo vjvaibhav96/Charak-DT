@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'Doctor.apps.DoctorConfig',
     'Pathologist.apps.PathologistConfig',
     'User.apps.UserConfig',
+    'Healthchatbot',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,6 +134,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "Doctor/static",
     BASE_DIR / "User/static",
     BASE_DIR / "Pathologist/static",
+    BASE_DIR / "Healthchatbot/static",
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -141,3 +143,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#twilio account details
+ACCOUNT_SID='AC586d35ad0f77e72c9c7aace6ad9e9c90'
+AUTH_TOKEN='7e5c8429f45ad1508f66b5b9ecb96fd0'
+COUNTRY_CODE='+91' # +country code of your choice
+TWILIO_WHATSAPP_NUMBER='whatsapp:+14155238886'
+TWILIO_PHONE_NUMBER='+15739943532' # number you get from twilio
+
+import os
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '333c6751a23a292d8fbc12cdea69196496c57b2e'

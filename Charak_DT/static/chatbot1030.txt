@@ -1,0 +1,119 @@
+  was added at 1030 for (after footer line for making charak bot active)
+  
+  
+  <div class="container hidden" id="chat-widget">
+    <button id="chat-button">Chat with our Charak Bot</button>
+    <div id="chat-container" style="text-align:justify; margin-left: 10px;"> 
+      <!-- <div style="padding-right: 2rem; padding-left: 2rem; justify-content: center; padding-top: 1rem; -webkit-box-flex: ;" role="group" aria-label="bot replied" aria-live="assertive" class="chat-message message-came from-them bot-message curved first except" title="Thu 4:44 PM" style="transform: translateY(0px); opacity: 1;"> 
+          <span role="img" aria-label="from GoIndiGo" class="from-icon"></span>
+          <div>Hello,  I am a <strong> Health Chat Bot </strong>, an AI powered assistant. I am here to help you with your queries. Please enter your query below to proceed.</div>
+      </div>  -->
+      <div class="card" style="background-color :#fff9f7; color: black; "  >
+      <!-- <div class="card" style="background-color: #031f4b; color: white;" > -->
+        <div class="cardbody" >
+            <!-- <h5 class="cardtitle">Access Test Reccomendation</h5>
+            <h3 id = "axc"> <a href="{% url 'PathoAccess' %}">  Click here to access test reccomendation  </a>  </h3> -->
+            <div style="margin-right: 1rem; margin-left: 1rem;">Hello,  I am <strong> Charak Bot </strong>, an AI powered assistant. I am here to help you with your queries. Please enter your query below to proceed.</div>
+            <!-- <marquee id = "axc"> <a href="{% url 'PathoAccess' %}">  Click here to access test reccomendation  </a>  </marquee> -->
+        </div>
+      </div> <hr>
+      <!-- <hr style="border: black solid; height: 2pxss;">  -->
+      <div id="chat-box">
+        <div id="chat" style="margin-left: 10px;">
+            <p class="bold-message" style="margin-left: 10px; margin-right: 10px;">{{result}}</p>
+        </div>
+        <div id="userInputContainer" style="margin-left: 10px;">
+            <input type="text" id="userInput" placeholder="Type your query..." onkeyup="handleKeyPress(event)">
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatButton = document.getElementById('chat-button');
+    const chatContainer = document.getElementById('chat-container');
+
+    chatButton.addEventListener('click', () => {
+        if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+            chatContainer.style.display = 'block';
+        } else {
+            chatContainer.style.display = 'none';
+        }
+    });
+    function sendMessage() {
+        // Get user input
+        var userInput = document.getElementById("userInput").value;
+
+        // Add user message to the chat interface
+        var chatDiv = document.getElementById("chat");
+        chatDiv.innerHTML += '<p>  User: ' + userInput + '</p>';
+
+        // Clear the input field
+        document.getElementById("userInput").value = '';
+
+        // Create a JSON object with the "message" key
+        var jsonData = { message: userInput };
+        print(jsonData);
+        var csrftoken = getCookie('csrftoken');
+
+        // Send the JSON object to the server (Flask app) for processing
+        fetch('/healthchatbot/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(jsonData) 
+        }) 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            // Display only the "text" value from the JSON response
+            var chatbotResponse = data.response.text; // Assuming "text" is the key in your JSON response
+            chatDiv.innerHTML += '<p>Chatbot: ' + chatbotResponse + '</p>';
+        });
+    }
+
+    // Function to retrieve a cookie by name
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    // Function to handle Enter key press
+    function handleKeyPress(event) {
+            if (event.keyCode === 13) { // 13 is the key code for Enter
+                sendMessage();
+            }
+        }
+
+    // Get references to the chatbot button and chat container
+    var chatbotButton = document.getElementById("chatbotButton");
+    var chatContain = document.getElementById("chatWidget");
+
+    // Function to toggle chatbot visibility
+    function toggleChat() {
+        if (chatContainer.classList.contains("hidden")) {
+            // Show the chat container
+            chatContainer.style.display = "block";
+
+            // Position the chat container at the same position as the chatbot button
+            chatContainer.style.right = chatbotButton.style.right;
+            chatContainer.style.bottom = chatbotButton.style.bottom;
+
+            // Hide the chatbot button
+            chatbotButton.style.display = "none";
+        } else {
+            // Hide the chat container
+            chatContainer.style.display = "none";
+
+            // Show the chatbot button
+            chatbotButton.style.display = "block";
+        }
+    }
+
+  </script>
