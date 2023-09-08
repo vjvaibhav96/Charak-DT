@@ -1,6 +1,6 @@
 {% extends 'user/basic_user.html' %}  
 
-{% block title %} User Health Data {% endblock %}
+{% block title %} User Health user_hdata {% endblock %}
 
 {% block css %} 
 <style>
@@ -35,7 +35,7 @@
     {% endblock %}
     
 {% block body %} 
-    <h3 style="color: black; font-family: 'Montserrat'; text-align:center">Your Health Data</h3>
+    <h3 style="color: black; font-family: 'Montserrat'; text-align:center">Your Health user_hdata</h3>
     <table id ="container1" class = "table table-dark  table-hover">
         <thead>
         <tr>
@@ -54,21 +54,23 @@
         </tr>
     </thead>
     <tbody>
-        {% for report in report %}
           <tr>
-            <td>{{ report.id }}</td>
-            <td>{{ report.ufullname }}</td>
-            <td>{{ report.age }}</td>
-            <td>{{ report.gender }}</td>
-            <td>{{ report.fulladdress }}</td>
-            <td>{{ report.bloodpressure }}</td>
-            <td>{{ report.glucose }}</td>
-            <td>{{ report.insulin }}</td>
-            <td>{{ report.cholestrol }}</td>
-            <td>{{ report.heart_rate }}</td>
-            <td>{{ report.step_count }}</td>
+            <td>{{ user_hdata.patient_id }}</td>
+            <td>{{ user_hdata.fullname }}</td>
+            <td>{{ user_hdata.age }}</td>
+            <td>{{ user_hdata.gender }}</td>
+            <td>{{ user_hdata.fulladdress }}</td>
+            <td>{{ user_hdata.bloodpressure }}</td>
+            <td>{{ user_hdata.glucosevalue }}</td>
+            <td>{{ user_hdata.insulinvalue }}</td>
+            <td>{{ user_hdata.cholestrol }}</td>
+            <td>NV_DB</td>
+            <td>NV_DB</td>
+            <!-- <td>{{ user_hdata.sleepinghabits }}</td>
+            <td>{{ user_hdata.brushinghabits }}</td> -->
+            <!-- <td>{{ report.heart_rate }}</td>
+            <td>{{ report.step_count }}</td> -->
           </tr>
-        {% endfor %}
       </tbody>
       
     </table>
@@ -87,18 +89,16 @@
         </tr>
     </thead>
     <tbody>
-        {% for report in report %}
         <tr>
-            <td>{{report.diabetes_outcome}}</td>
-            <td>{{report.heart_outcome}}</td>
-            <td>{{report.cptype}}</td>
-            <td>{{report.bodymassindex}}</td>
-            <td>{{report.dexercise}}</td>
-            <td>{{report.brushhabit}}</td>
-            <td>{{report.prescription}}</td>
-            <td>{{report.test_recommendation}}</td>
-        </tr>
-        {% endfor %}        
+            <td>NA_DB</td>
+            <td>NA_DB</td>
+            <td>NA_DB</td>
+            <td>{{ user_hdata.bmi }}</td>
+            <td>{{ user_hdata.dailyexercise }}</td>
+            <td>{{ user_hdata.brushinghabits }}</td>
+            <td>NA_DB</td>
+            <td>NA_DB</td>
+        </tr>     
    </tbody>
     </table>
     <div class="container1">
@@ -106,16 +106,16 @@
     </div>
     
     <div class="container2">
-        <embed src="data:application/pdf;base64,{{base64Data}}" width="60%" height="700px" />
+        <embed src="user_hdata:application/pdf;base64,{{base64user_hdata}}" width="60%" height="700px" />
     </div>
     <div class="container3">
-        <a href="data:application/pdf;base64,{{base64Data}}" download="file.pdf">Download Report</a>
+        <a href="user_hdata:application/pdf;base64,{{base64user_hdata}}" download="file.pdf">Download Report</a>
     </div>
     <div class="container2">
-        <embed src="data:image/jpg;base64,{{base64Data1}}" width="60%" height="700px" />
+        <embed src="user_hdata:image/jpg;base64,{{base64user_hdata1}}" width="60%" height="700px" />
     </div>
     <div class="container3">
-        <a href="data:image/jpg;base64,{{base64Data1}}" download="file.jpg">Download X-ray</a>
+        <a href="user_hdata:image/jpg;base64,{{base64user_hdata1}}" download="file.jpg">Download X-ray</a>
     </div>
     <!-- <div id ="cright">
         <h6 style="margin-top: 60px;"> Copyright &copy 2023 Developed by Indian Institute of Technology Indore | All rights reserved</h6>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title> {% load static %}
+
+    <!-- Favicons -->
+  <link href="{% static 'img/drishti_logo.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet"> -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+     
+        #chat-container {
+            max-width: 800px;
+            margin :30px auto 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px #ccc;
+            background-color: #f5f5f5;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #chat {
+            flex-grow: 1; 
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            max-height: 60vh; 
+        }
+
+        #userInputContainer {
+            display: flex;
+            background-color: #fff;
+            padding: 10px;
+        }
+
+        #userInput {
+            flex-grow: 1; 
+            padding: 10px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        #sendButton {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px; 
+        }
+        .bold-message {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>  
+
+    <!-- <section id="topbar" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+          <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
+            <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+          </div>
+    
+          <div class="cta d-none d-md-flex align-items-center">
+            <a href="#about" class="scrollto">Get Started</a>
+          </div>
+        </div>
+        </section> -->
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <!-- <h1><a href="index_flexor.html">Flexor</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="/"><img src="{% static 'img/drishti_logo.png' %}" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'CharakHome' %}#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'CharakHome' %}#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#pricing">Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <!-- <li>
+            <a class="btn btn-info btn-lg btn-block" data-mdb-toggle="collapse" href="#collapseExample"
+                role="button" aria-expanded="false" aria-controls="collapseExample">
+                   <div class="d-flex justify-content-between align-items-center">
+                      <span>Collapsible Chat App</span>
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+            </a> -->
+          </li>
+          <li class="dropdown"><a href="#"><span>Health Services</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li>
+              <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li> -->
+              <li><a href="{% url 'Esiofy' %}">Esiofy</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+</section> 
+
+<div class="row">
+    <hr style="width:100%; height: 2px; color: black;">
+</div>
+
+
+    <div id="chat-container">
+        <div id="chat">
+            <p class="bold-message">{{result}}</p>
+        </div>
+        <div id="userInputContainer">
+            <input type="text" id="userInput" placeholder="Type your query..." onkeyup="handleKeyPress(event)">
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+<!-- JavaScript for sending messages and receiving responses -->
+<script>
+    function sendMessage() {
+        // Get user input
+        var userInput = document.getElementById("userInput").value;
+
+        // Add user message to the chat interface
+        var chatDiv = document.getElementById("chat");
+        chatDiv.innerHTML += '<p>User: ' + userInput + '</p>';
+
+        // Clear the input field
+        document.getElementById("userInput").value = '';
+
+        // Create a JSON object with the "message" key
+        var jsonData = { message: userInput };
+        print(jsonData);
+        var csrftoken = getCookie('csrftoken');
+
+        // Send the JSON object to the server (Flask app) for processing
+        fetch('/healthchatbot/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(jsonData) 
+        }) 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            // Display only the "text" value from the JSON response
+            var chatbotResponse = data.response.text; // Assuming "text" is the key in your JSON response
+            chatDiv.innerHTML += '<p>Chatbot: ' + chatbotResponse + '</p>';
+        });
+    }
+
+    // Function to retrieve a cookie by name
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    // Function to handle Enter key press
+    function handleKeyPress(event) {
+            if (event.keyCode === 13) { // 13 is the key code for Enter
+                sendMessage();
+            }
+        }
+</script>
+   
+</body>
+</html>
+

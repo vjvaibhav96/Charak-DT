@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: whitesmoke;
+        }
+        .left-section{
+            width: 25%;
+            height: 100%;
+            /* background-color: aqua; */
+        }
+        .left-section-tr{
+            height: 70%;
+            /* background-color: aliceblue; */
+        }
+        .left-section-br{
+            height: 30%;
+            /* background-color: red; */
+        }
+        .right-section{
+            width: 75%;
+            max-height: auto;
+            display: flex;
+            flex-direction: column;
+            border: 5px blue solid;
+        }
+        .top-row{
+            height: 20%;
+            /* background-color:whitesmoke; */
+        }
+        .middle-row{
+            height: 40%;
+            /* background-color: whitesmoke; */
+        }
+        .bottom-row{
+            height: 40%;
+            /* background-color: whitesmoke; */
+        }
+    </style>
+
+</head>
+<body>
+    <div class="left-section">
+        <div class="left-section-tr">
+            <h1>Left section top row</h1>
+        </div><hr>
+        <div class="left-section-tr">
+            <h3>Left side bottom row</h3>
+        </div><hr>
+    </div> <hr style="width: 2px; height: 100%; color: blue;">
+
+    <div class="right-section">
+        <div class="top-row"> 
+            <h3>Top Row</h3>
+        </div><hr>
+        <div class="middle-row">
+            <h3>Middle row</h3>
+        </div><hr>
+        <div class="bottom-row">
+            <h3>Bottom row</h3>
+        </div><hr>
+    </div>
+</body>
+</html>

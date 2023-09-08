@@ -22,8 +22,10 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="CharakHome" ),
+    path('esiofy/', views.esiofy, name="Esiofy" ),
     path('manager/', include('Manager.urls')),
     path('doctor/', include('Doctor.urls')),
     path('user/', include('User.urls')),
     path('pathologist/', include('Pathologist.urls')),
+    path('healthchatbot/', include('Healthchatbot.urls')),
 ]

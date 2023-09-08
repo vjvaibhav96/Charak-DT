@@ -42,8 +42,8 @@
         display: inline-block;
         border: 2px solid black;
         border-radius: 10px;
-        width: 23%;
-        margin: 130px 14rem;
+        width: 21%;
+        margin: 130px 5rem;
         height: 150px;
         background-color: whitesmoke;
     }
@@ -57,7 +57,7 @@
     }
     #axc {
         text-align:center;
-        margin: 27px;
+        margin: 15px;
         font-size: 15px;
         color:red;
         font-style: oblique;
@@ -66,7 +66,7 @@
     }
     #exc {
         text-align:center;
-        margin: 27px;
+        margin: 15px;
         font-size: 15px;
         color:red;
         font-style: oblique;
@@ -75,7 +75,7 @@
     }
     #pxc {
         text-align:center;
-        margin: 27px;
+        margin: 15px;
         font-size: 15px;
         color:red;
         font-style: oblique;
@@ -85,6 +85,15 @@
     #moxc {
         text-align:center;
         margin: 27px;
+        font-size: 15px;
+        color:red;
+        font-style: oblique;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    #esioxc{
+      text-align:center;
+        margin: 15px;
         font-size: 15px;
         color:red;
         font-style: oblique;
@@ -102,14 +111,23 @@
 <div class="card">
     <div class="cardbody">
         <h5 class="cardtitle">Access Test Reccomendation</h5>
-        <marquee id = "axc"> <a href="{% url 'PathoAccess' %}">  Click here to access test reccomendation  </a>  </marquee>
+        <h3 id = "axc"> <a href="{% url 'PathoAccess' %}">  Click here to access test reccomendation  </a>  </h3>
+        <!-- <marquee id = "axc"> <a href="{% url 'PathoAccess' %}">  Click here to access test reccomendation  </a>  </marquee> -->
     </div>
 </div>
 <div class="card">
     <div class="cardbody">
-    <h5 class="cardtitle"> Upload Reports</h5>
-    <marquee id = "exc"> <a href="{% url 'PathoEdit' %}"> Click here to upload reports </a> </marquee>
+    <h3 class="cardtitle"> Upload Reports</h3>
+    <h5 id = "exc"> <a href="{% url 'PathoEdit' %}"> Click here to upload reports </a> </h5>
+    <!-- <marquee id = "exc"> <a href="{% url 'PathoEdit' %}"> Click here to upload reports </a> </marquee> -->
     </div>
+</div>
+<div class="card">
+  <div class="cardbody">
+  <h3 class="cardtitle"> Upload CT Scan for 3D Imaging</h3>
+  <h5 id = "esioxc"> <a href="{% url 'PathoEsiofy' %}"> Click here to upload CT Scan </a> </h5>
+  <!-- <marquee id = "exc"> <a href="{% url 'PathoEsiofy' %}"> Click here to upload CT Scan </a> </marquee> -->
+  </div>
 </div>
 <!-- </div> -->
 

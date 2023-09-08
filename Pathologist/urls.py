@@ -10,7 +10,8 @@ urlpatterns = [
     path('pathouserdata', views.pathouserdata, name="PathoUserData"),
     path('pathoedit', views.pathoedit, name="PathoEdit"),
     path('pathoeditsuccess', views.pathoeditsuccess, name="PathoEditSuccess"),
-    path('pathsingup/', views.pathosingup, name="PathoSingup")
+    path('pathsingup/', views.pathosingup, name="PathoSingup"),
+    path('pathesiofy/', views.pathoesiofy, name="PathoEsiofy"),
     # path('pathotodoctorpres', views.pathotodoctorpres, name="PathoToDoctorPres"),
     # path('pathotodocsuccess', views.pathotodocsuccess, name="PathoToDocSuccess"),
     
