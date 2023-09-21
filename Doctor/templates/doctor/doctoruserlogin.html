@@ -47,15 +47,15 @@
 <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
   <form action="{% url 'DoctorUserLogin' %}" method="POST"> {% csrf_token %}
     <div class="mb-2">
-      <label for="exampleInputNumber1" class="form-label"> Email ID</label>
-      <input type="text" class="form-control" id="exampleInputNumber1" placeholder="Enter id" name="phone" autocomplete="off">
+      <label for="userid" class="form-label"> User ID</label>
+      <input type="text" class="form-control" id="userid" placeholder="Enter patient user id" name="userid" autocomplete="off">
     </div>
     <div class="mb-2">
-      <label for="exampleInputNumber1" class="form-label"> Password</label>
-      <input type="text" class="form-control" id="exampleInputNumber1" placeholder="Enter password" name="phone" autocomplete="off">
-    </div>
-    
-    <button type="submit" style="margin-top: 20px; margin-left: 290px;" class="btn btn-primary" id = "lxc">Login</button> <br>
+      <label for="fullname" class="form-label"> Full Name</label>
+      <input type="text" class="form-control" id="fullname" placeholder="Enter patient name " name="fullname" autocomplete="off">
+    </div> <br>
+    <div style="text-align: center;">
+    <button type="submit" class="btn btn-primary" id = "lxc">Submit</button> </div>
 
 <h5 class="my-4" style="color: black; text-align: center;">Click on login to access, edit and add prescription to user</h5>
 </div>

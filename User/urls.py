@@ -9,6 +9,10 @@ urlpatterns = [
     path('healthdata/', views.healthdata, name="HealthData"),
     path('edithealthdata/', views.edithealthdata, name="EditHealthData"),
     path('edithealthsuccess/', views.edithealthsuccess, name="EditHealthSuccess"),
-    path('connectsmartwatch/', views.connectsmartwatch, name="ConnectSmartWatch"),
-    path('diagnostictool/', views.diagnostictool, name="DiagnosticTool")
+    path('connectsmartphone/', views.connectsmartphone, name="ConnectSmartPhone"),
+    path('diagnostictool/', views.diagnostictool, name="DiagnosticTool"),
+    path('successconnect/', views.successconnect, name="SuccessConnect"),
+    path('userlogout/', views.userlogout, name="LogoutUser"),
+    path('userprofile', views.userprofile, name="UserProfile"),
+    path('edituserprofile', views.edituserprofile, name="EditUserProfile")
 ]

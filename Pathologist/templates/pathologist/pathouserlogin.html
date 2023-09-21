@@ -47,13 +47,17 @@
     <h3>Verification</h3>
 </div><br>
 <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
-  <form action="{% url 'PathoUserOtp' %}" method="POST"> {% csrf_token %}
+  <form action="{% url 'PathoUserLogin' %}" method="POST"> {% csrf_token %}
     <div class="mb-2">
-      <label for="exampleInputNumber1" class="form-label"> Enter User Mobile Number</label>
-      <input type="text" class="form-control" id="exampleInputNumber1" placeholder="Enter mobile number with (+91)" name="phone" autocomplete="off" required>
+      <label for="userid" class="form-label"> Enter Patient ID</label>
+      <input type="text" class="form-control" id="userid" placeholder="Enter Patient ID" name="userid" autocomplete="off" required>
     </div>
-    
-    <button  type="submit" style="margin-top: 20px; margin-left: 290px;" class="btn btn-primary my-4" id = "axc">Send OTP</button>
+    <div class="mb-2">
+      <label for="patientname" class="form-label"> Enter Patient Name </label>
+      <input type="text" class="form-control" id="patientname" placeholder="Enter Patient Name" name="patientname" autocomplete="off" required>
+    </div>
+    <div style="text-align: center;">
+    <button  type="submit" class="btn btn-primary my-4" id = "axc">Send OTP</button> </div>
     <!-- </div> -->
 <div class="container2">
 <h5 class="my-3" style="text-align: center; color: black;">Click on Send button to get OTP and verify user</h5>

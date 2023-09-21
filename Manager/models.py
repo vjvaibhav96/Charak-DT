@@ -39,3 +39,8 @@ class Patient_data(models.Model):
     dailyexercise = models.CharField(max_length=15)
     sleepinghabits = models.CharField(max_length=100)
     brushinghabits = models.CharField(max_length=100)
+    image = models.CharField(max_length=500)
+    about = models.CharField(max_length=500)
+    phone = models.CharField(max_length=50)
+    prescription = models.CharField(max_length=500)
+    otp = models.CharField(max_length=10)

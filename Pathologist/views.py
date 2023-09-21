@@ -7,17 +7,34 @@ from google.cloud import storage
 from google.auth import impersonated_credentials
 import firebase_admin
 from firebase_admin import credentials
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from Manager.models import Patient_data
+from Doctor.helper import MessageHandler
 
+# Config file vaibhav firebase
+# config = {
+#     'apiKey' : "AIzaSyDVj6Orit--mR0bcfhNX_3r_y2MPdg6s_A",
+#     'authDomain' : "test2-f9b1a.firebaseapp.com",
+#     'databaseURL' : "https://test2-f9b1a-default-rtdb.firebaseio.com/",
+#     'projectId' : "test2-f9b1a",
+#     'storageBucket' : "test2-f9b1a.appspot.com",
+#     'messagingSenderId' : "551779111637",
+#     'appId' : "1:551779111637:web:f54aff6975df6c6c1d485c",
+#     'measurementId' : "G-CDCWYBZN16"
+# };
+# Config file dikshant firebase
 config = {
-    'apiKey' : "AIzaSyDVj6Orit--mR0bcfhNX_3r_y2MPdg6s_A",
-    'authDomain' : "test2-f9b1a.firebaseapp.com",
-    'databaseURL' : "https://test2-f9b1a-default-rtdb.firebaseio.com/",
-    'projectId' : "test2-f9b1a",
-    'storageBucket' : "test2-f9b1a.appspot.com",
-    'messagingSenderId' : "551779111637",
-    'appId' : "1:551779111637:web:f54aff6975df6c6c1d485c",
-    'measurementId' : "G-CDCWYBZN16"
+ 'apiKey': "AIzaSyD4Kk5ckPMU7DCAQGF54NvYePXed3w9uT0",
+ 'authDomain': "charak-e18cb.firebaseapp.com",
+ 'databaseURL': "https://charak-e18cb-default-rtdb.firebaseio.com",
+ 'projectId': "charak-e18cb",
+ 'storageBucket': "charak-e18cb.appspot.com",
+ 'messagingSenderId': "629360219131",
+ 'appId': "1:629360219131:web:906a2ccdac0abdd904715e",
+ 'measurementId': "G-PLJNWBCS6Y"
 };
+
 
 firebase = pyrebase.initialize_app(config)
 database = firebase.database()
@@ -31,7 +48,18 @@ def index(request):
 
 def pathologin(request):
     if request.method == "POST":
-        return redirect('PathoHomePage')
+        pathoemail = request.POST.get('pathologinemail')
+        pathopassword = request.POST.get('pathologinpassword')
+
+        puser = authenticate(username = pathoemail, password=pathopassword)
+        if puser is not None:
+            login(request, puser)
+            patho = Registered_Pathologist.objects.get(pemail = pathoemail)
+            global pid
+            pid = patho.patho_id
+            return render(request, 'pathologist/pathodashboard.html', {'patho_data' : patho})
+        else:
+            return render(request, 'pathologist/pathologin.html')
     return  render(request, 'pathologist/pathologin.html')
 
 def pathohomepage(request):
@@ -40,33 +68,94 @@ def pathohomepage(request):
     return render(request, 'pathologist/pathohomepage.html')
 
 def pathouserlogin(request):
+    import random
     if request.method == "POST":
-        return redirect('PathoUserOtp')
+        userid = request.POST['userid']
+        patientname = request.POST['patientname']
+
+        global uid
+        otp= random.randint(1000, 9999)
+        user_instance = Patient_data.objects.get(patient_id = userid)
+        user_instance.otp = otp
+        uid = user_instance.patient_id
+        user_instance.save()
+        messagehandler=MessageHandler(user_instance.phone, otp).send_otp_via_message()
+
+        return render(request, 'pathologist/pathouserotp.html')
     return render(request, 'pathologist/pathouserlogin.html')
 
 def pathouserotp(request):
+    
+    if request.method == "POST":
+        otp = request.POST['otp']
+        user_otp = Patient_data.objects.get(patient_id = uid)
+
+        if (otp == user_otp.otp):
+            return render(request, 'pathologist/pathouserdata.html', {'user_data': user_otp})
+        else:
+            return render(request, 'pathologist/pathouserotp.html')
     return render(request, 'pathologist/pathouserotp.html')
 
 def pathoaccess(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+
     if request.method == "POST":
-        return redirect('PathoUserData')
+        userid = request.POST['userid']
+        fullname = request.POST['fullname']
+
+        userdata = Patient_data.objects.get(patient_id = userid)
+
+        return render(request, 'pathologist/pathouserdata.html', {'userdata' : userdata })
     return render(request, 'pathologist/pathoaccess.html')
 
 def pathouserdata(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+
     return render(request, 'pathologist/pathouserdata.html')
 
 def pathoedit(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
     if request.method == "POST":
+        userid = request.POST['userid']
+        glucose = request.POST['glucose']
+        heartrate = request.POST['heartrate']
+        bloodpressure = request.POST['bloodpressure']
+        cholestrol = request.POST['cholestrol']
+        insulin = request.POST['insulin']
+        bmi = request.POST['bmi']
+        prediabetic = request.POST['prediabetic']
+        dpf = request.POST['dpf']
+        # patientreport = request.POST['patientreport']
+        # xray = request.POST['xray']
+
+        edit_instance = Patient_data.objects.get(patient_id = userid)
+        edit_instance.glucosevalue = glucose
+        edit_instance.bloodpressure = bloodpressure
+        edit_instance.cholestrol = cholestrol
+        edit_instance.insulinvalue = insulin
+        edit_instance.bmi = bmi
+        edit_instance.prediabetic = prediabetic
+        edit_instance.dpf = dpf
+        # edit_instance.patientreport = patientreport
+        # edit_instance.xray = xray
+        edit_instance.save()
         return redirect('PathoEditSuccess')
+    
     return render(request, 'pathologist/pathoedit.html')
 
 def pathoeditsuccess(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+
     return render(request, 'pathologist/pathoeditsuccess.html')
 
 def pathotodoctorpres(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+
     return render(request, 'pathologist/pathotodoctorpres.html')
 
 def pathotodocsuccess(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+
     return render(request, 'pathologist/pathotodocsuccess.html')
 
 def pathosingup(request):
@@ -94,7 +183,10 @@ def pathosingup(request):
 
         patho = Registered_Pathologist(pfirstname = pathofirstname, pmiddlename=pathomiddlename, plastname=patholastname, pdob = pathodob, ppassword=pathopassword, pconfirmpassword=pathoconfirmpassword, pmobile = pathomobile, pemail=pathoemail, pregistrationnumber = pathoregistrationnumber, pvalidfrom = pathovalidfrom, pvalidto = pathovalidto, pstate = pathostate, pdistrict=pathodistrict, pcity = pathocity, ppin = pathopin, ptestfacility=pathotestfacility, pdatetime=pathodatetime, pregistrationcouncil=pathoregistrationcouncil, pathoflag=pathoflag)
         patho.save()
-       
+
+        puser = User.objects.create_user(username=pathoemail, password=pathopassword, email=pathoemail, first_name=pathofirstname)  
+        puser.save()
+
         return redirect('CharakHome')
     return render(request, 'pathologist/pathosingup.html')
 
@@ -127,12 +219,14 @@ def pathoesiofy(request):
                 uploaded_file_url.append(file_url)
             except Exception as e:
                print(f"Error uploading file: {str(e)}")
-        print(uploaded_file_url)
+        # print(uploaded_file_url)
 
         data = {
             'firstname': firstname,
             'foldername' : foldername,
-            'file_path' : storage.child(f'{patientname}').child(f'{foldername}')
+            'path' : f'{patientname}/{foldername}',
+            'path3d' : f'{patientname}/{foldername}/{uploaded_file}'
+            # 'file_path' : storage.child(f'{patientname}').child(f'{foldername}')
             # 'file_path' : uploaded_file_url
         }
         user = database.child("data").child(patientname).push(data)
@@ -141,4 +235,17 @@ def pathoesiofy(request):
      
     return render(request, 'pathologist/pathoesiofy.html')
 
+def pathodashboard(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+
+    return render(request, 'pathologist/pathodashboard.html', {'patho_data' : patho_data})
+    # return render(request, 'pathologist/pathodashboard.html', {'patho_data' : patho_data})
+
+def pathoprofile(request):
+    patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+    return render(request, 'pathologist/pathoprofile.html', {'user_data' : patho_data})
+
+def pathologout(request):
+    logout(request)
+    return redirect('CharakHome')
 

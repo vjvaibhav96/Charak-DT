@@ -10,7 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/drishti_logo1.png' %}" rel="icon">
+  <!-- <link href="{% static 'assets/img/favicon.png' %}" rel="icon"> -->
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -42,7 +43,7 @@
 
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
+    <!-- <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
         <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
@@ -51,7 +52,7 @@
       <div class="cta d-none d-md-flex align-items-center">
         <a href="#about" class="scrollto">Get Started</a>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <!-- ======= Header ======= -->
@@ -95,7 +96,7 @@
           <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#about">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#contact">Contact</a></li>
           {% if user.is_authenticated %}
-          <li><a class="nav-link scrollto" href="#">Welcome {{request.user}} </a> </li>
+          <li><a class="nav-link scrollto" href="#">Welcome {{request.user.first_name}} </a> </li>
           <li id="adminlogout"><a class="nav-link scrollto" href="{% url 'CharakHome' %}">Logout</a></li>
           {% else %}
           none
