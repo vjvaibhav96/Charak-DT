@@ -5,32 +5,30 @@
 {% block body %} 
 
     <div class="container mt-3 shadow-lg p-4" style="width: 35%;">
-      <h2 class="text-center"> DT User SignUp</h2>
-      <form action="{% url 'ManagerHome' %}" method="POST" id="myForm" style="align-items: center;"> {% csrf_token %}
+      <h2 class="text-center"> Register Patient</h2>
+      <form action="{% url 'ManagerHome' %}" method="POST" style="align-items: center;"> {% csrf_token %}
         <div class="mb-2">
-          <label for="exampleInputName1" class="form-label">User Name</label>
-          <input type="text" class="form-control" id="exampleInputName1" name="uusername" autocomplete="off">
+          <label for="uusername" class="form-label">Name</label>
+          <input type="text" class="form-control" id="uusername" name="uusername" autocomplete="off" required>
         </div>
         <div class="mb-2">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="uemail" autocomplete="off">
+          <label for="uemail" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="uemail" aria-describedby="emailHelp" name="uemail" autocomplete="off" required>
         </div>
         <div class="mb-2">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" name="upassword" autocomplete="off">
+          <label for="upassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="upassword" name="upassword" autocomplete="off" required>
         </div>
         <div class="mb-2">
-          <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword2" name="ucpassword" autocomplete="off
-          ">
+          <label for="ucpassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="ucpassword" name="ucpassword" autocomplete="off" required>
         </div>
         <div class="mb-2">
-          <label for="exampleInputNumber2" class="form-label">Mobile Number</label>
-          <input type="number" class="form-control" id="exampleInputNumber2" name="umobnum" autocomplete="off
-          ">
+          <label for="umobile" class="form-label">Mobile Number</label>
+          <input type="number" size="10" class="form-control" id="umobile" name="umobile" autocomplete="off" required>
         </div>
         
-        <button style="margin-top: 20px;margin-left: 274px;" type="submit" class="btn btn-primary" id = "bxc"> Create </button>
+        <button style="margin-top: 20px;margin-left: 204px;" type="submit" class="btn btn-primary" id = "bxc"> Create </button>
         
       </form>
     </div>

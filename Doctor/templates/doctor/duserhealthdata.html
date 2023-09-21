@@ -46,7 +46,7 @@
 {% block body %} 
 
 <h3 style="color: black; text-align:center">User Health Data</h3>
-    <table id ="container1" class = "table table-dark  table-hover">
+    <table id ="container1" class ="table table-striped table-hover">
         <thead>
         <tr>
             <th>ID</th>
@@ -64,50 +64,46 @@
         </tr>
     </thead>
     <tbody>
-        {% for report in report %}
         <tr>
-            <td>{{this.id}}</td>
-            <td>{{this.ufullname}}</td>
-            <td>{{this.age}}</td>
-            <td>{{this.gender}}</td>
-            <td>{{this.fulladdress}}</td>
-            <td>{{this.bloodpressure}}</td>
-            <td>{{this.glucose}}</td>
-            <td>{{this.insulin}}</td>
-            <td>{{this.cholestrol}}</td>
-            <td>{{this.heart_rate}}</td>
-            <td>{{this.step_count}}</td>
+            <td>{{userdata.patient_id}}</td>
+            <td>{{userdata.ufullname}}</td>
+            <td>{{userdata.age}}</td>
+            <td>{{userdata.gender}}</td>
+            <td>{{userdata.fulladdress}}</td>
+            <td>{{userdata.bloodpressure}}</td>
+            <td>{{userdata.glucosevalue}}</td>
+            <td>{{userdata.insulinvalue}}</td>
+            <td>{{userdata.cholestrol}}</td>
+            <td>{{userdata.heart_rate}}</td>
+            <td>{{userdata.step_count}}</td>
         </tr>
-        {% endfor %}
     </tbody>
     </table>
-    <table id ="container2" class = "table table-dark  table-hover">
+    <table id ="container2" class = "table table-striped table-hover">
         <thead>
         <tr>
-            <th>Diabetes [0-No / 1-Yes]</th>
-            <th>Heart Abnormalities [0-No / 1-Yes]</th>
-            <th>CP Type </th>
+            <th>Prediabetic [0-No / 1-Yes]</th>
+            <th>DPF [0-No / 1-Yes]</th>
+            <th>Chestpain Type </th>
             <th>BMI</th>
             <th>Daily Exercise [hrs]</th>
-            <th>Brushing Habit [times/day]</th>
-            <th>Prescription</th>
+            <th>Brushing Habits [times/day]</th>
+            <th>Sleeping Habits</th>
             <th>Test Recommendation</th>
             
         </tr>
     </thead>
     <tbody>
-        {% for report in report %}
         <tr>
-            <td>{{this.diabetes_outcome}}</td>
-            <td>{{this.heart_outcome}}</td>
-            <td>{{this.cptype}}</td>
-            <td>{{this.bodymassindex}}</td>
-            <td>{{this.dexercise}}</td>
-            <td>{{this.brushhabit}}</td>
-            <td>{{this.prescription}}</td>
-            <td>{{this.test_recommendation}}</td>
+            <td>{{userdata.prediabetic}}</td>
+            <td>{{userdata.dpf}}</td>
+            <td>{{userdata.chestpaintype}}</td>
+            <td>{{userdata.bmi}}</td>
+            <td>{{userdata.dailyexercise}}</td>
+            <td>{{userdata.brushinghabits}}</td>
+            <td>{{userdata.sleepinghabits}}</td>
+            <td>{{userdata.prescription}}</td>
         </tr>
-        {% endfor %}
     </tbody>
     </table>
     <div class="container1">

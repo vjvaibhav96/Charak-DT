@@ -48,50 +48,51 @@
   <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
     <form action="{% url 'PathoEdit' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
       <div class="mb-2">
-        <label for="exampleInputUserid1" class="form-label">User ID**</label>
-        <input type="number" class="form-control" placeholder="Enter your user id" id="exampleInputUserid1" name="uid" autocomplete="off">
+        <label for="userid" class="form-label">User ID</label>
+        <input type="number" class="form-control" placeholder="Enter your user id" id="userid" name="userid" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleGlucose2" class="form-label">Glucose Value**</label>
-        <input type="number" class="form-control" id="exampleGlucose2" name="glucose" autocomplete="off">
+        <label for="glucose" class="form-label">Glucose Value</label>
+        <input type="number" class="form-control" id="glucose" name="glucose" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleHeartRate2" class="form-label">Heart Rate**</label>
-        <input type="number" class="form-control" id="exampleHeartRate2" name="heartrate" autocomplete="off">
+        <label for="heartrate" class="form-label">Heart Rate</label>
+        <input type="number" class="form-control" id="heartrate" name="heartrate" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleBloodPressure2" class="form-label">Blood Pressure**</label>
-        <input type="number" class="form-control" id="exampleBloodPressure2" name="bloodpressure" autocomplete="off">
+        <label for="bloodpressure" class="form-label">Blood Pressure</label>
+        <input type="number" class="form-control" id="bloodpressure" name="bloodpressure" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleCholestrolLevel2" class="form-label">Cholestrol Level**</label>
-        <input type="number" class="form-control" id="exampleCholestrolLevel2" name="cholestrol" autocomplete="off">
+        <label for="cholestrol" class="form-label">Cholestrol Level**</label>
+        <input type="number" class="form-control" id="cholestrol" name="cholestrol" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleInsulin2" class="form-label">Insulin Value</label>
-        <input type="number" class="form-control" id="exampleInsulin2" name="insulin" autocomplete="off">
+        <label for="insulin" class="form-label">Insulin Value</label>
+        <input type="number" class="form-control" id="insulin" name="insulin" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleBodyMassIndex2" class="form-label">Body Mass Index</label>
-        <input type="number" class="form-control" id="exampleBodyMassIndex2" name="bodymassindex" autocomplete="off">
+        <label for="bmi" class="form-label">Body Mass Index</label>
+        <input type="number" class="form-control" id="bmi" name="bmi" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="examplePrediabetic2" class="form-label">Prediabetic [0-No, 1-Yes]</label>
-        <input type="number" class="form-control" id="examplePrediabetic2" name="prediabetic" autocomplete="off">
+        <label for="prediabetic" class="form-label">Prediabetic [0-No, 1-Yes]</label>
+        <input type="number" class="form-control" id="prediabetic" name="prediabetic" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleDiabeticPedigreeFunction2" class="form-label">Diabetic Pedigree Function</label>
-        <input type="number" class="form-control" id="exampleDiabeticPedigreeFunction2" name="diabeticpedigreefunc" autocomplete="off">
+        <label for="dpf" class="form-label">Diabetic Pedigree Function</label>
+        <input type="number" class="form-control" id="dpf" name="dpf" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleReport2" class="form-label">Upload Patient Report [pdf]**</label>
-        <input type="file" class="form-control" id="exampleReport2" name="reportFile" autocomplete="off">
+        <label for="patientreport" class="form-label">Upload Patient Report [pdf]</label>
+        <input type="file" class="form-control" id="patientreport" name="patientreport" autocomplete="off">
       </div>
       <div class="mb-2">
-        <label for="exampleImage2" class="form-label">Upload X-ray Image [jpeg/jpg/png]**</label>
-        <input type="file" class="form-control" id="exampleImage2" name="imageFile" autocomplete="off">
-      </div>
-      <button type="submit" style="margin-top: 20px; margin-left: 290px;" class="btn btn-primary" id = "bxc">Upload</button>
+        <label for="xray" class="form-label">Upload X-ray Image [jpeg/jpg/png]**</label>
+        <input type="file" class="form-control" id="xray" name="xray" autocomplete="off">
+      </div> <br> 
+      <div style="text-align: center;">
+      <button type="submit" class="btn btn-primary" id = "bxc">Upload</button></div>
       <!-- </div> -->
   <div class="container2">
   <h5 class="my-4" style="text-align: center; color: black; ">Click on Save button to save the edited data of user</h5>

@@ -33,6 +33,10 @@ def signup(request):
 
         admin = Registered_Admin(mfirstname=managerfirstname, mmiddlename=managermiddlename, mlastname=managerlastname, memail=manageremail, mpassword=managerpassword, mcpassword=managercpassword, mmobile=managermobile, mdob=managerdob, mqualification=managerqualification, mstate=managerstate, mdistrict=managerdistrict, mcity=managercity, mpincode=managerpin, mfacilityname=managerfacilityname, mdatetime=managerdatetime, manager_flag=manager_flag)
         admin.save()
+
+        auser = User.objects.create_user(username=manageremail, password=managerpassword, email=manageremail, first_name=managerfirstname)
+        auser.save()
+
         # #create Admin 
         # registered_admin.save()
         # messages.success(request, "Your account has been created") 
@@ -56,20 +60,20 @@ def managerlogin(request):
     if request.method == "POST":
         entered_username = request.POST.get('managerloginemail')
         entered_password = request.POST.get('managerloginpassword')
-        print(entered_username, entered_password)
-        return redirect('ManagerHome')
+        # print(entered_username, entered_password)
+        # return redirect('ManagerHome')
 
         # # authenticate the user
-        # user = authenticate(username=entered_username, password=entered_password)
+        user = authenticate(username=entered_username, password=entered_password)
 
-        # if user is not None:
-        #     login(request, user)
-        #     messages.success(request, "Successfully logged in")
-        #     return redirect('ManagerHome')
-        # else:
-        #     messages.error(request, "Invalied Credentilas")
-        #     return redirect("#")
-            # return redirect("ManagerLogin")
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Successfully logged in")
+            return redirect('ManagerHome')
+        else:
+            messages.error(request, "Invalied Credentilas")
+            # return redirect("#")
+            return redirect("ManagerLogin")
     else:
         return render(request, 'manager/login.html')
 
@@ -122,6 +126,21 @@ def prediction(request):
     return render(request, 'manager/prediction.html')
 
 def manager_home(request):
+    if request.method == "POST":
+        patientname = request.POST.get('uusername')
+        patientemail = request.POST.get('uemail')
+        patientpassword = request.POST.get('upassword')
+        patientmobile = request.POST.get('umobile')
+        # try:
+        #     print(patientname, patientemail, patientmobile, patientpassword)
+        # except:
+        #     print("data not found")
+
+        patient = User.objects.create_user(username=patientemail, email=patientemail, password=patientpassword)
+        patient.save()
+        data = Patient_data(fullname = patientname, email = patientemail, age=0, fulladdress='00', gender='00', chestpaintype=0, glucosevalue=0, bloodpressure=0, insulinvalue=0, bmi=0, prediabetic=0, dpf=0, cholestrol=0, dailyexercise=0, sleepinghabits=0, brushinghabits=0 )
+        data.save()
+        return render(request, 'manager/manager_home.html')
     # return render(request, 'manager/login.html', {'error_message': error_message})
     return render(request, 'manager/manager_home.html')
 

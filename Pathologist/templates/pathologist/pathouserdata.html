@@ -44,7 +44,8 @@ integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="ano
 {% block body %}
 
 <h3 style="color: black; text-align:center">Doctor Reccomendation</h3>
-    <table id ="container1" class = "table table-dark  table-hover">
+    <table id ="container1" class = "table table-striped table-hover">
+    <!-- <table id ="container1" class = "table table-dark  table-hover"> -->
         <thead>
         <tr>
             <th>ID</th>
@@ -56,16 +57,14 @@ integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="ano
         </tr>
     </thead>
     <tbody>
-        {% for report in report %}
         <tr>
-            <td>{{this.id}}</td>
-            <td>{{this.ufullname}}</td>
-            <td>{{this.age}}</td>
-            <td>{{this.gender}}</td>
-            <td>{{this.fulladdress}}</td>
-            <td>{{this.test_recommendation}}</td>
+            <td>{{user_data.patient_id}}</td>
+            <td>{{user_data.fullname}}</td>
+            <td>{{user_data.age}}</td>
+            <td>{{user_data.gender}}</td>
+            <td>{{user_data.fulladdress}}</td>
+            <td>{{user_data.prescription}}</td>
         </tr>
-        {% endfor %}
     </tbody>
     </table>
 

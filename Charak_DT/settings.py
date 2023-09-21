@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'Charak_DT.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['Charak_Dt/templates'],
+        'DIRS': ['Charak_DT/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -153,3 +154,13 @@ TWILIO_PHONE_NUMBER='+15739943532' # number you get from twilio
 
 import os
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '333c6751a23a292d8fbc12cdea69196496c57b2e'
+
+# for contact email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'vaibhav.drishticps@iiti.ac.in'
+EMAIL_HOST_PASSWORD = 'sfjh lwxw utyr wplw'
+# EMAIL_HOST_PASSWORD = 'tvxx aruz cjvf sfup' for vjvaibhav8 app name contactform

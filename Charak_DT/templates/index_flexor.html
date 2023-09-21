@@ -163,6 +163,7 @@
       bottom: 90px;
       height: 30px;
       padding-left: 15px;
+      overflow: auto;
     }
     .modal-footer{
       height: 55px;
@@ -176,7 +177,7 @@
       border-radius: 10px;
     }
     .modal-body{
-      /* overflow: overlay; */
+      overflow: overlay;
       position: relative;
       border-top: 2px solid black;
     }
@@ -206,7 +207,7 @@
     <div id="CharakBotButton"> 
       <a href="#ChatBotModal">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChatBotModal">
-           Chat with our Expert || Charak Bot <br>
+           Chat with our Expert || CharakBot <br>
            <small>  <strong style="color: black;"> Powered by : </strong> Digi-Attorney </small> 
         </button> 
       </a>
@@ -216,12 +217,12 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        <!-- <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i> -->
       </div>
 
       <div class="cta d-none d-md-flex align-items-center">
-        <a href="#about" class="scrollto">Get Started</a>
+        <!-- <a href="#about" class="scrollto">Get Started</a> -->
       </div>
     </div>
   <!-- </section> -->
@@ -254,10 +255,13 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a class="nav-link scrollto " href="#application">Application Areas</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li> -->
+          <!-- <li><button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#ManagerLoginModal">
+            Go To Admin Section 
+         </button> </li> -->
+          
           <!-- <li>
             <a class="btn btn-info btn-lg btn-block" data-mdb-toggle="collapse" href="#collapseExample"
                 role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -267,26 +271,16 @@
                     </div>
             </a> -->
           </li>
-          <li class="dropdown"><a href="#"><span>Health Services</span> <i class="bi bi-chevron-down"></i></a>
+          <!-- <li class="dropdown"><a href="#"><span>Health Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li>
-              <!-- <li><a href="#ChatBotModal">Chat Bot</a></li>  for modal --> 
-              <!-- <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li> -->
-              <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="{% url 'HealthChatBot' %}">Chat Bot</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li> -->
               <li><a href="{% url 'Esiofy' %}">Esiofy</a></li>
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul>
-          </li>
+          </li> -->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a href="#ManagerLoginModal" data-bs-toggle="modal" data-bs-target="#ManagerLoginModal">Admin</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -301,120 +295,49 @@
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container" data-aos="fade-in">
       <h1>Welcome to Charak Digital Twin</h1>
-      <h2>Empowering healthcare through a unified platform, creating digital twins for individuals, <br> connecting doctors, pathologists, users and administrators.</h2>
-      <div class="d-flex align-items-center">
+      <h2 style="color: #ffffff;">Empowering healthcare through a unified platform, creating digital twins for individuals, <br> connecting doctors, pathologists, users and administrators.</h2>
+      <!-- <div class="d-flex align-items-center">
         <i class="bx bxs-right-arrow-alt get-started-icon"></i>
         <a href="#why-us" class="btn-get-started scrollto">Select Your Role</a>
-      </div>
+      </div> -->
     </div>
   </section><!-- End Hero -->
-
+  <br><br><br>
   <main id="main">
-
-    <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-4 col-lg-5">
-          <!-- <div class="col-xl-4 col-lg-5" data-aos="fade-up"> -->
-            <div class="content">
-              <h3>Admin</h3>
-              <!-- <h3>Why Choose Flexor for your company website?</h3> -->
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-              </p>
-              <div class="text-center">
-                <!-- <a href="{% url 'ManagerLogin' %}" class="more-btn">Go to Admin Section <i class="bx bx-chevron-right"></i></a> -->
-                <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#ManagerLoginModal">
-                   Go To Admin Section 
-                </button> 
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-8 col-lg-7 d-flex">
-
-            <div class="icon-boxes d-flex flex-column justify-content-center">
-
-              <div class="row">
-                <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-receipt"></i>
-                    <h4>User</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                    <div class="text-center">
-                      <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#UserLoginModal">
-                        Go To User Section 
-                     </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-cube-alt"></i>
-                    <h4>Doctor</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                    <div class="text-center">
-                      <!-- <a href="{% url 'DoctorLogin' %}" class="more-btn">Go to Doctor Section <i class="bx bx-chevron-right"></i></a> -->
-                      <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#DoctorLoginModal">
-                        Go To Doctor Section 
-                     </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-images"></i>
-                    <h4>Pathologist</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                    <div class="text-center">
-                      <!-- <a href="{% url 'PathoLogin' %}" class="more-btn">Go to Pathologist Section <i class="bx bx-chevron-right"></i></a> -->
-                      <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#PathologistLoginModal">
-                        Go To Pathologist Section 
-                     </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Why Us Section -->
-
+    <br><br><br>
     <!-- ======= About Section ======= -->
     <section id="about" class="about section-bg">
       <div class="container">
 
         <div class="row">
           <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative" data-aos="fade-right">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+            <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a> -->
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-            <h4 data-aos="fade-up">About us</h4>
-            <h3 data-aos="fade-up">Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p data-aos="fade-up">Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
+            <h4 data-aos="fade-up">About </h4>
+            <h3 data-aos="fade-up">Charak Digital Twin</h3>
+            <p data-aos="fade-up" style="justify-content: space-evenly; font-family: railway sans-serif;">CHARAK is a unified interface that digitally links all healthcare advances and participants in the nation. The platform aims to facilitate Patient centric healthcare delivery through enhanced efficiency and cost savings, streamlining healthcare processes and optimizing resource allocation.</p>
 
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <!-- <h4 class="title">Lorem Ipsum</h4> -->
+              <!-- <h4 class="title"><a href="">Lorem Ipsum</a></h4> -->
+              <p class="description" style="font-family: railway sans-serif;">Create a digital healthcare ecosystem connecting players nationwide.</p>
             </div>
 
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <!-- <h4 class="title">Nemo Enim</h4> -->
+              <!-- <h4 class="title"><a href="">Nemo Enim</a></h4> -->
+              <p class="description" style="font-family: railway sans-serif;">Use India's digital infrastructure: smart wearables, IoT, AI, remote monitoring, big data analytics.</p>
             </div>
 
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="bx bx-atom"></i></div>
-              <h4 class="title"><a href="">Dine Pad</a></h4>
-              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+              <!-- <h4 class="title">Dine Pad</h4> -->
+              <!-- <h4 class="title"><a href="">Dine Pad</a></h4> -->
+              <p class="description" style="font-family: railway sans-serif;">Develop global governance framework for interoperability and address concerns around digital health.</p>
             </div>
 
           </div>
@@ -423,10 +346,181 @@
       </div>
     </section><!-- End About Section -->
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container" data-aos="fade-up">
+    <section id="values" class="values">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Our Vision & Mission</h2>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+        </div>
 
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="card" style="background-image: url('{% static 'img/values-1.jpg'%}');">
+            <!-- <div class="card" style="background-image: url(assets/img/values-1.jpg);"> -->
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Our Vision</a></h5>
+                <p class="card-text">Revolutionizing personalized care by digitally integrating precise diagnosis and treatment, enabling more individualized, intelligent, and proactive healthcare.</p>
+               
+                <!-- <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
+            <div class="card" style="background-image: url('{% static 'img/values-2.jpg' %}');">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Our Mission</a></h5>
+                <p class="card-text">Developing a National Digital Health Ecosystem that is unified, efficient, and accessible, with an interoperable framework to address concerns about digital health and link key healthcare players nationwide.</p>
+                <!-- <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card" style="background-image: url('{% static 'img/values-3.jpg' %}');">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Our Vision</a></h5>
+                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores.</p>
+                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card" style="background-image: url('{% static 'img/values-4.jpg' %}');">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Our Care</a></h5>
+                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem.</p>
+                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+
+      </div>
+    </section><!-- End Values Section -->
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="why-us" class="why-us" style="background-color: #fff9f7;"><br>
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>Whom Do We Cater To</h2>
+              <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+            </div>
+            <div class="row">
+              
+              <!-- <div class="col-xl-4 col-lg-5" data-aos="fade-up">
+                <div class="content">
+                  <h3>Admin</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                  </p>
+                  <div class="text-center">
+                    <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#ManagerLoginModal">
+                       Go To Admin Section 
+                    </button> 
+                  </div>
+                </div>
+              </div> -->
+              <div class="col-xl-12 col-lg-7 d-flex">
+    
+                <div class="icon-boxes d-flex flex-column justify-content-center">
+    
+                  <div class="row">
+                    <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/patient.png' %}" alt="">
+                        <!-- <i class="bx bx-receipt"></i> -->
+                        <h4 style="padding-top: 40px; font-size: 20px;">Patients</h4>
+                        <!-- <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p> -->
+                        <div class="text-center" style="padding-top: 42px;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#UserLoginModal">
+                          <!-- <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#UserLoginModal"> -->
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/healthcare.png' %}" alt="error">
+                        <!-- <i class="bx bx-cube-alt"></i> -->
+                        <h4 style="padding-top: 40px; font-size: 20px;">Health Care Provider</h4>
+                        <!-- <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p> -->
+                        <div class="text-center" style="padding-top: 42px;">
+                          <!-- <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#DoctorLoginModal"> -->
+                           <a href="{% url 'HealthCareProvider' %}"><button type="button" class="more-btn">
+                            Go To Section 
+                         </button></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/technology.png' %}" alt="">
+                        <!-- <i class="bx bx-images"></i> -->
+                        <h4 style="padding-top: 40px; font-size: 20px;">Technology Developers (Researchers & Startups)</h4>
+                        <!-- <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p> -->
+                        <div class="text-center" style="padding-top: 18px;">
+                          <!-- <a href="{% url 'PathoLogin' %}" class="more-btn">Go to Pathologist Section <i class="bx bx-chevron-right"></i></a> -->
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#PathologistLoginModal">
+                          <!-- <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#PathologistLoginModal"> -->
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="padding-top: 25px;" class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100"> 
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/government.png' %}" alt="">
+                        <!-- <i class="bx bx-receipt"></i> -->
+                        <h4 style="padding-top: 40px; font-size: 20px;">Government Departments and Schemes </h4>
+                        <!-- <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p> -->
+                        <div class="text-center" style="padding-top: 30px;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#">
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="padding-top: 25px;" class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/medical-device.png' %}" alt="">
+                        <!-- <i class="bx bx-receipt"></i> -->
+                        <h4 style="padding-top: 40px; font-size: 20px;">Medical Device Manufacturers</h4>
+                        <!-- <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p> -->
+                        <div class="text-center" style="padding-top: 26px;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#">
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="padding-top: 25px;" class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/assurance.png' %}" alt="">
+                        <!-- <i class="bx bx-receipt"></i> -->
+                        <h4 style="padding-top: 34px; font-size: 20px;">Insurance & Assurance Providers</h4>
+                        <!-- <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p> -->
+                        <div class="text-center" style="padding-top:25px ;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#">
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                </div>
+                
+              </div>
+            </div>
+    
+          </div>
+        </section>
+        <!-- End Why Us Section -->  
+
+    <!-- ======= Clients Section ======= -->
+    <!-- <section id="clients" class="clients">
+      <div class="container" data-aos="fade-up">
         <div class="clients-slider swiper">
           <div class="swiper-wrapper align-items-center">
             <div class="swiper-slide"><img src="{% static 'img/clients/client-1.png' %}" class="img-fluid" alt=""></div>
@@ -440,200 +534,199 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-
-      </div>
-    </section><!-- End Clients Section -->
+      </div> 
+    </section> -->
+    
+    <!-- End Clients Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
+    <section id="services" class="services section-bg" style="background-color: #fff;">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" style="pointer-events: none;">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-briefcase"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 127px;" src="{% static 'img/diagnosis &dss.png' %}" alt="error"> </div>
+              <!-- <div class="icon"><i class="bi bi-briefcase"></i></div> -->
+              <br>
+              <h4 class="title"><a href="" style="font-family: sans-serif; font-size: 20px; pointer-events: none">Disease Diagnosis & Decision Support System</a></h4>
+              <!-- <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p> -->
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100" style="pointer-events: none;">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-card-checklist"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 127px;" src="{% static 'img/data-collection.png' %}" alt="error"></div>
+                <!-- <i class="bi bi-card-checklist"></i></div> -->
+                <br>
+              <h4 class="title"><a href="" style="font-family: sans-serif; font-size: 20px;"> Integrated Data Collection </a></h4>
+              <!-- <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p> -->
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200" style="pointer-events: none;">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-bar-chart"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/digital models.png' %}" alt="error"></div>
+              <br>  
+              <!-- <i class="bi bi-bar-chart"></i></div> -->
+              <h4 class="title"><a href="" style="font-family: sans-serif; font-size: 20px;"> Personalised Digital Models </a></h4>
+              <!-- <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p> -->
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300" style="pointer-events: none;">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-binoculars"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/3d reconstrction.png' %}" alt="error"></div>
+                <!-- <i class="bi bi-binoculars"></i></div> -->
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> 3D Reconstruction and Bio-Printing </a></h4>
+               <!-- <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> --> 
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400" style="pointer-events: none;">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-brightness-high"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/medical legal.png' %}" alt="error"></div>
+              <!-- <div class="icon"><i class="bi bi-brightness-high"></i></div> -->
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Medico-Legal Decision Support System</a></h4>
+              <!-- <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p> -->
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 122px;" src="{% static 'img/cross-platform.png' %}" alt="Not Available"></div>
+              <!-- <div class="icon"><i class="bi bi-calendar4-week"></i></div> -->
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Ayush Digital Platform</a></h4>
+              <!-- <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p> -->
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/virtual-reality.png' %}" alt="Not Available"></div>
+              <!-- <div class="icon"><i class="bi bi-calendar4-week"></i></div> -->
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Digital Theraputics & Virtual Reality </a></h4>
+              <!-- <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p> -->
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/training.png' %}" alt="Not Available"></div>
+              <!-- <div class="icon"><i class="bi bi-calendar4-week"></i></div> -->
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Medical Training & Skilling </a></h4>
+              <!-- <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p> -->
+            </div>
+          </div>
+          <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+              <h4 class="title"><a href=""> ABC </a></h4>
               <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
             </div>
-          </div>
+          </div> -->
         </div>
 
       </div>
     </section><!-- End Services Section -->
 
     <!-- ======= Values Section ======= -->
-    <section id="values" class="values">
-      <div class="container">
 
-        <div class="row">
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="card" style="background-image: url('{% static 'img/values-1.jpg'%}');">
-            <!-- <div class="card" style="background-image: url(assets/img/values-1.jpg);"> -->
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Our Mission</a></h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
-            <div class="card" style="background-image: url('{% static 'img/values-2.jpg' %}');">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Our Plan</a></h5>
-                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
 
+    <!-- ======== Application Area ======== -->
+
+       <!-- ======= Applicatin Area ======= -->
+       <section id="application" class="services section-bg" style="background-color: #fff9f7;">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>Application Areas</h2>
+            <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
           </div>
-          <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="card" style="background-image: url('{% static 'img/values-3.jpg' %}');">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Our Vision</a></h5>
-                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+  
+          <div class="row">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/prediction.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-briefcase"></i></div> -->
+                <br>
+                <h4 class="title" style="padding-top: 25px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Predictive Outcome</a></h4>
+                <!-- <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p> -->
               </div>
             </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="card" style="background-image: url('{% static 'img/values-4.jpg' %}');">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Our Care</a></h5>
-                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem.</p>
-                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/surgical planning.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-card-checklist"></i></div> -->
+                <h4 class="title" style="padding-top: 47px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Surgical Planning </a></h4>
+                <!-- <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p> -->
               </div>
             </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/medicine.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-bar-chart"></i></div> -->
+                <h4 class="title"style="padding-top: 42px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Personalised Medicine </a></h4>
+                <!-- <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p> -->
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/education.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-binoculars"></i></div> -->
+                <h4 class="title" style="padding-top: 34px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Medical Education & Training </a></h4>
+                <!-- <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> -->
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/medico device.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-brightness-high"></i></div> -->
+                <h4 class="title" style="padding-top: 34px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Medical Devices Design & Optimisation</a></h4>
+                <!-- <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p> -->
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/drag development.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-calendar4-week"></i></div> -->
+                <h4 class="title" style="padding-top: 27px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Drug Development and Dosage Optimisation - in Silico Clinical Trials</a></h4>
+                <!-- <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p> -->
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/decision-making.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-calendar4-week"></i></div> -->
+                <h4 class="title" style="padding-top: 34px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Regulatory Decision Making </a></h4>
+                <!-- <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p> -->
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;" > <img style="height: 92px; width: 107px;" src="{% static 'img/application/strategy.png' %}" alt="error"></div>
+                <!-- <div class="icon"><i class="bi bi-calendar4-week"></i></div> -->
+                <h4 class="title" style="padding-top: 32px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Health System Facility & Service Line Growth Strategy </a></h4>
+                <!-- <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p> -->
+              </div>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon"><i class="bi bi-calendar4-week"></i></div>
+                <h4 class="title"><a href=""> ABC </a></h4>
+                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              </div>
+            </div> -->
           </div>
+  
         </div>
-
-      </div>
-    </section><!-- End Values Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials" style="position: unset;">
-      <div class="container position-relative" data-aos="fade-up">
-
-        <div class="testimonials-slider swiper"  data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
+      </section><!-- End Services Section -->
+    
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <!-- <section id="portfolio" class="portfolio" style="background-color: #fff9f7;">
       <div class="container">
 
         <div class="section-title">
-          <h2 data-aos="fade-up">Portfolio</h2>
+          <h2 data-aos="fade-up">Application Areas</h2>
           <p data-aos="fade-up">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
@@ -656,9 +749,9 @@
               <h4>App 1</h4>
               <p>App</p>
               <a href="{% static 'img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> 
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
               <!-- need to update portfolio.html file for the frontend -->
-            </div>
+            <!-- </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
@@ -743,11 +836,99 @@
 
         </div>
 
-      </div>
-    </section><!-- End Portfolio Section -->
+      </div> -->
+      <!-- </section> -->
+    <!-- End Portfolio Section -->
+
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials" style="position: unset;">
+          <div class="container position-relative" data-aos="fade-up">
+
+            <div class="section-title" data-aos="fade-up">
+              <h2>Testimonials</h2>
+            </div>
+    
+            <!-- <div class="testimonials-slider swiper"  data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper"> -->
+    
+                <!-- <div class="swiper-slide"> -->
+                  <div class="testimonial-item">
+                    <img src="{% static 'img/testimonials/Dr_Deepak_Agrawal.png' %}" class="testimonial-img" alt="">
+                    <h3 style="color: black;"> Dr. Deepak Agrawal </strong></h3>
+                    <h4 style="color: black;">Neurosurgeon at AIIMS Delhi</h4>
+                    <p style="color: black;">
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i> <strong>
+                      India's healthcare delivery system can benefit from the use of digital twin technology.</strong>
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+                <!-- <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                    <h3>Sara Wilsson</h3>
+                    <h4>Designer</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div> -->
+                <!-- End testimonial item -->
+    
+                <!-- <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                    <h3>Jena Karlis</h3>
+                    <h4>Store Owner</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div> -->
+                <!-- End testimonial item -->
+    
+                <!-- <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                    <h3>Matt Brandon</h3>
+                    <h4>Freelancer</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div> -->
+                <!-- End testimonial item -->
+    
+                <!-- <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                    <h3>John Larson</h3>
+                    <h4>Entrepreneur</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div> -->
+                <!-- End testimonial item -->
+    
+              </div>
+              <!-- <div class="swiper-pagination"></div> -->
+            </div>
+    
+          </div>
+        </section><!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
+    <!-- <section id="team" class="team section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -832,10 +1013,11 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section> -->
+    <!-- End Team Section -->
 
     <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
+    <!-- <section id="pricing" class="pricing">
       <div class="container">
 
         <div class="section-title">
@@ -917,10 +1099,11 @@
         </div>
 
       </div>
-    </section><!-- End Pricing Section -->
+    </section> -->
+    <!-- End Pricing Section -->
 
     <!-- ======= F.A.Q Section ======= -->
-    <section id="faq" class="faq section-bg">
+    <!-- <section id="faq" class="faq section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -979,7 +1162,90 @@
         </div>
 
       </div>
-    </section><!-- End F.A.Q Section -->
+    </section> -->
+    <!-- End F.A.Q Section -->
+<!-- ======= drishtikon ======= -->
+<!-- <section id="drishtikon" class="services section-bg" style="background-color: #fff9f7;">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Drishtikon</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+    </div>
+    <div class="row">
+      
+      <div class="col-lg-4 menu-item">
+        <a href="{% static 'img/drishtikon/vaibhav.pdf' %}" target="_blank"><img style="width: 720px; height: 400px;" src="{% static 'img/drishtikon/drishti1.jpg' %}" class="menu-img img-fluid" alt="">
+        <h4 style="font-family:inter sans-serif; text-align: center; padding-top: 30px; color:#313030" > <strong> Drishtikon 1 </strong> </h4> </a>
+      </div>
+      <div class="col-lg-4 menu-item">
+        <a href="{% static 'img/drishtikon/vaibhav.pdf' %}" target="_blank"><img style="width: 720px; height: 400px;" src="{% static 'img/drishtikon/drishti2.jpg' %}" class="menu-img img-fluid" alt="">
+        <h4 style="font-family:inter sans-serif; text-align: center; padding-top: 30px; color:#313030"" > <strong> Drishtikon 2 </strong> </h4> </a>
+      </div>      
+      <div class="col-lg-4 menu-item">
+        <a href="{% static 'img/drishtikon/vaibhav.pdf' %}" target="_blank"><img style="width: 720px; height: 400px;" src="{% static 'img/drishtikon/drishti3.jpg' %}" class="menu-img img-fluid" alt="">
+        <h4 style="font-family:inter sans-serif; text-align: center; padding-top: 30px; color:#313030""> <strong> Drishtikon 3 </strong> </h4> </a>
+      </div>
+      
+    </div>
+  </div>
+</section> -->
+<!-- End drishtikon Section -->
+
+<section id="team" class="chefs menu" style="background-color: #fff9f7"> 
+  <div class="container" data-aos="fade-up">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Related Articles</h2>
+      <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+    </div>
+
+  <div class="gallery-slider swiper" data-aos="fade-up" data-aos-delay="100" style="padding-left: 18rem;">
+  <div class=" swiper-wrapper align-items-center">
+
+    <!-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch swiper-slide" data-aos="fade-up" data-aos-delay="300">
+      <div class="chef-member" style="align-items: center;">
+        <div class="member-img">
+          <a href="{% static 'img/drishtikon/Drishtikon2022.pdf' %}" target="_blank"> 
+          <img src="{% static 'img/drishtikon/drishti1.jpg' %}" class="img-fluid" alt="" style="height: 480px;"> </a>
+        </div>
+        <div class="member-info">
+          <a href="{% static 'img/drishtikon/Drishtikon2022.pdf' %}" target="_blank" style="color: #313030;">
+          <h4 style="font-family:Poppins sans-serif; text-align: center; padding-top: 30px; color:#313030; font-size: 27px;"> Drishtikon 2022  </h4> </a>
+         </div>
+      </div>
+    </div> -->
+    <!-- End Chefs Member -->
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch swiper-slide" data-aos="fade-up" data-aos-delay="300" >
+      <div class="chef-member" style="align-items: center;">
+        <div class="member-img">
+          <a href="{% static 'img/drishtikon/DrishtikonApril23.pdf' %}" target="_blank"> 
+          <img src="{% static 'img/drishtikon/DrishtiApril23.jpg' %}" class="img-fluid" alt=""> </a>
+        </div>
+        <div class="member-info">
+          <a href="{% static 'img/drishtikon/DrishtikonApril23.pdf' %}" target="_blank" style="color: #313030;">
+          <h4 style="font-family:Poppins sans-serif; text-align: center; padding-top: 30px; color:#313030;font-size: 20px; "> Drishtikon April 2023  </h4> </a>
+        </div>
+      </div>
+    </div><!-- End Chefs Member -->
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch swiper-slide" data-aos="fade-up" data-aos-delay="300">
+      <div class="chef-member" style="align-items: center;">
+        <div class="member-img">
+          <a href="{% static 'img/drishtikon/DrishtikonJuly23.pdf' %}" target="_blank"> 
+          <img src="{% static 'img/drishtikon/DrishtiJuly23.jpg' %}" class="img-fluid" alt=""> </a>
+        </div>
+        <div class="member-info">
+          <a href="{% static 'img/drishtikon/DrishtikonJuly23.pdf' %}" target="_blank" style="color: #313030;">
+          <h4 style="font-family:Poppins sans-serif; text-align: center; padding-top: 30px; color:#313030; font-size: 20px;">  Drishtikon July 2023  </h4> </a>
+         </div>
+      </div>
+    </div><!-- End Chefs Member -->
+    
+  </div>
+ </div>
+ <div class="swiper-pagination"></div>
+</div>
+</section>
+<!-- End Chefs Section -->
+    
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
@@ -987,7 +1253,7 @@
 
         <div class="section-title">
           <h2 data-aos="fade-up">Contact</h2>
-          <p data-aos="fade-up">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p data-aos="fade-up">Unlocking the Future of Technology and Healthcare through Digital Twins: Contact us today to embark on your innovative journey!</p>
         </div>
 
         <div class="row justify-content-center">
@@ -996,7 +1262,8 @@
             <div class="info-box">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>LRC Building, IIT Indore, 
+              MP, 453552, India</p>
             </div>
           </div>
 
@@ -1004,21 +1271,25 @@
             <div class="info-box">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>info@example.com<br>contact@example.com</p>
+              <p>officedrishti[at]iiti.ac.in </p> <br>
+                <!-- <p><br>contactcharak@iiti.ac.in</p> -->
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 mt-4" data-aos="fade-up" data-aos-delay="200">
             <div class="info-box">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+              <p>+91-731-660-3372 </p>
+              <br>
+               <!-- <p>+91 2222222222</p> -->
             </div>
           </div>
         </div>
 
         <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
           <div class="col-xl-9 col-lg-12 mt-4">
-            <form action="{% static 'forms/contact.php' %}" method="post" role="form" class="php-email-form">
+            <form action="{% url 'Contact' %}" method="post" class="php-email-form"> {% csrf_token %}
+            <!-- <form action="{% url 'Contact' %}" method="post" role="form" class="php-email-form"> {% csrf_token %} -->
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -1033,11 +1304,11 @@
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
-              <div class="my-3">
+              <!-- <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
+              </div> -->
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
@@ -1057,44 +1328,45 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Flexor</h3>
+            <h3>Charak Digital Twin</h3> <br>
+            <h6>IITI Drishti CPS Foundation</h6>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              4th Floor LRC, IIT Indore, Khandwa Road,<br>
+              Simrol, Indore, Madhya Pradesh, 453552<br>
+              India <br><br>
+              <strong>Phone:</strong> +91-731-660-3372<br>
+              <strong>Email:</strong> officedrishti[at]iiti.ac.in<br>
             </p>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
+          <div class="col-lg-4 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+          <div class="row">
+              <div class="col-lg-6">
+              <li><i class="bx bx-chevron-right"></i> <a href="https://nmicps.in/" target="_blank">NMICPS</a></li>
+              <li><i class="bx bx-chevron-right"  ></i> <a href="https://nha.gov.in/" target="_blank">National Health Authority</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://main.mohfw.gov.in/" target="_blank">Ministry of Health & Family Welfare</a></li>
+              </div>            
+              <div class="col-lg-6">
+              <li><i class="bx bx-chevron-right"></i> <a href="https://main.icmr.nic.in/" target="_blank">Indain Council of Medical Research</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://drishticps.iiti.ac.in/" target="_blank">IITI Drishti CPS Foundation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.iiti.ac.in/" target="_blank">IIT Indore</a></li>
+              </div>
           </div>
+          </ul>
+          <!-- </div> -->
+        </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
+           <!-- <div class="col-lg-3 col-md-6 footer-links">
+          </div>  -->
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
+            <a href="https://drishticps.iiti.ac.in/affiliate-program/" target="_blank"><h4>Join Our Affiliate Program</h4> </a>
+            <p>Affiliate Programme Offers Opportunities to Individuals to Connect with IITI DRISHTI CPS Foundations</p>
+            <!-- <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+            </form> -->
           </div>
 
         </div>
@@ -1103,24 +1375,24 @@
 
     <div class="container d-lg-flex py-4">
 
-      <div class="me-lg-auto text-center text-lg-start">
+      <div class="text-center text-lg-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Flexor</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>Charak Digital Twin</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          Designed by <a href="https://drishticps.iiti.ac.in/" target="_blank"> IITI Drishti CPS Foundation</a>
         </div>
       </div>
-      <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      <div class="social-links text-center text-lg-left pt-3 pt-lg-0" style="padding-left: 15rem;">
+        <a href="https://twitter.com/DRISHTICPS" class="twitter" target="_blanks"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/DrishtiCPS/" class="facebook" target="_blanks"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/cpsdrishti/" class="instagram" target="_blanks"><i class="bx bxl-instagram"></i></a>
+        <!-- <a href="#" class="google-plus"><i class="bx bxl-skype" target="_blanks"></i></a> -->
+        <a href="https://www.linkedin.com/company/iiti-drishti-cps-foundation-iit-indore/" class="linkedin" target="_blanks"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -1453,13 +1725,13 @@
           <div class="col-lg-7" style="padding-left: 20px;">
         <form action="{% url 'DoctorLogin' %}" id="DoctorLoginForm" method="post"> {% csrf_token %}
           <div class="mb-3">
-            <label for="managerloginemail" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="managerloginemail" name="managerloginemail" aria-describedby="emailHelp" required>
+            <label for="doctorloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="doctorloginemail" name="doctorloginemail" aria-describedby="emailHelp" required>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
-            <label for="managerloginpassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="managerloginpassword" name="managerloginpassword" required>
+            <label for="doctorloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="doctorloginpassword" name="doctorloginpassword" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -1504,13 +1776,13 @@
           <div class="col-lg-7" style="padding-left: 20px;">
         <form action="{% url 'PathoLogin' %}" id="PathologistLoginForm" method="post"> {% csrf_token %}
           <div class="mb-3">
-            <label for="managerloginemail" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="managerloginemail" name="managerloginemail" aria-describedby="emailHelp" required>
+            <label for="pathologinemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="pathologinemail" name="pathologinemail" aria-describedby="emailHelp" required>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div class="mb-3">
-            <label for="managerloginpassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="managerloginpassword" name="managerloginpassword" required>
+            <label for="pathologinpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pathologinpassword" name="pathologinpassword" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -1926,7 +2198,7 @@ document.getElementById("medical_council").addEventListener("change", function()
 
       // Create a JSON object with the "message" key
       var jsonData = { message: userInput };
-      print(jsonData);
+      // print(jsonData);
       var csrftoken = getCookie('csrftoken');
 
       // Send the JSON object to the server (Flask app) for processing

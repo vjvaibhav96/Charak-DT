@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Successfully</title>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 200px; font-size:25px">
+    <p>Congratulation!! your querry has been sent successfully, please wait redirecting to home page</p>
+    </div>
+    <!-- <div style="text-align: center; margin-top: 20px">
+        <a href="{% url 'UserHome' %}"> Back to Homepage</a>
+    </div> -->
+    <script>
+        // JavaScript for delayed redirect
+        setTimeout(function () {
+            window.location.href = "{% url 'CharakHome' %}";
+        }, 2000); // Redirect after 2 seconds
+    </script>
+</body>
+</html>
