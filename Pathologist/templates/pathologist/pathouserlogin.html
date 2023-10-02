@@ -2,9 +2,9 @@
 
 {% block title %} Pathologist User Login {% endblock %}
 
-{% block css %} 
+{% block css %}  {% load static %}
 
-<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <style>
   .container2 {
@@ -59,9 +59,9 @@
     <div style="text-align: center;">
     <button  type="submit" class="btn btn-primary my-4" id = "axc">Send OTP</button> </div>
     <!-- </div> -->
-<div class="container2">
+<!-- <div class="container2">
 <h5 class="my-3" style="text-align: center; color: black;">Click on Send button to get OTP and verify user</h5>
-</div>
+</div> -->
 </form>
 </div>
 

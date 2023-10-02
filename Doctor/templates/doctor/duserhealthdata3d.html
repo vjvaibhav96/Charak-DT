@@ -1,0 +1,442 @@
+{% extends 'doctor/basic_doctor.html' %}
+
+{% block title %} User Health Data {% endblock %}
+
+{% block css %} {% load static %}
+
+<link rel="stylesheet" href="../static/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <style>
+        #container1{
+            margin-top: 20px;
+        }
+        #container2{
+            margin-top: 10px;
+        }
+       .container1 {
+            display: flex;
+            text-decoration-line: underline;
+            font-weight: bolder;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            color: rgb(232, 30, 16)
+    }
+      .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px
+    }
+      .container3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1px
+    }    
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</style>
+{% endblock %}
+
+{% block body %} 
+
+<br><br><br>
+    <!-- <h3 style="color: black; font-family: 'Montserrat'; text-align:center">Your Health Data</h3> -->
+
+    <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Basic Details</h3>
+    <table id ="container1" class = "table table-striped table-hover" style="padding-left: 50px;">
+        <thead style="padding-left: 50px;">
+        <tr>
+            <th class="data1"> ID</th>
+            <th class="data1">Full Name</th>
+            <th class="data1">E-mail</th>
+            <th class="data1">Mobile</th>
+            <th class="data1">Age</th>
+            <th class="data1">Gender [0-Male / 1-Female]</th>
+            <th class="data1">Address</th>
+            
+        </tr>
+    </thead>
+    <tbody style="padding-left: 25px;">
+          <tr>
+            <td class="data1">{{ user_hdata.patient_id }}</td>
+            <td class="data1">{{ user_hdata.fullname }}</td>
+            <td class="data1">{{ user_hdata.email }}</td>
+            <td class="data1">{{ user_hdata.phone }}</td>
+            <td class="data1">{{ user_hdata.age }}</td>
+            <td class="data1">{{ user_hdata.gender }}</td>
+            <td class="data1">{{ user_hdata.fulladdress }}</td>
+          </tr>
+      </tbody>
+      
+    </table> <br><br><br>
+
+          <!-- user todays feel data -->
+          <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >User Todays Feel Data</h3> 
+          <h6 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >(Duration in minutes)</h6> 
+         
+          <table id ="container2" class = "table table-striped table-hover">
+              <thead>
+              <tr>
+                  <th class="data1">Activity</th>
+                  <th class="data1">Datetime</th>
+                  <th class="data1">Bodyache</th>
+                  <th class="data1"> Allergy </th>
+                  <th class="data1"> Backpain </th>
+                  <th class="data1"> Headache </th>
+                  <th class="data1"> Dental Pain </th>
+                  <th class="data1"> Acidity </th>
+                  <th class="data1"> Stomachache </th>
+                  <th class="data1"> Common Cold </th>
+                  <th class="data1"> Vomiting </th>
+                </tr>
+              </thead>
+              <tbody>
+               
+                 {% for today in user_today %}
+                 <tr>
+                    <td class="data1">Duration</td>
+                    <td class="data1">{{today.datetime}}</td>
+                    <td class="data1">{{today.bodyache_duration}}</td>
+                    <td class="data1">{{today.allergy_duration}}</td>
+                    <td class="data1">{{today.backpain_duration}}</td>
+                    <td class="data1">{{today.headache_duration}}</td>
+                    <td class="data1">{{today.dental_pain_duration}}</td>
+                    <td class="data1">{{today.acidity_duration}}</td>
+                    <td class="data1">{{today.stomachache_duration}}</td>
+                    <td class="data1">{{today.common_cold_duration}}</td>
+                    <td class="data1">{{today.vomiting_duration}}</td>
+                </tr> 
+                <tr>
+                     <td class="data1">Occurance</td>
+                     <td class="data1">{{today.datetime}}</td>
+                     <td class="data1">{{today.bodyache_occurance}}</td>
+                     <td class="data1">{{today.allergy_occurance}}</td>
+                     <td class="data1">{{today.backpain_occurance}}</td>
+                     <td class="data1">{{today.headache_occurance}}</td>
+                     <td class="data1">{{today.dental_pain_occurance}}</td>
+                     <td class="data1">{{today.acidity_occurance}}</td>
+                     <td class="data1">{{today.stomachache_occurance}}</td>
+                     <td class="data1">{{today.common_cold_occurance}}</td>
+                     <td class="data1">{{today.vomiting_occurance}}</td>
+                 </tr> 
+                 {% endfor %}
+                   
+             </tbody>
+            </table>
+            
+             <br><br><br>
+         
+             <!-- user vitals data -->
+             <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Vitals Data</h3>
+             <table id ="container2" class = "table table-striped table-hover">
+             <!-- <table id ="container2" class = "table table-dark  table-hover"> -->
+                 <thead>
+                 <tr>
+                     <th class="data1">Datetime</th>
+                     <th class="data1">Body Temperature (°C)</th>
+                     <th class="data1">Pulse Rate (BPM)</th>
+                     <th class="data1"> Respiratory Rate (per minute) </th>
+                     <th class="data1">Blood Pressure (mmHg) </th>
+                     <th class="data1">SpO2 (%)</th>
+                     <th class="data1">Weight (Kg)</th>
+                     <th class="data1">Blood Sugar(fbs)</th>
+                     <th class="data1">Blood Sugar(rbs)</th>
+                     
+                 </tr>
+             </thead>
+             <tbody>
+                 {% for vital in user_vital %}
+                 <tr>
+                     <td class="data1">{{vital.datetime}}</td>
+                     <td class="data1">{{vital.bodytemperature}}</td>
+                     <td class="data1">{{vital.pulserate}}</td>
+                     <td class="data1">{{vital.respiratoryrate}}</td>
+                     <td class="data1">{{vital.bp}}</td>
+                     <td class="data1">{{vital.spo2}}</td>
+                     <td class="data1">{{vital.weight}}</td>
+                     <td class="data1">{{vital.bloodsugarfbs}}</td>
+                     <td class="data1">{{vital.bloodsugarrbs}}</td>
+                 </tr>  
+                 {% endfor %}   
+            </tbody>
+            </table> <br><br><br>
+         
+            <!-- user exercise data -->
+            <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Exercise Data</h3>
+            <h6 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >(in minutes)</h6>
+            <table id ="container2" class = "table table-striped table-hover">
+            <!-- <table id ="container2" class = "table table-dark  table-hover"> -->
+                <thead>
+                <tr>
+                    <th class="data1">Date</th>
+                    <th class="data1">Walk </th>
+                    <th class="data1"> Cycling </th>
+                    <th class="data1"> Pranayam </th>
+                    <th class="data1"> Stairs </th>
+                    <!-- <th class="data1">Weight (Kg)</th>
+                    <th class="data1">Blood Sugar(fbs)</th>
+                    <th class="data1">Blood Sugar(rbs)</th> -->
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                 {% for exercise in user_exercises %}
+                 <tr>
+                    <td class="data1">{{exercise.datetime}}</td>
+                    <td class="data1">{{exercise.walk}}</td>
+                    <td class="data1">{{exercise.cycling}}</td>
+                    <td class="data1">{{exercise.pranayam}}</td>
+                    <td class="data1">{{exercise.stairs}}</td>
+                    <!-- <td class="data1">{{user_vital.weight}}</td>
+                    <td class="data1">{{user_vital.bloodsugarfbs}}</td>
+                    <td class="data1">{{user_vital.bloodsugarrbs}}</td> -->
+                 </tr> 
+                 {% endfor %}
+                   
+           </tbody>
+           </table> <br><br><br>
+         
+           <!-- user medication data -->
+           <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Medication Data</h3>
+           <table id ="container2" class = "table table-striped table-hover">
+           <!-- <table id ="container2" class = "table table-dark  table-hover"> -->
+               <thead>
+               <tr>
+                   <th class="data1">Date</th>
+                   <th class="data1">Medication 1</th>
+                   <th class="data1"> Medication 2 </th>
+                   <th class="data1"> Medication 3 </th>
+                   <th class="data1"> Medication 4 </th>
+                   <th class="data1">Medication 5</th>
+                 </tr>
+               </thead>
+               <tbody>
+                
+                  {% for medication in user_medications %}
+                  <tr>
+                     <td class="data1">{{medication.datetime}}</td>
+                     <td class="data1">{{medication.medication1}}</td>
+                     <td class="data1">{{medication.medication2}}</td>
+                     <td class="data1">{{medication.medication3}}</td>
+                     <td class="data1">{{medication.medication4}}</td>
+                     <td class="data1">{{medication.medication5}}</td>
+                 </tr> 
+                     {% endfor %}
+                    
+              </tbody>
+             </table>
+              <br><br><br>
+         
+              <!-- Syrup data -->
+              <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Syrup Data</h3>
+              <h6 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >(Qantity in ml)</h6>
+              <table id ="container2" class = "table table-striped table-hover">
+              <thead>
+                 <tr>
+                     <th class="data1">Date</th>
+                   <th class="data1">Syrup 1 Name</th>
+                   <th class="data1">Syrup 1 Quantity</th>
+                   <th class="data1">Syrup 2 Name</th>
+                   <th class="data1">Syrup 2 Quantity</th>
+                   <th class="data1">Syrup 3 Name</th>
+                   <th class="data1">Syrup 3 Quantity</th>
+                   
+                </tr>
+              </thead>
+              <tbody>
+                 
+                  {% for medication in user_medications %}
+                  <tr>
+                     <td class="data1">{{medication.datetime}}</td>
+                   <td class="data1">{{medication.syrup1name}}</td>
+                   <td class="data1">{{medication.syrup1quantity}}</td>
+                   <td class="data1">{{medication.syrup2name}}</td>
+                   <td class="data1">{{medication.syrup2quantity}}</td>
+                   <td class="data1">{{medication.syrup3name}}</td>
+                   <td class="data1">{{medication.syrup3quantity}}</td>
+                 </tr> 
+                  {% endfor %}
+                    
+               </tbody>
+          </table> <br><br><br>
+         
+          <!-- user eating habits data -->
+          <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Eating Habits Data</h3> 
+          <!-- <h5>Breakfast Data</h5> -->
+          <table id ="container2" class = "table table-striped table-hover">
+          <!-- <table id ="container2" class = "table table-dark  table-hover"> -->
+              <thead>
+              <tr>
+                  <th class="data1">Date</th>
+                  <th class="data1">Breakfast</th>
+                  <th class="data1"> Lunch </th>
+                  <th class="data1"> High Tea </th>
+                  <th class="data1"> Dinner </th>
+                </tr>
+              </thead>
+              <tbody>
+               
+                 {% for eat in user_eating %}
+                 <tr>
+                    <td class="data1">{{eat.datetime}}</td>
+                    <td class="data1">{{eat.brakfast}}</td>
+                    <td class="data1">{{eat.lunch}}</td>
+                    <td class="data1">{{eat.high_tea}}</td>
+                    <td class="data1">{{eat.dinner}}</td>
+                </tr> 
+                 {% endfor %}
+                   
+             </tbody>
+            </table>
+             <br><br><br>
+         
+            <!-- user health condition data -->
+          <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Health Condition Data</h3> 
+         
+          <table id ="container2" class = "table table-striped table-hover">
+              <thead>
+              <tr>
+                  <th class="data1">Datetime</th>
+                  <th class="data1">Diabetes</th>
+                  <th class="data1"> Obesity </th>
+                  <th class="data1"> Cancer </th>
+                  <th class="data1"> Heart Disease </th>
+                  <th class="data1"> Stroke </th>
+                  <th class="data1"> Mental Health </th>
+                </tr>
+              </thead>
+              <tbody>
+               
+                 {% for health in user_health_condition %}
+                 <tr>
+                    <td class="data1">{{health.datetime}}</td>
+                    <td class="data1">{{health.diabetes}}</td>
+                    <td class="data1">{{health.obesity}}</td>
+                    <td class="data1">{{health.cancer}}</td>
+                    <td class="data1">{{health.heart_disease}}</td>
+                    <td class="data1">{{health.stroke}}</td>
+                    <td class="data1">{{health.mental_health}}</td>
+                </tr> 
+                 {% endfor %}
+                   
+             </tbody>
+            </table>
+            <table id ="container2" class = "table table-striped table-hover">
+             <thead>
+             <tr>
+                 <th class="data1">Datetime</th>
+                 <th class="data1">Asthama</th>
+                 <th class="data1">Hearing Loss</th>
+                 <th class="data1"> Arthritis </th>
+                 <th class="data1"> Post Traumatic Stress Disorder </th>
+                 <th class="data1"> HIV/AIDS </th>
+                 <th class="data1"> Gastrointestinal Disorder </th>
+               </tr>
+             </thead>
+             <tbody>
+                {% for health in user_health_condition %}
+                <tr>
+                   <td class="data1">{{health.datetime}}</td>
+                   <td class="data1">{{health.asthama}}</td>
+                   <td class="data1">{{health.hearing_loss}}</td>
+                   <td class="data1">{{health.arthritis}}</td>
+                   <td class="data1">{{health.post_traumatic_stress_disorder}}</td>
+                   <td class="data1">{{health.hiv_aids}}</td>
+                   <td class="data1">{{health.gastrointestinal_disorder}}</td>
+               </tr> 
+                {% endfor %}
+         
+            </tbody>
+           </table>
+             <br><br><br>
+
+
+    <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center"> Reports </h3> 
+    <table id ="container2" class = "table table-striped table-hover">
+        <thead>
+        <tr>
+            <th class="data1">S.No</th>
+            <th class="data1">Report Name</th>
+            <th class="data1">3D Bio Printing</th>
+            <th class="data1">View Report</th>
+            <th class="data1"> Comment </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="data1">1</td>
+                <td class="data1">CT Scan 2D</td>
+                <td class="data1">
+                    <button><a href="#">Print</a></button>
+                </td>
+                <td>
+                    <!-- <button class="view-scan" data-scan-url="https://easiofydicomviewer-iit.netlify.app/?Patient=dheerajrane/dheerajfolder">View Scan</button> -->
+                    <button class="view-scan" data-scan-url="https://easiofydicomviewer-iit.netlify.app/?Patient=ganeshjee/ganeshyadav">View Scan</button>  
+                </td>
+                <td>
+                    <button><a href="{% url 'DPrescription' %}">Add Prescription</a></button>
+                </td>
+            </tr>
+            <tr>
+                <td class="data1">2</td>
+                <td class="data1">CT Scan 3D
+                    <img src="{% static 'img/easiofy.png' %}" alt="No img" style="height: 30px; width: 90px; padding-left: 5px;">
+                </td>
+                <td class="data1">
+                    <button><a href="#">Print</a></button>
+                </td>
+                <td>
+                    <!-- <button class="view-scan" data-scan-url="https://easiofydicomviewer-iit.netlify.app/?Patient=dheerajrane/dheerajfolder">View Scan</button> -->
+                    <button class="view-scan" data-scan-url="https://easiofymodelviewer-iit.netlify.app/?path=vaibhavpatient/vaibhavfolder/brain1.glb">View Scan</button>  
+                    <!-- <button class="view-scan" data-scan-url="https://easiofymodelviewer-iit.netlify.app/?path=vaibhavpatient/vaibhavfolder/3DABDOMEN.gltf">View Scan</button>   -->
+                </td>
+                <td>
+                    <button><a href="{% url 'DPrescription' %}">Add Prescription</a></button>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+
+        <script>
+            const scanButtons = document.querySelectorAll('.view-scan');
+    
+            scanButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const scanUrl = button.getAttribute('data-scan-url');
+                    const scanWindow = window.open(scanUrl, 'Scan Viewer', 'width=600,height=800');
+    
+                    // Close the scan window on button click
+                    scanWindow.addEventListener('beforeunload', () => {
+                        button.textContent = 'View Scan'; // Change button text back
+                    });
+    
+                    button.textContent = 'Close Scan'; // Update button text
+                });
+            });
+        </script>
+
+    <!-- <div class="container1">
+        <h2>Medical Report's</h2>
+    </div>
+    
+    <div class="container2">
+        <embed src="data:application/pdf;base64,{{base64Data}}" width="60%" height="700px" />
+    </div>
+    <div class="container3">
+        <a href="data:application/pdf;base64,{{base64Data}}" download="file.pdf">Download Report</a>
+    </div>
+    <div class="container2">
+        <embed src="data:image/jpg;base64,{{base64Data1}}" width="60%" height="700px" />
+    </div>
+    <div class="container3">
+        <a href="data:image/jpg;base64,{{base64Data1}}" download="file.jpg">Download X-ray</a>
+    </div> -->
+
+{% endblock %}

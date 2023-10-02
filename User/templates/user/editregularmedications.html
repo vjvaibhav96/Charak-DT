@@ -1,0 +1,131 @@
+{% extends 'user/basic_user.html' %}
+
+{% block title %} Medication {% endblock %}
+
+{% block css %}
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2{
+      color:black;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+      color: red;
+    }
+    .form-control1{
+    border-radius: 5px;
+    /* display: block; */
+    padding: 0.375rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    }
+  </style>
+  {% endblock %}
+
+  {% block body %}
+
+    <div class="container1">
+        <h3>Edit Medication Data</h3>
+    </div>
+    <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+      <form id="myForm2" action="{% url 'EditRegularMedications' %}" method="POST"> {% csrf_token %}
+        <!-- <div class="mb-2">
+          <label for="userid" class="form-label">User ID</label>
+          <input type="number" class="form-control" id="userid" name="userid" autocomplete="off"  readonly>
+        </div><br> -->
+        <div class="mb-2">
+          <label for="datetime1" class="form-label">Enter Datetime of your medications taken</label>
+          <input type="datetime-local" class="form-control" id="datetime1" name="datetime1" autocomplete="off">
+        </div><br>
+        <div class="mb-2">
+            <h4>Medication</h4> 
+        </div>
+        <div class="mb-2">
+          <label for="medication1" class="form-label">Medication 1 (Please enter (1-0-1) after name as per prescription)</label>
+          <input type="text" class="form-control" id="medication1" name="medication1" autocomplete="off" placeholder=" Dolo 650 (1-0-1)" >
+        </div>
+        <div class="mb-2">
+          <label for="medication2" class="form-label">Medication 2 (Please enter (1-0-1) after name as per prescription)</label>
+          <input type="text" class="form-control" id="medication2" name="medication2" autocomplete="off"  >
+        </div>
+        <div class="mb-2">
+          <label for="medication3" class="form-label">Medication 3 (Please enter (1-0-1) after name as per prescription)</label>
+          <input type="text" class="form-control" id="medication3" name="medication3" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="medication4" class="form-label">Medication 4 (Please enter (1-0-1) after name as per prescription)</label>
+          <input type="text" class="form-control" id="medication4" name="medication4" autocomplete="off"  >
+        </div>
+        <div class="mb-2">
+          <label for="medication5" class="form-label">Medication 5 (Please enter (1-0-1) after name as per prescription)</label>
+          <input type="text" class="form-control" id="medication5" name="medication5" autocomplete="off">
+        </div><br>
+
+        <div class="mb-2">
+            <h4>Syrup (Name and Quantity in ml)</h4>
+        </div>
+        <div class="mb-2">
+          <label for="syrup1" class="form-label">Syrup1</label> <br>
+          <input type="text" class="form-control1" style="border-radius: 5px;" id="syrup1" name="syrup1name" autocomplete="off" placeholder="Enter syrup name" >
+          <input type="text" class="form-control1" style="border-radius: 5px;" id="syrup1" name="syrup1quantity" autocomplete="off" placeholder="Quantity in ml">
+        </div>
+        <div class="mb-2">
+          <label for="syrup2" class="form-label">Syrup2 </label> <br>
+          <input type="text" class="form-control1" style="border-radius: 5px;" id="syrup2" name="syrup2name" autocomplete="off" >
+          <input type="text" class="form-control1" style="border-radius: 5px;" id="syrup2" name="syrup2quantity" autocomplete="off"  >
+        </div>
+        <div class="mb-2">
+          <label for="syrup3" class="form-label">Syrup3</label> <br>
+          <input type="text" class="form-control1" style="border-radius: 5px;" id="syrup3" name="syrup3name" autocomplete="off">
+          <input type="text" class="form-control1" style="border-radius: 5px; padding-right: 10px;" id="syrup3" name="syrup3quantity" autocomplete="off" >
+        </div>
+        <br>
+        <div style="text-align: center;">
+        <button type="submit"  class="btn btn-primary" id = "bxc">Save</button></div>
+     </form>
+    </div>
+
+    <script>
+      document.getElementById("myForm2").addEventListener("submit", function(event) {
+          // Get the selected datetime value
+          const datetimeInput = document.getElementById("datetime1");
+          const selectedDatetime = datetimeInput.value;
+          
+          // Check if the time component is missing and add it
+          const formattedDatetime = selectedDatetime.includes("T")
+              ? selectedDatetime
+              : `${selectedDatetime}T00:00`;
+
+          // Replace the input value with the formatted datetime
+          datetimeInput.value = formattedDatetime;
+      });
+  </script>
+
+ {% endblock %}
+

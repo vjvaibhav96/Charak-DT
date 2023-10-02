@@ -48,7 +48,7 @@
 <div class="container mt-3 shadow-lg p-4 my-3" style="width: 40%; margin-bottom: 10px;color:aliceblue">
   <form action="{% url 'UserOtpVerification' %}", method="POST"> {% csrf_token %}
     <div class="mb-2">
-    <label for="userotp" class="form-label"> <strong> Enter 6-digit OTP </strong> </label> 
+    <label for="userotp" class="form-label"> <strong> Enter 4-digit OTP </strong> </label> 
       <br><input type="text" class="form-control my-3" id="userotp" placeholder="OTP sent to your registered mobile number" name="userotp" autocomplete="off" required> 
     </div> <br>
     <div style="text-align: center;">

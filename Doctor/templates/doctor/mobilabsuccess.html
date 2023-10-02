@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edited Successfully</title>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 200px; font-size:25px">
+    <p>Congratulation!! please remember your booking id is {{bookingid}}, please wait redirecting to doctor's dashboard</p>
+    </div>
+    <!-- <div style="text-align: center; margin-top: 20px">
+        <a href="{% url 'DoctorMainPage' %}"> Back to Homepage</a>
+    </div> -->
+    <script>
+        // JavaScript for delayed redirect
+        setTimeout(function () {
+            window.location.href = "{% url 'DoctorProfile' %}";
+        }, 5000); // Redirect after 4 seconds
+    </script>
+</body>
+</html>

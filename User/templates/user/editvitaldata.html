@@ -1,0 +1,95 @@
+{% extends 'user/basic_user.html' %}
+
+{% block title %} Vital Signs {% endblock %}
+
+{% block css %}
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2{
+      color:black;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+      color: red;
+    }
+  </style>
+  {% endblock %}
+
+  {% block body %}
+
+    <div class="container1">
+        <h3>Vital Sings</h3>
+    </div>
+    <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+      <form action="{% url 'EditHealthData' %}" method="POST"> {% csrf_token %}
+        <div class="mb-2">
+          <label for="userid" class="form-label">User ID</label>
+          <input type="number" class="form-control" id="userid" name="userid" autocomplete="off" value="{{ user_data.patient_id }}"  readonly>
+        </div>
+        <div class="mb-2">
+          <label for="bodytemperature" class="form-label">Body Temperature (°C)</label>
+          <input type="number" class="form-control" id="bodytemperature" name="bodytemperature" autocomplete="off" >
+        </div>
+        <div class="mb-2">
+          <label for="pulserate" class="form-label">Pulse Rate (BPM)</label>
+          <input type="number" class="form-control" id="pulserate" name="pulserate" autocomplete="off" >
+        </div>
+        <div class="mb-2">
+          <label for="respiratoryrate" class="form-label">Respiratory Rate (per minute)</label>
+          <input type="number" class="form-control" id="respiratoryrate" name="respiratoryrate" autocomplete="off" >
+        </div>
+        <div class="mb-2">
+          <label for="bp" class="form-label">BP (mmHg) (systolic/diastolic) </label>
+          <input type="text" class="form-control" id="bp" name="bp" autocomplete="off" placeholder="XXX/XX" >
+        </div>
+        <div class="mb-2">
+          <label for="spo2" class="form-label">SpO2 (%)</label>
+          <input type="number" class="form-control" id="spo2" name="spo2" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="weight" class="form-label">Weight (Kg)</label>
+          <input type="number" class="form-control" id="weight" name="weight" autocomplete="off" >
+        </div>
+        <div class="mb-2">
+          <label for="bloodsugarfbs" class="form-label">Blood Sugar(FBS, mg/dL) </label>
+          <input type="number" class="form-control" id="bloodsugarfbs" name="bloodsugarfbs" autocomplete="off" >
+        </div>
+        <div class="mb-2">
+          <label for="bloodsugarrbs" class="form-label">Blood Sugar(RBS, mg/dL)</label>
+          <input type="number" class="form-control" id="bloodsugarrbs" name="bloodsugarrbs" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="datetime1" class="form-label">Datetime</label>
+          <input type="datetime-local" class="form-control" id="datetime1" name="datetime1" autocomplete="off">
+        </div>
+        <br>
+        <div style="text-align: center;">
+        <button type="submit"  class="btn btn-primary" id = "bxc">Save</button></div>
+     </form>
+    </div>
+ {% endblock %}
+

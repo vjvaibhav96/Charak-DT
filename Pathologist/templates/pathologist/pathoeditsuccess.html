@@ -8,7 +8,7 @@
 </head>
 <body>
     <div style="text-align: center; margin-top: 200px; font-size:25px">
-    <p>Congratulation!! Reports updated and saved successfully, please wait redirecting to pathologist home</p>
+    <p>Congratulation!! Reports updated and saved successfully, please wait redirecting to pathologist profile</p>
     </div>
     <!-- <div style="text-align: center; margin-top: 20px">
         <a href="http://localhost:3010/doctor"> Back to Homepage</a>
@@ -16,7 +16,7 @@
     <script>
         // JavaScript for delayed redirect
         setTimeout(function () {
-            window.location.href = "{% url 'PathoDashboard' %}";
+            window.location.href = "{% url 'PathoProfile' %}";
         }, 2000); // Redirect after 2 seconds
     </script>
 </body>

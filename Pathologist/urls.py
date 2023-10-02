@@ -14,6 +14,7 @@ urlpatterns = [
     path('pathoeditsuccess', views.pathoeditsuccess, name="PathoEditSuccess"),
     path('pathsingup/', views.pathosingup, name="PathoSingup"),
     path('pathesiofy/', views.pathoesiofy, name="PathoEsiofy"),
+    path('pathesiofy2d/', views.pathoesiofy2d, name="PathoEsiofy2D"),
     path('pathologout/', views.pathologout, name="PathoLogout"),
     # path('pathotodoctorpres', views.pathotodoctorpres, name="PathoToDoctorPres"),
     # path('pathotodocsuccess', views.pathotodocsuccess, name="PathoToDocSuccess"),

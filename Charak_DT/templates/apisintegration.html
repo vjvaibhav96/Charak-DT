@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> {% load static %}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Integration with Charak DT</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/drishti_logo.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet"> -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'css/stylex.css' %}" rel="stylesheet"> -->
+  <!-- <link href="{% static 'css/chatbot.css' %}" rel="stylesheet"> -->
+
+  <!-- Include jQuery and Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Api_table bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+<!-- for jquery and bootstrap for chatbot modal  -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<!-- Bootstrap JavaScript (optional, for some components) -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+  <!-- =======================================================
+  * Template Name: Flexor
+  * Updated: Jul 27 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <!-- <style>
+
+  body {
+        margin: 0;
+        padding: 0;
+    }
+    #chat {
+      padding-left: 5px;
+      padding-right: 7px;
+    }
+    #chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        text-align: justify;
+        z-index: 9999;
+    }
+    #chat-button {
+        background-color: #ff5821;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    #chat-container {
+        display: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        height: 400px;
+        overflow-y: auto;
+    }
+    #userInput {
+      /* line-height: 3rem; */
+      padding-left: 5rem;
+      padding-top: 1rem;
+      margin-bottom: 0rem;
+    }
+    #userInputContainer{
+      padding-left: 1rem;
+      margin-top: 13rem;
+      text-align: center;
+    }
+    #sendButton{
+      padding-left: 1rem;
+      padding-top: 1rem;
+      text-align: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .hidden {
+    display: none;
+    }
+    #chat-box{
+      overflow-y:auto;
+    }
+  </style> -->
+
+  <style>
+    #CharakBotButton{
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column-reverse;
+      cursor: pointer;
+      background-color: darkorchid;
+    }
+    #modal-positioning{
+      position: fixed;
+      right: 20px;
+      bottom: 85px;
+      width: 400px;
+      height: 450px;
+      border-radius: 20px;
+
+    }
+    #model-heading{
+      color: whitesmoke;
+      background-color: teal;
+      border-radius: 20px; 
+      padding-right: 10px; 
+      padding-left: 10px;
+      text-align: justify;
+    }
+    /* MESSAGES */
+  .chatbox__messages {
+    margin-top: auto;
+    display: flex;
+    width: 380px;
+    height: 250px;
+    overflow-y: scroll;
+    flex-direction: column-reverse;
+  }
+  .modal-title {
+    height: 70px;
+    font-size: large;
+  }
+  .modal-header .close {
+    padding: 2rem 10px;
+  }
+  hr {
+    margin-top: 1px;
+    margin-bottom: 0rem;
+  }
+  #userInputContainer{
+      position: fixed;
+      bottom: 90px;
+      height: 30px;
+      padding-left: 15px;
+      overflow: auto;
+    }
+    .modal-footer{
+      height: 55px;
+      justify-content: flex-start;
+      border-top: 2px solid black;
+    }
+    #userInput{
+      justify-content: center;
+      align-items: center;
+      width: 18rem;
+      border-radius: 10px;
+    }
+    .modal-body{
+      overflow: overlay;
+      position: relative;
+      border-top: 2px solid black;
+    }
+    #sendButton{
+      border-radius: 10px;
+    }
+    /* .modal-backdrop{
+      z-index: 1040;
+    } */
+    #DoctorSingupModal{
+      z-index: 10100;
+      /* overflow: scroll; */
+    }
+    .modal{
+      overflow: scroll;
+    }
+    #ManagerLoginModal{
+      border-radius: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- === Charak Bot Modal ===  -->
+    <div id="CharakBotButton"> 
+      <a href="#ChatBotModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChatBotModal">
+           Chat with our Expert || CharakBot <br>
+           <small>  <strong style="color: black;"> Powered by : </strong> Digi-Attorney </small> 
+        </button> 
+      </a>
+    </div>
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+
+      <div class="logo">
+        <a  href="https://drishticps.iiti.ac.in/" target="_blank"><img src="{% static 'img/drishti_logo.png' %}" alt="" class="img-fluid"></a>
+       </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'CharakHome' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#about">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'CharakHome' %}#application">Application Areas</a></li>
+        
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'CharakHome' %}#contact">Contact</a></li>
+          <li><a href="#ManagerLoginModal" data-bs-toggle="modal" data-bs-target="#ManagerLoginModal" style="text-decoration: none;">Admin</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      <div class="logo">
+        <a style="padding-left: 25px;" href="https://www.iiti.ac.in/" target="_blank"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid"></a>
+    </div>
+
+    </div>
+  </header>
+  <!-- End Header -->
+</section>
+<hr>
+<br><br>
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg" style="background-color: #fff; padding: 0px 0px;">
+      <!-- <div class="container"> -->
+
+        <div class="section-title">
+          <h2>API's For Integration</h2>
+        </div>
+        <!-- <div class="row" > -->
+        <div class="row" style=" margin-left: 10px; margin-right: 10px;">
+        <!-- <div class="row" style="margin-top: 20px; margin-left: 40px; margin-right: 40px;"> -->
+        
+            <table class="table table-striped" style="border: 10px;">
+                <thead class="thead-dark"  style="background-color: #f2f2f2 !important;">
+                <tr>
+                        <th scope="col" style="width: 100px;">S. No</th>
+                        <th scope="col">API Purpose</th>
+                        <th scope="col">API</th>
+                        <th scope="col">JSON Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><b>User-initiated discovery & linking of health records</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Discovery of the patient’s information</td>
+                        <td>{CHARAK_HOST}/v1.0/care-contexts/discover</td>
+                        <td><b>RequestId</b> string,
+                            <b>Timestamp</b> string($date-time), 
+                            <b>TransactionId</b> string($uuid), 
+                            <b>Patient</b> 
+                            {id, verifiedIdentifiers, unverifiedIdentifiers, name, gender, yearOfBirth}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Link initiation</td>
+                        <td>{CHARAK_HOST}/v1.0/links/link/init</td>
+                        <td><b>RequestId</b> string($uuid),
+                            <b>Timestamp</b> string($date-time), 
+                            <b>TransactionId</b> string($uuid),
+                            <b>patient</b> 
+                            {id string, referenceNumber string, careContexts}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Link Confirmation</td>
+                        <td>{CHARAK_HOST}/v1.0/links/link/confirm</td>
+                        <td><b>RequestId</b>   string($uuid), 
+                            <b>Timestamp</b>   string($date-time), 
+                            <b>Confirmation</b>
+                             {linkRefNumber string, token string}</td>
+                    </tr>
+                    
+                         
+                    <tr>
+                        <th scope="row">2</th>
+                        <td ><b>SPIN initiated linking of health records</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>Initialize Authentication from SPIN, Demographic auth mode is commonly used</td>
+                        <td>{CHARAK_HOST}/v1.0/users/auth/init</td>
+                        <td><b>RequestId</b> string($uuid),
+                            <b>Timestamp</b> string($date-time), 
+                            <b>Query</b> {id string, purpose string, authMode string, requester}, 
+                            Subjected to CM specific capability: 
+                            MOBILE_OTP for SMS OTP,
+                            DIRECT for authentication directly with the patient (e.g., Mobile App, SMS), 
+                            AADHAAR_OTP for auth using OTP sent to Aadhaar number, 
+                            DEMOGRAPHICS for auth using demographic verification.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>token</td>
+                        <td>{CHARAK_HOST}/v1.0/links/link/init</td>
+                        <td><b>RequestId</b> string($uuid),
+                            <b>Timestamp</b> string($date-time), 
+                            <b>TransactionId</b> string, 
+                            <b>Credential</b> {authCode String, demographic {Name String, gender, dateOfBirth String, identifier}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Notification API in case of DIRECT mode of authentication</td>
+                        <td>{CHARAK_HOST}/v1.0/links/link/confirm</td>
+                        <td><b>AccessToken string</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>When there is new health record for the patient, SPIN to initiate care-context linking for patient using linking token</td>
+                        <td>{CHARAK_HOST}/v1.0/links/link/confirm</td>
+                        <td><b>link</b>
+                            {patient {referenceNumber, display},
+                            CareContext {referenceNumber, display}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">3</th>
+                        <td ><b>SPIN initiated notification for new health records</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>SPIN has mobile number of patients. SPIN notifies CHARAK when new health record is ready for sharing with patient.</td>
+                        <td>{{CHARAK_HOST}}/v1.0/links/context/notify</td>
+                        <td><b>RequestId</b> string($uuid),
+                            <b>Timestamp</b> string($date-time), 
+                            <b>Acknowledgement</b>
+                            <b>Error</b></td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">4</th>
+                        <td ><b>Consent Flow</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>Notification of consents to service information providers consent request granted, consent revoked, consent expired.</td>
+                    
+                        <td>{CHARAK_HOST}/v1.0/consents/SPIN/on-notify</td>
+                        <td><b>RequestId</b> string($uuid)
+                            <b>Timestamp</b> string($date-time)
+                            <b>Notification</b>
+                            <b>Id string</b></td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">5</th>
+                        <td ><b>Data Request and Transfer</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>Health Information Data Request</td>
+                        <td>{{CHARAK_HOST}}/v1.0/health-information/SPIN/request</td>
+                        <td><b>RequestId</b> string($uuid), 
+                            <b>Timestamp</b> string($date-time),
+                            <b>TransactionId</b> string($uuid) 
+                            HiRequest</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Transfer the data at Data Push URL</td>
+                        <td>{Data Push URL} received on above call /v1.0/health-information/SPIN/request</td>
+                        <td><b>RequestId</b> string($uuid), 
+                            <b>Timestamp</b> string($date-time),
+                             <b>HiRequest</b> {transactionId string($uuid), sessionStatus string}, 
+                             <b>Error</b> {code integer, message string}, Resp {requestId string($uuid)}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Notification to gateway on Transfer of data to HIU</td>
+                        <td>{GATEAY_HOST}/v1.0/health-information/notify</td>
+                        <td><b>PageNumber</b> integer,
+                             <b>PageCount</b> integer, 
+                             <b>TransactionId</b> string($uuid),
+                              <b>Entries</b>,
+                            <b>KeyMaterial</b> {cryptoAlg string($string), Curve string($string), DhPublicKey, Nonce string($32 byte string)}</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">6</th>
+                        <td ><b>Consent Flow</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>Notification of consents to service information providers consent request granted, consent revoked, consent expired.</td>
+                        <td>{CHARAK_HOST}/v1.0/consents/SPIN/on-notify</td>
+                        <td><b>RequestId</b> string($uuid), 
+                            <b>Timestamp</b> string($date-time),
+                             <b>Notification</b>,
+                             <b> Id string</b></td>
+                    </tr>
+                      
+                    <tr>
+                        <th scope="row">7</th>
+                        <td ><b>Share Patient Profile with SPIN</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>Sharing patient's profile details to SPIN</td>
+                        <td>{CHARAK_HOST}/v1.0/patients/profile/share</td>
+                        <td><b>RequestId</b> string($uuid), 
+                            <b>Timestamp</b> string($date-time), 
+                            <b>Intent</b>,
+                            <b>Location</b>, 
+                            <b>Profile</b></td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">8</th>
+                        <td ><b>Status Notification (ACTIVE/DEACTIVATED/DELETED)</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>Send patient’s status (ACTIVE/DEACTIVATE/DELETED) to the SPIN</td>
+                        <td>{CHARAK_HOST}/v1.0/patients/status/on-notify</td>
+                        <td><b>RequestId</b> string($uuid), 
+                            <b>Timestamp</b> string($date-time), 
+                            <b>Acknowledgment</b>,
+                            <b>Error</b> {Code, Message, resp}</td>
+                    </tr>
+                     <tr>
+                        <th scope="row">9</th>
+                        <td><b>JWT Certificate Certification
+                            </b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">{CHARAK_HOST}/v1.0/certs</li>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                  <b>keys</b>	{
+                                        e	string
+                                        kid	string
+                                        kty	string
+                                        n	string
+                                        use	string
+                                        x5c	string
+                                        x5t	string
+                                        x5t#S256 string
+                                        alg	string
+                                        }
+                                </li>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td><b>Monitoring</b></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <td></td>
+                        <td>Heartbeat monitoring</td>
+                        <td>{CHARAK_HOST}/v1.0/service_provider/heartbeat</td>
+                        <td><b>Timestamp</b> string($date-time),
+                            <b>Status string</b>, 
+                            <b>Error</b> {Code integer, Message string}</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">11</th>
+                        <td><b>Communication API</b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">
+                                {CHARAK_HOST}/v1.0/service_provider/communication
+                               </li>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                    <b>Services</b>: [ { "id": "service1", "provider_id": "user1", "name": "Heart Checkup", "description": "Complete heart checkup including ECG, echo, and stress test.", "price": "$200" } ]
+                                    <b>Appointments</b>: [ { "id": "appointment1", "consumer_id": "user2", "service_id": "service1", "status": "confirmed", "date_time": "2023-09-15T10:00:00Z" } ]
+                                   <b>Messages</b>: [ { "id": "message1", "sender_id": "user2", "receiver_id": "user1", content: "Hello, I would like to book an appointment for the Heart Checkup service.", "date_time_sent": "2023-09-12T07:08:07Z" } ] 
+                                    </li>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td><b>Forum</b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+                            
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">{CHARAK_HOST}/c1.0/forum/discover</li>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                    <b>RequestId</b> string,
+                                    <b>Timestamp</b> string($date-time),
+                                    <b>TransactionId</b> string($uuid),
+                                    <b>Patient</b>	{
+                                                        id
+                                                        verifiedIdentifiers
+                                                        unverifiedIdentifiers
+                                                        name
+                                                        gender
+                                                        yearOfBirth},
+                                    </li>
+                    
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13</th>
+                        <td><b>Insurance API</b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+        
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">{CHARAK_HOST}/v1.0/service_provider/insurance</li>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                    <b>Insurance_providers</b>: [ { "id": "provider1", "name": "ABC Insurance", "email": abc@example.com", "location": "India", 
+                                     <b>Insurance_plans</b>: [ { "id": "plan1", "name": "Comprehensive Health Insurance", "description": "Covers outpatient, inpatient, and emergency services.", "price": "$500 per year" } ]
+                                    </li>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14</th>
+                        <td><b>Reviews and Ratings</b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">{CHARAK_HOST}}/v1.0/service_provider/reviews-rating</li>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                    <b>Reviews</b>: [ { "id": "review1", "user_id": "user2", "service_id": "service1", rating: 4.5, "comment": "Great service! The checkup was thorough and the doctor was very friendly.", "date_time_posted": "2023-09-15T12:00:00Z" }
+                                    </li>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">15</th>
+                        <td><b>Pharmacist and Pathologist Information Retrieval</b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">{CHARAK_HOST}/v1.0/pharmacists
+                                {CHARAK_HOST}/v1.0/pathologists
+                                </li>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                    <b>Pharmacists</b>: [ { "id": "pharmacist_id", "name": "pharmacist_name", "experience": "years_of_experience", "specialization": "area_of_specialization", "location": "pharmacist_location" }
+        
+                                    <b>Pathologists</b>: [ { "id": "pathologist_id", "name": "pathologist_name", "experience": "years_of_experience", "specialization": "area_of_specialization", "location": "pathologist_location" }
+                                    </li>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">16</th>
+                        <td><b>Doctor and Prescription Information Retrieval</b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">{CHARAK_HOST}/v1.0/doctors
+                                </li>
+                                <li class="row" style="margin-bottom: 10px;">{CHARAK_HOST}/v1.0/prescription
+                                    </li>    
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                    <b>Doctors</b>: [ { "id": "doctor_id", "name": "doctor_name", "experience": "years_of_experience", "specialization": "area_of_specialization", "location": "doctor_location" }
+        
+                                    </li>
+                                    <li class="row" style="margin-bottom: 10px;">
+                                        <b>Prescriptions</b>: [ { "id": "prescription_id", "patient_id": "patient_id", "doctor_id": "doctor_id", "date_issued": "date_prescription_issued", "medications": [ { "name": "medication_name", "dosage": "dosage_instructions" }, ... ] }, ... ]
+            
+                                        </li>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">17</th>
+                        <td><b>Comprehensive Patient Summary</b>
+                            <div style="margin-top: 20px;">
+                            <ul style="padding: 0; margin: 0;">
+                        </div>
+                        </ul>
+                        </td>
+                        <td>
+                            <br>
+                            <div style="margin-top: 20px;">
+                            <li class="row" style="margin-bottom: 10px;">
+                                {CHARAK_HOST}/v1.0/patient-summary
+                                </li>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: 20px;">
+                                <li class="row" style="margin-bottom: 10px;">
+                                    <b>Patient_summary</b>: { "id": "patient_id", "name": "patient_name", "age": "patient_age", "gender": "patient_gender", "location": "patient_location", "medical_history": [ { "disease_name": "disease_name", "diagnosed_date": "diagnosed_date", "treatment_status": "treatment_status" }, ... ]
+        
+                                    </li>
+                                    <li class="row" style="margin-bottom: 10px;">
+                                        <b>Medications</b>: [ { "name": "medication_name", "dosage": "dosage_instructions", "start_date": "start_date", "end_date": "end_date" }, ... ] }
+                                        </li>    
+                                </div>
+                        </td>
+                    </tr>
+        
+                </tbody>  
+            </table>
+        
+        
+        </div>
+      </div>
+    </section>
+    <!-- End Services Section -->
+
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>CharakDT</h3> <br>
+            <h6>IITI Drishti CPS Foundation</h6>
+            <p>
+              4th Floor LRC, IIT Indore, Khandwa Road,<br>
+              Simrol, Indore, Madhya Pradesh, 453552<br>
+              India <br><br>
+              <strong>Phone:</strong> +91-731-660-3372<br>
+              <strong>Email:</strong> officedrishti[at]iiti.ac.in<br>
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+          <div class="row">
+              <div class="col-lg-6">
+              <li><i class="bx bx-chevron-right"></i> <a href="https://nmicps.in/" target="_blank" style="text-decoration: none;">NMICPS</a></li>
+              <li><i class="bx bx-chevron-right"  ></i> <a href="https://nha.gov.in/" target="_blank" style="text-decoration: none;">National Health Authority</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://main.mohfw.gov.in/" target="_blank" style="text-decoration: none;">Ministry of Health & Family Welfare</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://main.icmr.nic.in/" target="_blank" style="text-decoration: none;">Indain Council of Medical Research</a></li>  
+            </div>            
+              <div class="col-lg-6">
+              <li><i class="bx bx-chevron-right"></i> <a href="https://drishticps.iiti.ac.in/" target="_blank" style="text-decoration: none;">IITI Drishti CPS Foundation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.iiti.ac.in/" target="_blank" style="text-decoration: none;">IIT Indore</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'ApisIntegration' %}" target="_blank" style="text-decoration: none;">API's for Integration</a></li>
+              </div>
+          </div>
+          </ul>
+          <!-- </div> -->
+        </div>
+
+           <!-- <div class="col-lg-3 col-md-6 footer-links">
+          </div>  -->
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <a href="https://drishticps.iiti.ac.in/affiliate-program/" target="_blank" style="text-decoration: none;"><h4 >Join Our Affiliate Program</h4> </a>
+            <p>Affiliate Programme Offers Opportunities to Individuals to Connect with IITI DRISHTI CPS Foundations</p>
+            <!-- <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-lg-flex py-4">
+
+      <div class="text-center text-lg-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>CharakDT</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/ -->
+          Designed by <a href="https://drishticps.iiti.ac.in/" target="_blank"> IITI Drishti CPS Foundation</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-lg-left pt-3 pt-lg-0" style="padding-left: 15rem;">
+        <a href="https://twitter.com/DRISHTICPS" class="twitter" target="_blanks"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/DrishtiCPS/" class="facebook" target="_blanks"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/cpsdrishti/" class="instagram" target="_blanks"><i class="bx bxl-instagram"></i></a>
+        <!-- <a href="#" class="google-plus"><i class="bx bxl-skype" target="_blanks"></i></a> -->
+        <a href="https://www.linkedin.com/company/iiti-drishti-cps-foundation-iit-indore/" class="linkedin" target="_blanks"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+ 
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+<!-- modal for Admin Login  -->
+<div class="modal fade" id="ManagerLoginModal" tabindex="-1" aria-labelledby="ManagerLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="modal-body">
+      <div class="row">
+        <!-- <div class="col-lg-5"> -->
+        <div class="col-lg-5" style=" background-color :#003959 ; center; justify-content: center; text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+           
+          <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+          <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+          <!-- </div> -->
+      </div> 
+        <div class="col-lg-7" style="padding-left: 10px;">
+        <form action="{% url 'ManagerLogin' %}" id="ManagerLoginForm" method="post" style="margin-left: 15px;"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="managerloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="managerloginemail" name="managerloginemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="managerloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="managerloginpassword" name="managerloginpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <!-- <button type="submit" class="btn btn-more">Submit</button> -->
+          <button type="submit" class="btn btn-primary">Submit</button> 
+          <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> <br>
+            <button type="button" style="padding-top: 5px; margin-top: 10px;" class="btn btn-light" style="color: blue; margin-top: -2px; " data-bs-toggle="modal" data-bs-target="#ManagerSignupModal">Signup</button>
+            </div>
+        </form>
+        </div>
+    </div>
+      </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ManagerSignupModal">Signup</button> -->
+       <!-- <span style="text-align: center;"> For Sing Up <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> <strong> Click Here </strong> </button> </span> -->
+       
+    </div>
+  </div>
+</div>
+
+<!-- modal for Admin Signup  -->
+<div class="modal fade" id="ManagerSignupModal" tabindex="-1" aria-labelledby="ManagerSignupModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ManagerSignupModal">Welcome Admin, please fill the details below for Signup</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+       
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-6"> 
+            <form action="{% url 'ManagerSignup' %}" id="ManagerSignupForm" method="post"> {% csrf_token %}
+              <div class="mb-3">
+                <label for="managerfirstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="managerfirstname" name="managerfirstname" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managermiddlename" class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="managermiddlename" name="managermiddlename" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerlastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="managerlastname" name="managerlastname" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerdob" class="form-label">DOB</label>
+                <input type="date" class="form-control" id="managerdob" name="managerdob" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">password must have small, capital letters, alphanumeric & special characters.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="manageremail" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="manageremail" name="manageremail" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerpassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="managerpassword" name="managerpassword" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managercpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="managercpassword" name="managercpassword" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+          </div>  
+
+            <div class="col-lg-6">  
+              <div class="mb-3">
+                <label for="managermobile" class="form-label">Mobile Number</label>
+                <input type="number" class="form-control" id="managermobile" name="managermobile" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerqualification" class="form-label">Highest Qualification</label>
+                <input type="text" class="form-control" id="managerqualification" name="managerqualification" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerfacilityname" class="form-label">Facility Name</label>
+                <input type="text" class="form-control" id="managerfacilityname" name="managerfacilityname" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerstate" class="form-label">State</label>
+                <select id="state" name="managerstate">
+                  <option value="andhra pradesh">Andhra Pradesh</option>
+                  <option value="arunachal pradesh">Arunachal Pradesh</option>
+                  <option value="assam">Assam</option>
+                  <option value="bihar">Bihar</option>
+                  <option value="chhattisgarh">Chhattisgarh</option>
+                  <option value="goa">Goa</option>
+                  <option value="gujarat">Gujarat</option>
+                  <option value="haryana">Haryana</option>
+                  <option value="himachal pradesh">Himachal Pradesh</option>
+                  <option value="jammu and kashmir">Jammu and Kashmir</option>
+                  <option value="jharkhand">Jharkhand</option>
+                  <option value="karnataka">Karnataka</option>
+                  <option value="kerala">Kerala</option>
+                  <option value="madhya pradesh">Madhya Pradesh</option>
+                  <option value="maharashtra">Maharashtra</option>
+                  <option value="manipur">Manipur</option>
+                  <option value="meghalaya">Meghalaya</option>
+                  <option value="mizoram">Mizoram</option>
+                  <option value="nagaland">Nagaland</option>
+                  <option value="odisha">Odisha</option>
+                  <option value="punjab">Punjab</option>
+                  <option value="rajasthan">Rajasthan</option>
+                  <option value="sikkim">Sikkim</option>
+                  <option value="tamil nadu">Tamil Nadu</option>
+                  <option value="telangana">Telangana</option>
+                  <option value="tripura">Tripura</option>
+                  <option value="uttar pradesh">Uttar Pradesh</option>
+                  <option value="uttarakhand">Uttarakhand</option>
+                  <option value="west bengal">West Bengal</option>
+                  <!-- Add more state options as needed -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="managerdistrict" class="form-label">District</label>
+                <input type="text" class="form-control" id="managerdistrict" name="managerdistrict" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managercity" class="form-label">City</label>
+                <input type="text" class="form-control" id="managercity" name="managercity" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerpin" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="managerpin" name="managerpin" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="managersingupcheck">
+                <label class="form-check-label" for="managersingupcheck">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Submit</button>
+            </div>  
+          </form>
+      </div> 
+      </div>
+      <!-- <div class="modal-  footer"> -->
+          <!-- <span style="text-align: center;"> <medium> For Login </medium> <a href="{% url 'ManagerSignup' %}"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> </span> -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Login</button> -->
+        <!-- <button type="button" class="btn btn-primary"> Password</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- User Login Modal  -->
+<div class="modal fade" id="UserLoginModal" tabindex="-1" aria-labelledby="UserLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="UserLoginModal">Welcome User, please enter your details below for login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 9rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
+        <form action="{% url 'UserLogin' %}" id="UserLoginForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="userloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="userloginemail" name="userloginemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="userloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="userloginpassword" name="userloginpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="usercheckbox">
+            <label class="form-check-label" for="usercheckbox">Check me out</label>
+          </div> 
+          <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
+           <br> <br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Close</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+       
+     
+    </div>
+  </div>
+</div>
+
+<!-- User Signup Modal -->
+<div class="modal fade" id="UserSignupModal" tabindex="-1" aria-labelledby="UserSignupModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="UserSignupModal">Welcome User, please fill the details below for Signup</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="UserSignupForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="managername" class="form-label">Name</label>
+            <input type="text" class="form-control" id="managername" name="managername" aria-describedby="emailHelp" placeholder="Enter your name" required>
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="managerusername" class="form-label">Username</label>
+            <input type="text" class="form-control" id="managerusername" name="managerusername" aria-describedby="emailHelp" placeholder="Enter your username" required>
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="manageremail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="manageremail" name="manageremail" aria-describedby="emailHelp" placeholder="Enter your email name" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="managerpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="managerpassword" name="managerpassword" aria-describedby="emailHelp" placeholder="Enter a password" required>
+            <div id="emailHelp" class="form-text">password must have small, capital letters, alphanumeric & special characters.</div>
+          </div>
+          <div class="mb-3">
+            <label for="managerconfirmpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="managerconfirmpassword" name="managerconfirmpassword" placeholder="Re-Enter your password" required>
+            <div id="emailHelp" class="form-text">Must match with the password entered above.</div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="managersingupcheck">
+            <label class="form-check-label" for="managersingupcheck">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#UserLoginModal">Submit</button>
+      </form>
+      </div>
+      <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+          <!-- <span style="text-align: center;"> <medium> For Login </medium> <a href="{% url 'ManagerSignup' %}"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> </span> -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Login</button> -->
+        <!-- <button type="button" class="btn btn-primary"> Password</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Doctor Login Modal  -->
+<div class="modal fade" id="DoctorLoginModal" tabindex="-1" aria-labelledby="DoctorLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="DoctorLoginModal">Welcome Doctor, please enter your details below for login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
+        <form action="{% url 'DoctorLogin' %}" id="DoctorLoginForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="doctorloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="doctorloginemail" name="doctorloginemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="doctorloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="doctorloginpassword" name="doctorloginpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> <br>
+          <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-light" style="color: blue; margin-top: 12px;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- Pathologist Login Modal  -->
+<div class="modal fade" id="PathologistLoginModal" tabindex="-1" aria-labelledby="PathologistLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="PathologistLoginModal">Welcome Pathologist, please enter your details below for login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
+        <form action="{% url 'PathoLogin' %}" id="PathologistLoginForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="pathologinemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="pathologinemail" name="pathologinemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="pathologinpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pathologinpassword" name="pathologinpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> <br>
+          <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-light" style="color: blue; margin-top: 12px;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
+          </div>
+      </form>
+      </div>
+      </div>
+      </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+         <!-- <button type="button" class="btn btn-primary">Save changes</button>  -->
+        <!-- <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
+       
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- Pathologist Singup Modal  -->
+<div class="row"> 
+<div class="modal fade" id="PathologistSingupModal" tabindex="-1" aria-labelledby="PathologistSingupModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="PathologistSingupModal">Welcome Pathologist, please fill the details below for singup</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- the modal body starts here -->
+      <div class="modal-body">
+        <!-- modal body is contained in a row and that row is divided into two columns-->
+      <div class="row "> 
+      <!--  first column starts here   -->
+      <div class="col-lg-6">   
+        <form action="{% url 'PathoSingup' %}" id="PathologistSingupForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="pathofirstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="pathofirstname" name="pathofirstname" aria-describedby="pathofirstname" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathomiddlename" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="pathomiddlename" name="pathomiddlename" aria-describedby="pathomiddlename" required>
+          </div>
+          <div class="mb-3">
+            <label for="patholastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="patholastname" name="patholastname" aria-describedby="patholastname" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathodob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="pathodob" name="pathodob" aria-describedby="pathodob" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathomobile" class="form-label">Mobile Number</label>
+            <input type="number" class="form-control" id="pathomobile" name="pathomobile" aria-describedby="pathomobile" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoemail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="pathoemail" name="pathoemail" aria-describedby="pathoemail" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathopassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pathopassword" name="pathopassword" aria-describedby="pathopassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoconfirmpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="pathoconfirmpassword" name="pathoconfirmpassword" aria-describedby="pathoconfirmpassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="patholabname" class="form-label">Path Lab Name</label>
+            <input type="name" class="form-control" id="patholabname" name="patholabname" aria-describedby="patholabname" required>
+          </div>
+
+        </div> 
+        <!--  first column ends here   -->
+
+        <!--  second column starts here   -->
+        <div class="col-lg-6"> 
+          <div class="mb-3">
+            <label for="pathoregistrationcouncil" class="form-label">Registration Council</label>
+            <input type="number" class="form-control" id="pathoregistrationcouncil" name="pathoregistrationcouncil" aria-describedby="pathoregistrationcouncil" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoregistrationnumber" class="form-label">Registration Number</label>
+            <input type="number" class="form-control" id="pathoregistrationnumber" name="pathoregistrationnumber" aria-describedby="pathoregistrationnumdber" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathovalidfrom" class="form-label">Registration Valid From</label>
+            <input type="date" class="form-control" id="pathovalidfrom" name="pathovalidfrom" aria-describedby="pathovalidfrom" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathovalidto" class="form-label">Registration Valid To</label>
+            <input type="date" class="form-control" id="pathovalidto" name="pathovalidto" aria-describedby="pathovalidto" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathostate" class="form-label">State</label>
+            <select id="state" name="pathostate">
+              <option value="andhra pradesh">Andhra Pradesh</option>
+              <option value="arunachal pradesh">Arunachal Pradesh</option>
+              <option value="assam">Assam</option>
+              <option value="bihar">Bihar</option>
+              <option value="chhattisgarh">Chhattisgarh</option>
+              <option value="goa">Goa</option>
+              <option value="gujarat">Gujarat</option>
+              <option value="haryana">Haryana</option>
+              <option value="himachal pradesh">Himachal Pradesh</option>
+              <option value="jammu and kashmir">Jammu and Kashmir</option>
+              <option value="jharkhand">Jharkhand</option>
+              <option value="karnataka">Karnataka</option>
+              <option value="kerala">Kerala</option>
+              <option value="madhya pradesh">Madhya Pradesh</option>
+              <option value="maharashtra">Maharashtra</option>
+              <option value="manipur">Manipur</option>
+              <option value="meghalaya">Meghalaya</option>
+              <option value="mizoram">Mizoram</option>
+              <option value="nagaland">Nagaland</option>
+              <option value="odisha">Odisha</option>
+              <option value="punjab">Punjab</option>
+              <option value="rajasthan">Rajasthan</option>
+              <option value="sikkim">Sikkim</option>
+              <option value="tamil nadu">Tamil Nadu</option>
+              <option value="telangana">Telangana</option>
+              <option value="tripura">Tripura</option>
+              <option value="uttar pradesh">Uttar Pradesh</option>
+              <option value="uttarakhand">Uttarakhand</option>
+              <option value="west bengal">West Bengal</option>
+              <!-- Add more state options as needed -->
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="pathodistrict" class="form-label">District</label>
+            <input type="name" class="form-control" id="pathodistrict" name="pathodistrict" aria-describedby="pathodistrict" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathocity" class="form-label">City</label>
+            <input type="name" class="form-control" id="pathocity" name="pathocity" aria-describedby="pathocity" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathopin" class="form-label">Pin Code</label>
+            <input type="name" class="form-control" id="pathopin" name="pathopin" aria-describedby="pathopin" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathotestfacility" class="form-label">Test Facilities Available</label>
+            <input type="name" class="form-control" id="pathotestfacility" name="pathotestfacility" aria-describedby="pathotestfacility" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-left: 14rem;">Submit</button>
+        </div>
+        <!--  second column ends here   -->
+      </form>
+      </div>
+      <!-- <div class="modal-footer">
+         <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> 
+      </div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-primary">Save changes</button>  --> 
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+       
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+ <!-- Doctor Singup Modal  -->
+<div class="row"> 
+  <div class="modal fade" id="DoctorSingupModal" tabindex="-1" aria-labelledby="DoctorSingupModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="DoctorSingupModal">Welcome Doctor, please fill the details below for singup</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- the modal body starts here -->
+        <div class="modal-body">
+          <!-- modal body is contained in a row and that row is divided into two columns-->
+        <div class="row"> 
+        <!--  first column starts here   -->
+        <div class="col-lg-6">   
+          <form action="{% url 'DoctorSingup' %}" id="DoctorSingupForm" method="post"> {% csrf_token %}
+            <div class="mb-3">
+              <label for="doctorfirstname" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="doctorfirstname" name="doctorfirstname" aria-describedby="doctorfirstname">
+            </div>
+            <div class="mb-3">
+              <label for="doctormiddlename" class="form-label">Middle Name</label>
+              <input type="text" class="form-control" id="doctormiddlename" name="doctormiddlename" aria-describedby="doctormiddlename" >
+            </div>
+            <div class="mb-3">
+              <label for="doctorlastname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="doctorlastname" name="doctorlastname" aria-describedby="doctorlastname" >
+            </div>
+            <div class="mb-3">
+              <label for="doctordob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="doctordob" name="doctordob" aria-describedby="doctordob" >
+            </div>
+            <div class="mb-3">
+              <label for="doctormobile" class="form-label">Mobile Number</label>
+              <input type="number" class="form-control" id="doctormobile" name="doctormobile" aria-describedby="doctormobile" >
+            </div>
+            <div class="mb-3">
+              <label for="doctoremail" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="doctoremail" name="doctoremail" aria-describedby="doctoremail">
+            </div>
+            <div class="mb-3">
+              <label for="doctorpassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="doctorpassword" name="doctorpassword" aria-describedby="doctopassword">
+            </div>
+            <div class="mb-3">
+              <label for="doctorcpassword" class="form-label"> Confirm Password</label>
+              <input type="password" class="form-control" id="doctorcpassword" name="doctorcpassword" aria-describedby="doctorcpassword">
+            </div>
+            <div class="mb-3">
+              <label for="doctorregistrationcouncil" class="form-label">Registration Council</label>
+              <select id="medical_council" name="doctorregistrationcouncil">
+                <option value="mci">Medical Council of India (MCI)</option>
+                <option value="nmc">National Medical Commission (NMC)</option>
+                <option value="dci">Dental Council of India (DCI)</option>
+                <option value="pci">Pharmacy Council of India (PCI)</option>
+                <!-- Add more council options here -->
+                <option value="other">Other</option>
+            </select>
+              <div class="form-label" id="other_council_field" style="display: none;">
+               <label for="other_council">Enter Council Name:</label>
+               <input type="text" id="other_council" name="other_council">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="doctorregistrationnumber" class="form-label">Registration Number</label>
+              <input type="number" class="form-control" id="doctorregistrationnumber" name="doctorregistrationnumber" aria-describedby="doctorregistrationnumber">
+            </div>
+             
+          </div>
+          <!--  first column ends here   -->
+  
+          <!--  second column starts here   -->
+          <div class="col-lg-6"> 
+          <div class="mb-3">
+            <label for="doctorqualification" class="form-label">Highest Qualification</label>
+            <input type="text" class="form-control" id="doctorqualification" name="doctorqualification" aria-describedby="doctorqualification" >
+          </div>
+          <div class="mb-3">
+            <label for="doctoruniversity" class="form-label">University Name</label>
+            <input type="text" class="form-control" id="doctoruniversity" name="doctoruniversity" aria-describedby="doctoruniversity" >  
+          </div>
+          <div class="mb-3">
+            <label for="doctoruniversity" class="form-label">University Name</label>
+            <input type="text" class="form-control" id="doctoruniversity" name="doctoruniversity" aria-describedby="doctoruniversity" >  
+          </div>
+          <div class="mb-3">
+            <label for="doctorpassingyear" class="form-label">Year of Passing</label>
+            <input type="number" class="form-control" id="doctorpassingyear" name="doctorpassingyear" aria-describedby="doctorpassingyear">  
+          </div> 
+            <div class="mb-3">
+              <label for="doctorclinicname" class="form-label">Clinic Name</label>
+              <input type="text" class="form-control" id="doctorclinicname" name="doctorclinicname" aria-describedby="doctorclinicname" >
+            </div>
+            <div class="mb-3">
+              <label for="state" class="form-label">State</label>
+              <select id="state" name="doctorstate" onchange="updateNameAttribute(this);">
+                <option value="andhra pradesh">Andhra Pradesh</option>
+                <option value="arunachal pradesh">Arunachal Pradesh</option>
+                <option value="assam">Assam</option>
+                <option value="bihar">Bihar</option>
+                <option value="chhattisgarh">Chhattisgarh</option>
+                <option value="goa">Goa</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="haryana">Haryana</option>
+                <option value="himachal pradesh">Himachal Pradesh</option>
+                <option value="jammu and kashmir">Jammu and Kashmir</option>
+                <option value="jharkhand">Jharkhand</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="kerala">Kerala</option>
+                <option value="madhya pradesh">Madhya Pradesh</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="manipur">Manipur</option>
+                <option value="meghalaya">Meghalaya</option>
+                <option value="mizoram">Mizoram</option>
+                <option value="nagaland">Nagaland</option>
+                <option value="odisha">Odisha</option>
+                <option value="punjab">Punjab</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="sikkim">Sikkim</option>
+                <option value="tamil nadu">Tamil Nadu</option>
+                <option value="telangana">Telangana</option>
+                <option value="tripura">Tripura</option>
+                <option value="uttar pradesh">Uttar Pradesh</option>
+                <option value="uttarakhand">Uttarakhand</option>
+                <option value="west bengal">West Bengal</option>
+                <!-- Add more state options as needed -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="doctordistrict" class="form-label">District</label>
+              <input type="text" class="form-control" id="doctordistrict" name="doctordistrict" aria-describedby="doctordistrict">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctorcity" class="form-label">City</label>
+              <input type="text" class="form-control" id="doctorcity" name="doctorcity" aria-describedby="doctorcity" >
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctorpincode" class="form-label">Pin Code</label>
+              <input type="number" class="form-control" id="doctorpincode" name="doctorpincode" aria-describedby="doctorpincode" >
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctortestfacility" class="form-label">Test Facilities Available</label>
+              <input type="text" class="form-control" id="doctortestfacility" name="doctortestfacility" aria-describedby="doctortestfacility" >
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 14rem;">Submit</button>
+          </div>
+          <!--  second column ends here   -->
+        </form>
+        </div>
+        <!-- <div class="modal-footer">
+           <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> 
+        </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> 
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function updateNameAttribute(selectElement) {
+  var selectedValue = selectElement.value;
+  var nameAttribute = "doctor" + selectElement.id; // Generate a unique name attribute
+  selectElement.name = nameAttribute;
+}
+
+// javascript for selecting the medical council with an other option
+document.getElementById("medical_council").addEventListener("change", function() {
+    var selectedOption = this.value;
+    var otherCouncilField = document.getElementById("other_council_field");
+
+    if (selectedOption === "other") {
+        otherCouncilField.style.display = "block";
+    } else {
+        otherCouncilField.style.display = "none";
+    }
+});
+
+</script>
+
+
+<!-- Chabot Modal  -->
+<!-- </section id="ChatBotModal"> -->
+<!-- <div class="row"> -->
+<div class="modal fade" id="ChatBotModal" tabindex="-1" role="dialog" aria-labelledby="ChatBotModal" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div id="modal-positioning" class="modal-content">
+      <div id="model-heading" class="modal-header">
+        <h5 class="modal-title" id="ChatBotModal"> <small> Hello,  I am <strong> Charak Bot </strong>, an AI powered assistant. I am here to help you with your queries. Please enter your query below to proceed.</small></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+      <!-- <hr style="border: 2px solid black;"> -->
+      <div class="modal-body">
+
+        <div id="chat-container">
+          <div id="chatbox__messages">
+              <p class="bold-message" style="align-items: center; justify-content: center;">{{result}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div id="userInputContainer">
+          <input type="text" id="userInput" placeholder="Type your query..." onkeyup="handleKeyPress(event)">
+          <button id="sendButton" onclick="sendMessage()">Send</button>
+      </div>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for sending messages and receiving responses -->
+        
+<script>
+  function sendMessage() {
+      // Get user input
+      var userInput = document.getElementById("userInput").value;
+
+      // Add user message to the chat interface
+      var chatDiv = document.getElementById("chatbox__messages");
+      chatDiv.innerHTML += '<p>User: ' + userInput + '</p>';
+
+      // Clear the input field
+      document.getElementById("userInput").value = '';
+
+      // Create a JSON object with the "message" key
+      var jsonData = { message: userInput };
+      // print(jsonData);
+      var csrftoken = getCookie('csrftoken');
+
+      // Send the JSON object to the server (Flask app) for processing
+      fetch('/healthchatbot/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrftoken
+          },
+          body: JSON.stringify(jsonData) 
+      }) 
+      .then(function(response) {
+          return response.json();
+      })
+      .then(function(data) {
+          // Display only the "text" value from the JSON response
+          var chatbotResponse = data.response.text; // Assuming "text" is the key in your JSON response
+          chatDiv.innerHTML += '<p>Chatbot: ' + chatbotResponse + '</p>';
+
+          // alternative to the above chatDiv line is this code till chadDiv.appendChild
+          // var chatMessage = document.createElement('p');
+          // chatMessage.textContent = 'Chatbot: ' + chatbotResponse;
+          
+          // // Apply styles
+          // chatMessage.style.display = 'flex'; // To enable flexbox layout
+          // chatMessage.style.justifyContent = 'center'; // Center content horizontally
+          // chatMessage.style.alignItems = 'center'; // Center content vertically
+          
+          // // Append the styled chat message to the chatDiv
+          // chatDiv.appendChild(chatMessage);
+            });
+  }
+
+  // Function to retrieve a cookie by name
+  function getCookie(name) {
+      var value = "; " + document.cookie;
+      var parts = value.split("; " + name + "=");
+      if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  // Function to handle Enter key press
+  function handleKeyPress(event) {
+          if (event.keyCode === 13) { // 13 is the key code for Enter
+              sendMessage();
+          }
+      }
+</script>
+
+
+
+</body>
+
+</html>

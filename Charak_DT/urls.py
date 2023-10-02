@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,9 +28,17 @@ urlpatterns = [
     path('contact/', views.contact, name="Contact" ),
     path('contactsuccess/', views.contactsuccess, name="ContactSuccess" ),
     path('healthcareprovider/', views.healthcareprovider, name="HealthCareProvider"),
+    path('charakpatient/', views.charakpatient, name="CharakPatient"),
+    path('charakdoctor/', views.charakdoctor, name="CharakDoctor"),
+    path('charakpathologist/', views.charakpathologist, name="CharakPathologist"),
+    path('apis_integration/', views.apis_integration, name="ApisIntegration"),
     path('manager/', include('Manager.urls')),
     path('doctor/', include('Doctor.urls')),
     path('user/', include('User.urls')),
     path('pathologist/', include('Pathologist.urls')),
     path('healthchatbot/', include('Healthchatbot.urls')),
-]
+] 
+# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

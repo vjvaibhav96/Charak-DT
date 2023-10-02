@@ -8,7 +8,7 @@ class Registered_Pathologist(models.Model):
     pmiddlename = models.CharField(max_length=150)
     plastname = models.CharField(max_length=150)
     pdob = models.DateField()
-    pmobile = models.IntegerField()
+    pmobile = models.CharField(max_length=15)
     pemail = models.CharField(max_length=70)
     ppassword = models.CharField(max_length=70)
     pconfirmpassword = models.CharField(max_length=70)
@@ -23,4 +23,5 @@ class Registered_Pathologist(models.Model):
     ptestfacility = models.CharField(max_length=150)
     pdatetime = models.DateTimeField(max_length=150)
     pathoflag = models.IntegerField()
+    pabout = models.CharField(max_length=500)
 

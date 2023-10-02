@@ -9,5 +9,7 @@ urlpatterns = [
     path('prediction/', views.prediction, name="ManagerPrediction"),
     path('managerhome/', views.manager_home, name="ManagerHome"),
     path('managerlogout/', views.logout, name="ManagerLogout"),
-    path('managersingupsuccess/', views.managersingupsuccess, name="ManagerSingupSuccess")
+    path('managersingupsuccess/', views.managersingupsuccess, name="ManagerSingupSuccess"),
+    # uncomment this endpoint for smart mirror
+    # path('smartmirror/', views.smartmirror, name="SmartMirror")
 ]
