@@ -51,8 +51,8 @@
 <div class="container my-4 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
 <form id="form" action="{% url 'DoctorAccessData' %}" method="POST"> {% csrf_token %}
     <div class="mb-2">
-    <label for="exampleInputUserid1" class="form-label">User ID</label>
-    <input type="number" class="form-control" placeholder="Enter your user id" id="exampleInputUserid1" name="uid" autocomplete="off">
+    <label for="userid" class="form-label">User ID</label>
+    <input type="number" class="form-control" placeholder="Enter your user id" id="userid" name="userid" autocomplete="off">
     </div>
     <div class="mb-2">
     <label for="exampleInputFullname1" class="form-label">Full Name</label>

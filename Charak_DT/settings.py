@@ -136,8 +136,14 @@ STATICFILES_DIRS = [
     BASE_DIR / "User/static",
     BASE_DIR / "Pathologist/static",
     BASE_DIR / "Healthchatbot/static",
+    BASE_DIR / "User",
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# managing the media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 
 # Default primary key field type

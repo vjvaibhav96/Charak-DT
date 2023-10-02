@@ -1,0 +1,100 @@
+{% extends 'user/basic_user.html' %}  
+
+{% block title %} User Health user_hdata {% endblock %}
+
+{% block css %} 
+<style>
+        #container1{
+            margin-top: 20px;
+        }
+        #container2{
+            margin-top: 10px;
+        }
+       .container1 {
+            display: flex;
+            text-decoration-line: underline;
+            font-weight: bolder;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            color: rgb(232, 30, 16);
+            margin-left: 50px;
+            padding-left: 50px;
+    }
+      .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px
+    }
+      .container3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1px
+    }    
+    .data1{
+        text-align: center;
+    }
+    </style> 
+    {% endblock %}
+    
+{% block body %} 
+{% load static %}
+<br><br><br>
+    <!-- <h3 style="color: black; font-family: 'Montserrat'; text-align:center">Your Health Data</h3> -->
+
+    <h4 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Prescription Details Received from Gudmed</h4>
+    <br>
+    
+    <table id ="container1" class = "table table-striped table-hover" style="padding-left: 50px;">
+        <thead style="padding-left: 50px;">
+        <tr>
+            <th class="data1">Serial Number</th>
+            <th class="data1">Doctor Name</th>
+            <th class="data1">Uploaded Date</th>
+            <th class="data1">View Prescription</th>
+        </tr>
+    </thead>
+    <tbody style="padding-left: 25px;">
+        {% for data in view_data %}
+        {% if not forloop.last %}
+          <tr>
+            <td class="data1">{{ forloop.counter }}</td>
+            <td class="data1">{{ data.doctorname }}</td>
+            <td class="data1">{{ data.datetime }}</td>
+            <td class="data1"> 
+                <a href="{% static 'img/prescription/Prescription.pdf' %}" target="_blank"> <button>Download Prescription</button></a>
+                <!-- <button class="view-scan" data-scan-url="{% static 'img/prescription/1.docx' %}">View Scan</button>  -->
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          
+      </tbody>
+      
+      
+    </table>
+
+    <script>
+        const scanButtons = document.querySelectorAll('.view-scan');
+
+        scanButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const scanUrl = button.getAttribute('data-scan-url');
+                const scanWindow = window.open(scanUrl, 'Scan Viewer', 'width=600,height=800');
+
+                // Close the scan window on button click
+                scanWindow.addEventListener('beforeunload', () => {
+                    button.textContent = 'View Scan'; // Change button text back
+                });
+
+                button.textContent = 'Close Scan'; // Update button text
+            });
+        });
+    </script>
+    <div style="bottom: 50px; right: 50px; position: absolute;">
+        <p> Powered By <img src="{% static 'img/gudmed.png' %}" alt="no image"> </p>
+      </div>
+
+    {% endblock %}

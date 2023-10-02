@@ -1,0 +1,114 @@
+{% extends 'doctor/basic_doctor.html' %}
+
+{% block title %} Mobilab Test {% endblock %}
+
+{% block css %}
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2{
+      color:black;
+      display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+      color: red;
+    }
+    /* Increase the size of the checkbox */
+    input[type="checkbox"] {
+        transform: scale(1.5); /* Adjust the scale factor as needed */
+        margin-right: 35px; /* Optional: Add some spacing between the checkbox and label */
+    }
+  </style>
+  {% endblock %}
+
+  {% block body %}
+
+    <div class="container1">
+        <h3> Select Test </h3>
+    </div>
+    <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+      <form action="{% url 'MobilabTest' %}" method="POST"> {% csrf_token %}
+        <div  class="mb-2" style="align-items: center; text-align: center;">
+            <h6> Select the tests you want to perform </h6>
+        </div>
+        <div class="mb-2">
+          <label for="userid" class="form-label">User ID</label>
+          <input type="number" class="form-control" id="userid" name="userid" autocomplete="off" placeholder="Enter user id">
+        </div>
+        <!-- <div class="mb-2">
+          <label for="albumin" class="form-label">Albumin</label>
+          <input type="checkbox" class="form-control" id="albumin" name="albumin" autocomplete="off" value="1">
+        </div> -->
+        <div class="mb-2">
+          <label for="albumin" class="form-label">Albumin</label>
+          <input type="checkbox"  id="albumin" name="albumin" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+          <label for="glucose" class="form-label">Glucose</label>
+          <input type="checkbox" id="glucose" name="glucose" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+          <label for="triglyceride" class="form-label">Triglyceride</label>
+          <input type="checkbox" id="triglyceride" name="triglyceride" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+          <label for="cholesterol" class="form-label">Cholesterol </label>
+          <input type="checkbox" id="cholesterol" name="cholesterol" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+          <label for="ldl" class="form-label">LDL</label>
+          <input type="checkbox" id="ldl" name="ldl" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+          <label for="total_protein" class="form-label">Total_Protein</label>
+          <input type="checkbox" id="total_protein" name="total_protein" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+          <label for="uric_acid" class="form-label">Uric_Acid </label>
+          <input type="checkbox" id="uric_acid" name="uric_acid" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+          <label for="haemoglobin" class="form-label">Haemoglobin</label>
+          <input type="checkbox" id="haemoglobin" name="haemoglobin" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+            <label for="creatinine" class="form-label">Creatinine</label>
+            <input type="checkbox" id="creatinine" name="creatinine" autocomplete="off" value="Yes">
+        </div>
+        <div class="mb-2">
+            <label for="bili" class="form-label">Bilirubin_Total</label>
+            <input type="checkbox" id="bili" name="bili" autocomplete="off" value="Yes">
+          </div>
+        <br>
+        <div style="text-align: center;">
+        <button type="submit"  class="btn btn-primary" id = "bxc">Save</button></div>
+     </form>
+    </div>
+ {% endblock %}
+

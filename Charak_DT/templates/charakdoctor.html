@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> {% load static %}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Charak DT</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/drishti_logo.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet"> -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'css/stylex.css' %}" rel="stylesheet"> -->
+  <!-- <link href="{% static 'css/chatbot.css' %}" rel="stylesheet"> -->
+
+  <!-- Include jQuery and Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- for jquery and bootstrap for chatbot modal  -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<!-- Bootstrap JavaScript (optional, for some components) -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+  <!-- =======================================================
+  * Template Name: Flexor
+  * Updated: Jul 27 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <!-- <style>
+
+  body {
+        margin: 0;
+        padding: 0;
+    }
+    #chat {
+      padding-left: 5px;
+      padding-right: 7px;
+    }
+    #chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        text-align: justify;
+        z-index: 9999;
+    }
+    #chat-button {
+        background-color: #ff5821;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    #chat-container {
+        display: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        height: 400px;
+        overflow-y: auto;
+    }
+    #userInput {
+      /* line-height: 3rem; */
+      padding-left: 5rem;
+      padding-top: 1rem;
+      margin-bottom: 0rem;
+    }
+    #userInputContainer{
+      padding-left: 1rem;
+      margin-top: 13rem;
+      text-align: center;
+    }
+    #sendButton{
+      padding-left: 1rem;
+      padding-top: 1rem;
+      text-align: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .hidden {
+    display: none;
+    }
+    #chat-box{
+      overflow-y:auto;
+    }
+  </style> -->
+
+  <style>
+    #CharakBotButton{
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column-reverse;
+      cursor: pointer;
+      background-color: darkorchid;
+    }
+    #modal-positioning{
+      position: fixed;
+      right: 20px;
+      bottom: 85px;
+      width: 400px;
+      height: 450px;
+      border-radius: 20px;
+
+    }
+    #model-heading{
+      color: whitesmoke;
+      background-color: teal;
+      border-radius: 20px; 
+      padding-right: 10px; 
+      padding-left: 10px;
+      text-align: justify;
+    }
+    /* MESSAGES */
+  .chatbox__messages {
+    margin-top: auto;
+    display: flex;
+    width: 380px;
+    height: 250px;
+    overflow-y: scroll;
+    flex-direction: column-reverse;
+  }
+  .modal-title {
+    height: 70px;
+    font-size: large;
+  }
+  .modal-header .close {
+    padding: 2rem 10px;
+  }
+  hr {
+    margin-top: 1px;
+    margin-bottom: 0rem;
+  }
+  #userInputContainer{
+      position: fixed;
+      bottom: 90px;
+      height: 30px;
+      padding-left: 15px;
+      overflow: auto;
+    }
+    .modal-footer{
+      height: 55px;
+      justify-content: flex-start;
+      border-top: 2px solid black;
+    }
+    #userInput{
+      justify-content: center;
+      align-items: center;
+      width: 18rem;
+      border-radius: 10px;
+    }
+    .modal-body{
+      overflow: overlay;
+      position: relative;
+      border-top: 2px solid black;
+    }
+    #sendButton{
+      border-radius: 10px;
+    }
+    /* .modal-backdrop{
+      z-index: 1040;
+    } */
+    #DoctorSingupModal{
+      z-index: 10100;
+      /* overflow: scroll; */
+    }
+    .modal{
+      overflow: scroll;
+    }
+    #ManagerLoginModal{
+      border-radius: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- === Charak Bot Modal ===  -->
+    <div id="CharakBotButton"> 
+      <a href="#ChatBotModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChatBotModal">
+           Chat with our Expert || CharakBot <br>
+           <small>  <strong style="color: black;"> Powered by : </strong> Digi-Attorney </small> 
+        </button> 
+      </a>
+    </div>
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <!-- <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i> -->
+      </div>
+
+      <div class="cta d-none d-md-flex align-items-center">
+        <!-- <a href="#about" class="scrollto">Get Started</a> -->
+      </div>
+    </div>
+  <!-- </section> -->
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <!-- <a class="btn btn-info btn-lg btn-block" data-mdb-toggle="collapse" href="{% url 'HealthChatBot' %}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <span>Chat Bot</span>
+                      <i class="fas fa-chevron-down"></i>
+                  </div>
+      </a> -->
+      <!-- <div> <a href="#ChatBotModal">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChatBotModal">
+        Chat Bot modal
+      </button> </a>
+    </div> -->
+
+      <div class="logo">
+        <!-- <h1><a href="index_flexor.html">Flexor</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a  href="https://drishticps.iiti.ac.in/" target="_blank"><img src="{% static 'img/drishti_logo.png' %}" alt="" class="img-fluid"></a>
+        <!-- <a style="padding-left: 12px;" href="https://www.iiti.ac.in/" target="_blank"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid"></a> -->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="#application">Application Areas</a></li>
+          
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a href="{% url 'DLogout' %}">Logout</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+
+      <div class="logo">
+        <a style="padding-left: 25px;" href="https://www.iiti.ac.in/" target="_blank"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid"></a>
+    </div>
+
+    </div>
+  </header><!-- End Header -->
+</section>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container" data-aos="fade-in">
+      <h1>Welcome to CharakDT</h1>
+      <h1 style="color: #ffffff;">Human Digital Twin Platform for Healthcare </h1>
+    </div>
+  </section>
+  
+  <!-- End Hero -->
+
+  <br><br><br>
+
+  <main id="main">
+    <br><br><br>
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative" data-aos="fade-right">
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h4 data-aos="fade-up">About </h4>
+            <h3 data-aos="fade-up">CharakDT</h3>
+            <p data-aos="fade-up" style="justify-content: space-evenly; font-family: railway sans-serif;">CHARAK is a unified interface that digitally links all healthcare advances and participants in the nation. The platform aims to facilitate Patient centric healthcare delivery through enhanced efficiency and cost savings, streamlining healthcare processes and optimizing resource allocation.</p>
+
+            <div class="icon-box" data-aos="fade-up">
+              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              <p class="description" style="font-family: railway sans-serif;">Create a digital healthcare ecosystem connecting players nationwide.</p>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bx bx-gift"></i></div>
+              <p class="description" style="font-family: railway sans-serif;">Use India's digital infrastructure: smart wearables, IoT, AI, remote monitoring, big data analytics.</p>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bx bx-atom"></i></div>
+              <p class="description" style="font-family: railway sans-serif;">Develop global governance framework for interoperability and address concerns around digital health.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End About Section -->
+
+    <section id="values" class="values">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Our Vision & Mission</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="card" style="background-image: url('{% static 'img/values-1.jpg'%}');">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Our Vision</a></h5>
+                <p class="card-text">Revolutionizing personalized care by digitally integrating precise diagnosis and treatment, enabling more individualized, intelligent, and proactive healthcare.</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
+            <div class="card" style="background-image: url('{% static 'img/values-2.jpg' %}');">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">Our Mission</a></h5>
+                <p class="card-text">Developing a National Digital Health Ecosystem that is unified, efficient, and accessible, with an interoperable framework to address concerns about digital health and link key healthcare players nationwide.</p>
+               </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Values Section -->
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="why-us" class="why-us" style="background-color: #fff9f7;"><br>
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>Whom Do We Cater To</h2>
+              </div>
+            <div class="row">
+              
+              <!-- <div class="col-xl-12 col-lg-7 d-flex"> -->
+    
+                <div class="icon-boxes d-flex flex-column justify-content-center">
+    
+                  <div class="row" style="align-items: center; text-align: center;">
+                    <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/patient.png' %}" alt="">
+                        <h4 style="padding-top: 40px; font-size: 22px;">Doctor Section</h4>
+                        <div class="text-center" style="padding-top: 42px;">
+                         <a href="{% url 'DoctorProfile' %}"> <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#UserLoginModal">
+                           Go To Section 
+                         </button></a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/healthcare.png' %}" alt="error">
+                        <h4 style="padding-top: 40px; font-size: 20px;">Health Care Provider</h4>
+                        <div class="text-center" style="padding-top: 42px;">
+                           <a href="{% url 'HealthCareProvider' %}"><button type="button" class="more-btn">
+                            Go To Section 
+                         </button></a>
+                        </div>
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/technology.png' %}" alt="">
+                        <h4 style="padding-top: 40px; font-size: 20px;">Technology Developers (Researchers & Startups)</h4>
+                         <div class="text-center" style="padding-top: 18px;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#PathologistLoginModal">
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div> -->
+                    <!-- <div style="padding-top: 25px;" class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100"> 
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/government.png' %}" alt="">
+                       <h4 style="padding-top: 40px; font-size: 20px;">Government Departments and Schemes </h4>
+                         <div class="text-center" style="padding-top: 30px;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#">
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div> -->
+                    <!-- <div style="padding-top: 25px;" class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/medical-device.png' %}" alt="">
+                        <h4 style="padding-top: 40px; font-size: 20px;">Medical Device Manufacturers</h4>
+                        <div class="text-center" style="padding-top: 26px;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#">
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div> -->
+                    <!-- <div style="padding-top: 25px;" class="col-xl-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                      <div class="icon-box mt-4 mt-xl-0">
+                        <img style="height: 100px; width: 100px;" src="{% static 'img/cater/assurance.png' %}" alt="">
+                        <h4 style="padding-top: 34px; font-size: 20px;">Insurance & Assurance Providers</h4>
+                        <div class="text-center" style="padding-top:25px ;">
+                          <button type="button" class="more-btn" data-bs-toggle="modal" data-bs-target="#">
+                            Go To Section 
+                         </button>
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+    
+                <!-- </div> -->
+                
+              </div>
+            </div>
+    
+          </div>
+        </section>
+        <!-- End Why Us Section -->  
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg" style="background-color: #fff;">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Services</h2>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 127px;" src="{% static 'img/diagnosis &dss.png' %}" alt="error"> </div>
+              <br>
+              <h4 class="title"><a href="" style="font-family: sans-serif; font-size: 20px; pointer-events: none">Disease Diagnosis & Decision Support System</a></h4>
+             </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 127px;" src="{% static 'img/data-collection.png' %}" alt="error"></div>
+                <br>
+              <h4 class="title"><a href="" style="font-family: sans-serif; font-size: 20px;"> Integrated Data Collection </a></h4>
+             </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/digital models.png' %}" alt="error"></div>
+              <br>  
+               <h4 class="title"><a href="" style="font-family: sans-serif; font-size: 20px;"> Personalised Digital Models </a></h4>
+             </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/3d reconstrction.png' %}" alt="error"></div>
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> 3D Reconstruction and Bio-Printing </a></h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/medical legal.png' %}" alt="error"></div>
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Medico-Legal Decision Support System</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 122px;" src="{% static 'img/cross-platform.png' %}" alt="Not Available"></div>
+               <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Ayush Digital Platform</a></h4>
+             </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/virtual-reality.png' %}" alt="Not Available"></div>
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Digital Theraputics & Virtual Reality </a></h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+            <div class="icon-box">
+              <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 85px; width: 107px;" src="{% static 'img/training.png' %}" alt="Not Available"></div>
+              <h4 class="title" style="padding-top: 30px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Medical Training & Skilling </a></h4>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Values Section ======= -->
+
+
+    <!-- ======== Application Area ======== -->
+
+       <!-- ======= Applicatin Area ======= -->
+       <section id="application" class="services section-bg" style="background-color: #fff9f7;">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>Application Areas</h2>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/prediction.png' %}" alt="error"></div>
+                <br>
+                <h4 class="title" style="padding-top: 25px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Predictive Outcome</a></h4>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/surgical planning.png' %}" alt="error"></div>
+                <h4 class="title" style="padding-top: 47px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Surgical Planning </a></h4>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/medicine.png' %}" alt="error"></div>
+                 <h4 class="title"style="padding-top: 42px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Personalised Medicine </a></h4>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/education.png' %}" alt="error"></div>
+                <h4 class="title" style="padding-top: 34px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Medical Education & Training </a></h4>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/medico device.png' %}" alt="error"></div>
+                <h4 class="title" style="padding-top: 34px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Medical Devices Design & Optimisation</a></h4>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/drag development.png' %}" alt="error"></div>
+                <h4 class="title" style="padding-top: 27px;"><a href="" style="font-family: sans-serif; font-size: 20px;">Drug Development and Dosage Optimisation - in Silico Clinical Trials</a></h4>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;"> <img style="height: 92px; width: 107px;" src="{% static 'img/application/decision-making.png' %}" alt="error"></div>
+                 <h4 class="title" style="padding-top: 34px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Regulatory Decision Making </a></h4>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500" style="pointer-events: none;">
+              <div class="icon-box">
+                <div class="icon" style="height: 70px; width: 70px; background-color: #fff;" > <img style="height: 92px; width: 107px;" src="{% static 'img/application/strategy.png' %}" alt="error"></div>
+                  <h4 class="title" style="padding-top: 32px;"><a href="" style="font-family: sans-serif; font-size: 20px;"> Health System Facility & Service Line Growth Strategy </a></h4>
+               </div>
+            </div>
+          </div>
+  
+        </div>
+      </section>
+      <!-- End Services Section -->
+
+
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials" style="position: unset;">
+          <div class="container position-relative" data-aos="fade-up">
+
+            <div class="section-title" data-aos="fade-up">
+              <h2>Testimonials</h2>
+            </div>
+                <!-- <div class="swiper-slide"> -->
+                  <div class="testimonial-item">
+                    <img src="{% static 'img/testimonials/Dr_Deepak_Agrawal.png' %}" class="testimonial-img" alt="">
+                    <h3 style="color: black;"> Dr. Deepak Agrawal </strong></h3>
+                    <h4 style="color: black;">Neurosurgeon at AIIMS Delhi</h4>
+                    <p style="color: black;">
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i> <strong>
+                      India's healthcare delivery system can benefit from the use of digital twin technology.</strong>
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End testimonial item -->
+    
+              </div>
+              <!-- <div class="swiper-pagination"></div> -->
+            </div>
+    
+          </div>
+        </section>
+        <!-- End Testimonials Section -->
+
+<section id="team" class="chefs menu" style="background-color: #fff9f7"> 
+  <div class="container" data-aos="fade-up">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Related Articles</h2>
+     </div>
+
+  <div class="gallery-slider swiper" data-aos="fade-up" data-aos-delay="100" style="padding-left: 18rem;">
+  <div class=" swiper-wrapper align-items-center">
+
+    <!-- End Chefs Member -->
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch swiper-slide" data-aos="fade-up" data-aos-delay="300" >
+      <div class="chef-member" style="align-items: center;">
+        <div class="member-img">
+          <a href="{% static 'img/drishtikon/DrishtikonApril23.pdf' %}" target="_blank"> 
+          <img src="{% static 'img/drishtikon/DrishtiApril23.jpg' %}" class="img-fluid" alt=""> </a>
+        </div>
+        <div class="member-info">
+          <a href="{% static 'img/drishtikon/DrishtikonApril23.pdf' %}" target="_blank" style="color: #313030;">
+          <h4 style="font-family:Poppins sans-serif; text-align: center; padding-top: 30px; color:#313030;font-size: 20px; "> Drishtikon April 2023  </h4> </a>
+        </div>
+      </div>
+    </div><!-- End Chefs Member -->
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch swiper-slide" data-aos="fade-up" data-aos-delay="300">
+      <div class="chef-member" style="align-items: center;">
+        <div class="member-img">
+          <a href="{% static 'img/drishtikon/DrishtikonJuly23.pdf' %}" target="_blank"> 
+          <img src="{% static 'img/drishtikon/DrishtiJuly23.jpg' %}" class="img-fluid" alt=""> </a>
+        </div>
+        <div class="member-info">
+          <a href="{% static 'img/drishtikon/DrishtikonJuly23.pdf' %}" target="_blank" style="color: #313030;">
+          <h4 style="font-family:Poppins sans-serif; text-align: center; padding-top: 30px; color:#313030; font-size: 20px;">  Drishtikon July 2023  </h4> </a>
+         </div>
+      </div>
+    </div><!-- End Chefs Member -->
+    
+  </div>
+ </div>
+ <div class="swiper-pagination"></div>
+</div>
+</section>
+<!-- End Chefs Section -->
+    
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-aos="fade-up">Contact</h2>
+          <p data-aos="fade-up">Unlocking the Future of Technology and Healthcare through Digital Twins: Contact us today to embark on your innovative journey!</p>
+        </div>
+
+        <div class="row justify-content-center">
+
+          <div class="col-xl-3 col-lg-4 mt-4" data-aos="fade-up">
+            <div class="info-box">
+              <i class="bx bx-map"></i>
+              <h3>Our Address</h3>
+              <p>LRC Building, IIT Indore, 
+              MP, 453552, India</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-lg-4 mt-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="info-box">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>officedrishti[at]iiti.ac.in </p> <br>
+                <!-- <p><br>contactcharak@iiti.ac.in</p> -->
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 mt-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-box">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+91-731-660-3372 </p>
+              <br>
+               <!-- <p>+91 2222222222</p> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-xl-9 col-lg-12 mt-4">
+            <form action="{% url 'Contact' %}" method="post" class="php-email-form"> {% csrf_token %}
+            <!-- <form action="{% url 'Contact' %}" method="post" role="form" class="php-email-form"> {% csrf_token %} -->
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <!-- <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div> -->
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>CharakDT</h3> <br>
+            <h6>IITI Drishti CPS Foundation</h6>
+            <p>
+              4th Floor LRC, IIT Indore, Khandwa Road,<br>
+              Simrol, Indore, Madhya Pradesh, 453552<br>
+              India <br><br>
+              <strong>Phone:</strong> +91-731-660-3372<br>
+              <strong>Email:</strong> officedrishti[at]iiti.ac.in<br>
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+          <div class="row">
+              <div class="col-lg-6">
+              <li><i class="bx bx-chevron-right"></i> <a href="https://nmicps.in/" target="_blank">NMICPS</a></li>
+              <li><i class="bx bx-chevron-right"  ></i> <a href="https://nha.gov.in/" target="_blank">National Health Authority</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://main.mohfw.gov.in/" target="_blank">Ministry of Health & Family Welfare</a></li>
+              </div>            
+              <div class="col-lg-6">
+              <li><i class="bx bx-chevron-right"></i> <a href="https://main.icmr.nic.in/" target="_blank">Indain Council of Medical Research</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://drishticps.iiti.ac.in/" target="_blank">IITI Drishti CPS Foundation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.iiti.ac.in/" target="_blank">IIT Indore</a></li>
+              </div>
+          </div>
+          </ul>
+          <!-- </div> -->
+        </div>
+
+           <!-- <div class="col-lg-3 col-md-6 footer-links">
+          </div>  -->
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <a href="https://drishticps.iiti.ac.in/affiliate-program/" target="_blank"><h4>Join Our Affiliate Program</h4> </a>
+            <p>Affiliate Programme Offers Opportunities to Individuals to Connect with IITI DRISHTI CPS Foundations</p>
+          
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-lg-flex py-4">
+
+      <div class="text-center text-lg-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>CharakDT</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+             Designed by <a href="https://drishticps.iiti.ac.in/" target="_blank"> IITI Drishti CPS Foundation</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-lg-left pt-3 pt-lg-0" style="padding-left: 15rem;">
+        <a href="https://twitter.com/DRISHTICPS" class="twitter" target="_blanks"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/DrishtiCPS/" class="facebook" target="_blanks"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/cpsdrishti/" class="instagram" target="_blanks"><i class="bx bxl-instagram"></i></a>
+        <!-- <a href="#" class="google-plus"><i class="bx bxl-skype" target="_blanks"></i></a> -->
+        <a href="https://www.linkedin.com/company/iiti-drishti-cps-foundation-iit-indore/" class="linkedin" target="_blanks"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+ 
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+<!-- modal for Admin Login  -->
+<div class="modal fade" id="ManagerLoginModal" tabindex="-1" aria-labelledby="ManagerLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="modal-body">
+      <div class="row">
+        <!-- <div class="col-lg-5"> -->
+        <div class="col-lg-5" style=" background-color :#003959 ; center; justify-content: center; text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+           
+          <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+          <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+          <!-- </div> -->
+      </div> 
+        <div class="col-lg-7" style="padding-left: 10px;">
+        <form action="{% url 'ManagerLogin' %}" id="ManagerLoginForm" method="post" style="margin-left: 15px;"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="managerloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="managerloginemail" name="managerloginemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="managerloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="managerloginpassword" name="managerloginpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <!-- <button type="submit" class="btn btn-more">Submit</button> -->
+          <button type="submit" class="btn btn-primary">Submit</button> 
+          <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> <br>
+            <button type="button" style="padding-top: 5px; margin-top: 10px;" class="btn btn-light" style="color: blue; margin-top: -2px; " data-bs-toggle="modal" data-bs-target="#ManagerSignupModal">Signup</button>
+            </div>
+        </form>
+        </div>
+    </div>
+      </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ManagerSignupModal">Signup</button> -->
+       <!-- <span style="text-align: center;"> For Sing Up <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> <strong> Click Here </strong> </button> </span> -->
+       
+    </div>
+  </div>
+</div>
+
+<!-- modal for Admin Signup  -->
+<div class="modal fade" id="ManagerSignupModal" tabindex="-1" aria-labelledby="ManagerSignupModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ManagerSignupModal">Welcome Admin, please fill the details below for Signup</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+       
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-6"> 
+            <form action="{% url 'ManagerSignup' %}" id="ManagerSignupForm" method="post"> {% csrf_token %}
+              <div class="mb-3">
+                <label for="managerfirstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="managerfirstname" name="managerfirstname" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managermiddlename" class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="managermiddlename" name="managermiddlename" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerlastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="managerlastname" name="managerlastname" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerdob" class="form-label">DOB</label>
+                <input type="date" class="form-control" id="managerdob" name="managerdob" aria-describedby="emailHelp" required>
+                <!-- <div id="emailHelp" class="form-text">password must have small, capital letters, alphanumeric & special characters.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="manageremail" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="manageremail" name="manageremail" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerpassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="managerpassword" name="managerpassword" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managercpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="managercpassword" name="managercpassword" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+          </div>  
+
+            <div class="col-lg-6">  
+              <div class="mb-3">
+                <label for="managermobile" class="form-label">Mobile Number</label>
+                <input type="number" class="form-control" id="managermobile" name="managermobile" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerqualification" class="form-label">Highest Qualification</label>
+                <input type="text" class="form-control" id="managerqualification" name="managerqualification" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerfacilityname" class="form-label">Facility Name</label>
+                <input type="text" class="form-control" id="managerfacilityname" name="managerfacilityname" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerstate" class="form-label">State</label>
+                <select id="state" name="managerstate">
+                  <option value="andhra pradesh">Andhra Pradesh</option>
+                  <option value="arunachal pradesh">Arunachal Pradesh</option>
+                  <option value="assam">Assam</option>
+                  <option value="bihar">Bihar</option>
+                  <option value="chhattisgarh">Chhattisgarh</option>
+                  <option value="goa">Goa</option>
+                  <option value="gujarat">Gujarat</option>
+                  <option value="haryana">Haryana</option>
+                  <option value="himachal pradesh">Himachal Pradesh</option>
+                  <option value="jammu and kashmir">Jammu and Kashmir</option>
+                  <option value="jharkhand">Jharkhand</option>
+                  <option value="karnataka">Karnataka</option>
+                  <option value="kerala">Kerala</option>
+                  <option value="madhya pradesh">Madhya Pradesh</option>
+                  <option value="maharashtra">Maharashtra</option>
+                  <option value="manipur">Manipur</option>
+                  <option value="meghalaya">Meghalaya</option>
+                  <option value="mizoram">Mizoram</option>
+                  <option value="nagaland">Nagaland</option>
+                  <option value="odisha">Odisha</option>
+                  <option value="punjab">Punjab</option>
+                  <option value="rajasthan">Rajasthan</option>
+                  <option value="sikkim">Sikkim</option>
+                  <option value="tamil nadu">Tamil Nadu</option>
+                  <option value="telangana">Telangana</option>
+                  <option value="tripura">Tripura</option>
+                  <option value="uttar pradesh">Uttar Pradesh</option>
+                  <option value="uttarakhand">Uttarakhand</option>
+                  <option value="west bengal">West Bengal</option>
+                  <!-- Add more state options as needed -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="managerdistrict" class="form-label">District</label>
+                <input type="text" class="form-control" id="managerdistrict" name="managerdistrict" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managercity" class="form-label">City</label>
+                <input type="text" class="form-control" id="managercity" name="managercity" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="managerpin" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="managerpin" name="managerpin" required>
+                <!-- <div id="emailHelp" class="form-text">Must match with the password entered above.</div> -->
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="managersingupcheck">
+                <label class="form-check-label" for="managersingupcheck">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Submit</button>
+            </div>  
+          </form>
+      </div> 
+      </div>
+      <!-- <div class="modal-  footer"> -->
+          <!-- <span style="text-align: center;"> <medium> For Login </medium> <a href="{% url 'ManagerSignup' %}"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> </span> -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Login</button> -->
+        <!-- <button type="button" class="btn btn-primary"> Password</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- User Login Modal  -->
+<div class="modal fade" id="UserLoginModal" tabindex="-1" aria-labelledby="UserLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="UserLoginModal">Welcome User, please enter your details below for login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 9rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
+        <form action="{% url 'UserLogin' %}" id="UserLoginForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="userloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="userloginemail" name="userloginemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="userloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="userloginpassword" name="userloginpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="usercheckbox">
+            <label class="form-check-label" for="usercheckbox">Check me out</label>
+          </div> 
+          <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
+           <br> <br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top: 10px;">Close</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+       
+     
+    </div>
+  </div>
+</div>
+
+<!-- User Signup Modal -->
+<div class="modal fade" id="UserSignupModal" tabindex="-1" aria-labelledby="UserSignupModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="UserSignupModal">Welcome User, please fill the details below for Signup</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="UserSignupForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="managername" class="form-label">Name</label>
+            <input type="text" class="form-control" id="managername" name="managername" aria-describedby="emailHelp" placeholder="Enter your name" required>
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="managerusername" class="form-label">Username</label>
+            <input type="text" class="form-control" id="managerusername" name="managerusername" aria-describedby="emailHelp" placeholder="Enter your username" required>
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="manageremail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="manageremail" name="manageremail" aria-describedby="emailHelp" placeholder="Enter your email name" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="managerpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="managerpassword" name="managerpassword" aria-describedby="emailHelp" placeholder="Enter a password" required>
+            <div id="emailHelp" class="form-text">password must have small, capital letters, alphanumeric & special characters.</div>
+          </div>
+          <div class="mb-3">
+            <label for="managerconfirmpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="managerconfirmpassword" name="managerconfirmpassword" placeholder="Re-Enter your password" required>
+            <div id="emailHelp" class="form-text">Must match with the password entered above.</div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="managersingupcheck">
+            <label class="form-check-label" for="managersingupcheck">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#UserLoginModal">Submit</button>
+      </form>
+      </div>
+      <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+          <!-- <span style="text-align: center;"> <medium> For Login </medium> <a href="{% url 'ManagerSignup' %}"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> </span> -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-target="#ManagerLoginModal">Login</button> -->
+        <!-- <button type="button" class="btn btn-primary"> Password</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Doctor Login Modal  -->
+<div class="modal fade" id="DoctorLoginModal" tabindex="-1" aria-labelledby="DoctorLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="DoctorLoginModal">Welcome Doctor, please enter your details below for login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
+        <form action="{% url 'DoctorLogin' %}" id="DoctorLoginForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="doctorloginemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="doctorloginemail" name="doctorloginemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="doctorloginpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="doctorloginpassword" name="doctorloginpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> <br>
+          <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-light" style="color: blue; margin-top: 12px;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#DoctorSingupModal">Signup</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- Pathologist Login Modal  -->
+<div class="modal fade" id="PathologistLoginModal" tabindex="-1" aria-labelledby="PathologistLoginModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content" style="border-radius: 20px;">
+      <!-- <div class="modal-header">
+        <h1 class="modal-title fs-5" id="PathologistLoginModal">Welcome Pathologist, please enter your details below for login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-5" style="background-color: #003959;align-items: center;justify-content: center;text-align: center;margin-top: -17px;margin-left: -5px;border-radius: 20px;margin-bottom: -17px;  border-top-right-radius: 0px;  border-bottom-right-radius: 0px;">
+             
+            <p style="color: white; align-items: center; text-align: center; padding-top: 8rem; font-size: xx-large;"> Welcome </p>
+            <p style="color: white; align-items: center; text-align: center;"> To the World of Digital Twin </p>
+            
+        </div> 
+          <div class="col-lg-7" style="padding-left: 20px;">
+        <form action="{% url 'PathoLogin' %}" id="PathologistLoginForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="pathologinemail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="pathologinemail" name="pathologinemail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="pathologinpassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pathologinpassword" name="pathologinpassword" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> <br>
+          <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+          <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px">
+            <button type="button" class="btn btn-light" style="color: blue; margin-top: 12px;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
+          </div>
+      </form>
+      </div>
+      </div>
+      </div>
+      <!-- <div class="modal-footer" style="justify-content: flex-end; padding-top: 3px"> -->
+         <!-- <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a>  -->
+      <!-- </div> -->
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+         <!-- <button type="button" class="btn btn-primary">Save changes</button>  -->
+        <!-- <button type="button" class="btn btn-light" style="color: blue;" data-bs-toggle="modal" data-bs-target="#PathologistSingupModal">Signup</button>
+       
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- Pathologist Singup Modal  -->
+<div class="row"> 
+<div class="modal fade" id="PathologistSingupModal" tabindex="-1" aria-labelledby="PathologistSingupModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+  <!-- <div class="modal-dialog modal-dialog-centered"> -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="PathologistSingupModal">Welcome Pathologist, please fill the details below for singup</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- the modal body starts here -->
+      <div class="modal-body">
+        <!-- modal body is contained in a row and that row is divided into two columns-->
+      <div class="row "> 
+      <!--  first column starts here   -->
+      <div class="col-lg-6">   
+        <form action="{% url 'PathoSingup' %}" id="PathologistSingupForm" method="post"> {% csrf_token %}
+          <div class="mb-3">
+            <label for="pathofirstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="pathofirstname" name="pathofirstname" aria-describedby="pathofirstname" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathomiddlename" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="pathomiddlename" name="pathomiddlename" aria-describedby="pathomiddlename" required>
+          </div>
+          <div class="mb-3">
+            <label for="patholastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="patholastname" name="patholastname" aria-describedby="patholastname" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathodob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="pathodob" name="pathodob" aria-describedby="pathodob" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathomobile" class="form-label">Mobile Number</label>
+            <input type="number" class="form-control" id="pathomobile" name="pathomobile" aria-describedby="pathomobile" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoemail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="pathoemail" name="pathoemail" aria-describedby="pathoemail" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathopassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pathopassword" name="pathopassword" aria-describedby="pathopassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoconfirmpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="pathoconfirmpassword" name="pathoconfirmpassword" aria-describedby="pathoconfirmpassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="patholabname" class="form-label">Path Lab Name</label>
+            <input type="name" class="form-control" id="patholabname" name="patholabname" aria-describedby="patholabname" required>
+          </div>
+
+        </div> 
+        <!--  first column ends here   -->
+
+        <!--  second column starts here   -->
+        <div class="col-lg-6"> 
+          <div class="mb-3">
+            <label for="pathoregistrationcouncil" class="form-label">Registration Council</label>
+            <input type="number" class="form-control" id="pathoregistrationcouncil" name="pathoregistrationcouncil" aria-describedby="pathoregistrationcouncil" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathoregistrationnumber" class="form-label">Registration Number</label>
+            <input type="number" class="form-control" id="pathoregistrationnumber" name="pathoregistrationnumber" aria-describedby="pathoregistrationnumdber" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathovalidfrom" class="form-label">Registration Valid From</label>
+            <input type="date" class="form-control" id="pathovalidfrom" name="pathovalidfrom" aria-describedby="pathovalidfrom" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathovalidto" class="form-label">Registration Valid To</label>
+            <input type="date" class="form-control" id="pathovalidto" name="pathovalidto" aria-describedby="pathovalidto" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathostate" class="form-label">State</label>
+            <select id="state" name="pathostate">
+              <option value="andhra pradesh">Andhra Pradesh</option>
+              <option value="arunachal pradesh">Arunachal Pradesh</option>
+              <option value="assam">Assam</option>
+              <option value="bihar">Bihar</option>
+              <option value="chhattisgarh">Chhattisgarh</option>
+              <option value="goa">Goa</option>
+              <option value="gujarat">Gujarat</option>
+              <option value="haryana">Haryana</option>
+              <option value="himachal pradesh">Himachal Pradesh</option>
+              <option value="jammu and kashmir">Jammu and Kashmir</option>
+              <option value="jharkhand">Jharkhand</option>
+              <option value="karnataka">Karnataka</option>
+              <option value="kerala">Kerala</option>
+              <option value="madhya pradesh">Madhya Pradesh</option>
+              <option value="maharashtra">Maharashtra</option>
+              <option value="manipur">Manipur</option>
+              <option value="meghalaya">Meghalaya</option>
+              <option value="mizoram">Mizoram</option>
+              <option value="nagaland">Nagaland</option>
+              <option value="odisha">Odisha</option>
+              <option value="punjab">Punjab</option>
+              <option value="rajasthan">Rajasthan</option>
+              <option value="sikkim">Sikkim</option>
+              <option value="tamil nadu">Tamil Nadu</option>
+              <option value="telangana">Telangana</option>
+              <option value="tripura">Tripura</option>
+              <option value="uttar pradesh">Uttar Pradesh</option>
+              <option value="uttarakhand">Uttarakhand</option>
+              <option value="west bengal">West Bengal</option>
+              <!-- Add more state options as needed -->
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="pathodistrict" class="form-label">District</label>
+            <input type="name" class="form-control" id="pathodistrict" name="pathodistrict" aria-describedby="pathodistrict" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathocity" class="form-label">City</label>
+            <input type="name" class="form-control" id="pathocity" name="pathocity" aria-describedby="pathocity" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathopin" class="form-label">Pin Code</label>
+            <input type="name" class="form-control" id="pathopin" name="pathopin" aria-describedby="pathopin" required>
+          </div>
+          <div class="mb-3">
+            <label for="pathotestfacility" class="form-label">Test Facilities Available</label>
+            <input type="name" class="form-control" id="pathotestfacility" name="pathotestfacility" aria-describedby="pathotestfacility" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-left: 14rem;">Submit</button>
+        </div>
+        <!--  second column ends here   -->
+      </form>
+      </div>
+      <!-- <div class="modal-footer">
+         <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> 
+      </div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-primary">Save changes</button>  --> 
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+       
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+ <!-- Doctor Singup Modal  -->
+<div class="row"> 
+  <div class="modal fade" id="DoctorSingupModal" tabindex="-1" aria-labelledby="DoctorSingupModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="DoctorSingupModal">Welcome Doctor, please fill the details below for singup</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- the modal body starts here -->
+        <div class="modal-body">
+          <!-- modal body is contained in a row and that row is divided into two columns-->
+        <div class="row"> 
+        <!--  first column starts here   -->
+        <div class="col-lg-6">   
+          <form action="{% url 'DoctorSingup' %}" id="DoctorSingupForm" method="post"> {% csrf_token %}
+            <div class="mb-3">
+              <label for="doctorfirstname" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="doctorfirstname" name="doctorfirstname" aria-describedby="doctorfirstname">
+            </div>
+            <div class="mb-3">
+              <label for="doctormiddlename" class="form-label">Middle Name</label>
+              <input type="text" class="form-control" id="doctormiddlename" name="doctormiddlename" aria-describedby="doctormiddlename" >
+            </div>
+            <div class="mb-3">
+              <label for="doctorlastname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="doctorlastname" name="doctorlastname" aria-describedby="doctorlastname" >
+            </div>
+            <div class="mb-3">
+              <label for="doctordob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="doctordob" name="doctordob" aria-describedby="doctordob" >
+            </div>
+            <div class="mb-3">
+              <label for="doctormobile" class="form-label">Mobile Number</label>
+              <input type="number" class="form-control" id="doctormobile" name="doctormobile" aria-describedby="doctormobile" >
+            </div>
+            <div class="mb-3">
+              <label for="doctoremail" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="doctoremail" name="doctoremail" aria-describedby="doctoremail">
+            </div>
+            <div class="mb-3">
+              <label for="doctorpassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="doctorpassword" name="doctorpassword" aria-describedby="doctopassword">
+            </div>
+            <div class="mb-3">
+              <label for="doctorcpassword" class="form-label"> Confirm Password</label>
+              <input type="password" class="form-control" id="doctorcpassword" name="doctorcpassword" aria-describedby="doctorcpassword">
+            </div>
+            <div class="mb-3">
+              <label for="doctorregistrationcouncil" class="form-label">Registration Council</label>
+              <select id="medical_council" name="doctorregistrationcouncil">
+                <option value="mci">Medical Council of India (MCI)</option>
+                <option value="nmc">National Medical Commission (NMC)</option>
+                <option value="dci">Dental Council of India (DCI)</option>
+                <option value="pci">Pharmacy Council of India (PCI)</option>
+                <!-- Add more council options here -->
+                <option value="other">Other</option>
+            </select>
+              <div class="form-label" id="other_council_field" style="display: none;">
+               <label for="other_council">Enter Council Name:</label>
+               <input type="text" id="other_council" name="other_council">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="doctorregistrationnumber" class="form-label">Registration Number</label>
+              <input type="number" class="form-control" id="doctorregistrationnumber" name="doctorregistrationnumber" aria-describedby="doctorregistrationnumber">
+            </div>
+             
+          </div>
+          <!--  first column ends here   -->
+  
+          <!--  second column starts here   -->
+          <div class="col-lg-6"> 
+          <div class="mb-3">
+            <label for="doctorqualification" class="form-label">Highest Qualification</label>
+            <input type="text" class="form-control" id="doctorqualification" name="doctorqualification" aria-describedby="doctorqualification" >
+          </div>
+          <div class="mb-3">
+            <label for="doctoruniversity" class="form-label">University Name</label>
+            <input type="text" class="form-control" id="doctoruniversity" name="doctoruniversity" aria-describedby="doctoruniversity" >  
+          </div>
+          <div class="mb-3">
+            <label for="doctoruniversity" class="form-label">University Name</label>
+            <input type="text" class="form-control" id="doctoruniversity" name="doctoruniversity" aria-describedby="doctoruniversity" >  
+          </div>
+          <div class="mb-3">
+            <label for="doctorpassingyear" class="form-label">Year of Passing</label>
+            <input type="number" class="form-control" id="doctorpassingyear" name="doctorpassingyear" aria-describedby="doctorpassingyear">  
+          </div> 
+            <div class="mb-3">
+              <label for="doctorclinicname" class="form-label">Clinic Name</label>
+              <input type="text" class="form-control" id="doctorclinicname" name="doctorclinicname" aria-describedby="doctorclinicname" >
+            </div>
+            <div class="mb-3">
+              <label for="state" class="form-label">State</label>
+              <select id="state" name="doctorstate" onchange="updateNameAttribute(this);">
+                <option value="andhra pradesh">Andhra Pradesh</option>
+                <option value="arunachal pradesh">Arunachal Pradesh</option>
+                <option value="assam">Assam</option>
+                <option value="bihar">Bihar</option>
+                <option value="chhattisgarh">Chhattisgarh</option>
+                <option value="goa">Goa</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="haryana">Haryana</option>
+                <option value="himachal pradesh">Himachal Pradesh</option>
+                <option value="jammu and kashmir">Jammu and Kashmir</option>
+                <option value="jharkhand">Jharkhand</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="kerala">Kerala</option>
+                <option value="madhya pradesh">Madhya Pradesh</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="manipur">Manipur</option>
+                <option value="meghalaya">Meghalaya</option>
+                <option value="mizoram">Mizoram</option>
+                <option value="nagaland">Nagaland</option>
+                <option value="odisha">Odisha</option>
+                <option value="punjab">Punjab</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="sikkim">Sikkim</option>
+                <option value="tamil nadu">Tamil Nadu</option>
+                <option value="telangana">Telangana</option>
+                <option value="tripura">Tripura</option>
+                <option value="uttar pradesh">Uttar Pradesh</option>
+                <option value="uttarakhand">Uttarakhand</option>
+                <option value="west bengal">West Bengal</option>
+                <!-- Add more state options as needed -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="doctordistrict" class="form-label">District</label>
+              <input type="text" class="form-control" id="doctordistrict" name="doctordistrict" aria-describedby="doctordistrict">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctorcity" class="form-label">City</label>
+              <input type="text" class="form-control" id="doctorcity" name="doctorcity" aria-describedby="doctorcity" >
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctorpincode" class="form-label">Pin Code</label>
+              <input type="number" class="form-control" id="doctorpincode" name="doctorpincode" aria-describedby="doctorpincode" >
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="doctortestfacility" class="form-label">Test Facilities Available</label>
+              <input type="text" class="form-control" id="doctortestfacility" name="doctortestfacility" aria-describedby="doctortestfacility" >
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 14rem;">Submit</button>
+          </div>
+          <!--  second column ends here   -->
+        </form>
+        </div>
+        <!-- <div class="modal-footer">
+           <medium> For Sing Up </medium> <a data-bs-toggle="modal" data-bs-target="#ManagerSignupModal"> Click Here |</a>  <medium>forgotten password</medium> <a href="#">Click Here </a> 
+        </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> 
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserSignupModal">Signup</button> -->
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function updateNameAttribute(selectElement) {
+  var selectedValue = selectElement.value;
+  var nameAttribute = "doctor" + selectElement.id; // Generate a unique name attribute
+  selectElement.name = nameAttribute;
+}
+
+// javascript for selecting the medical council with an other option
+document.getElementById("medical_council").addEventListener("change", function() {
+    var selectedOption = this.value;
+    var otherCouncilField = document.getElementById("other_council_field");
+
+    if (selectedOption === "other") {
+        otherCouncilField.style.display = "block";
+    } else {
+        otherCouncilField.style.display = "none";
+    }
+});
+
+</script>
+
+
+<!-- Chabot Modal  -->
+<!-- </section id="ChatBotModal"> -->
+<!-- <div class="row"> -->
+<div class="modal fade" id="ChatBotModal" tabindex="-1" role="dialog" aria-labelledby="ChatBotModal" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div id="modal-positioning" class="modal-content">
+      <div id="model-heading" class="modal-header">
+        <h5 class="modal-title" id="ChatBotModal"> <small> Hello,  I am <strong> Charak Bot </strong>, an AI powered assistant. I am here to help you with your queries. Please enter your query below to proceed.</small></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> 
+      <!-- <hr style="border: 2px solid black;"> -->
+      <div class="modal-body">
+
+        <div id="chat-container">
+          <div id="chatbox__messages">
+              <p class="bold-message" style="align-items: center; justify-content: center;">{{result}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div id="userInputContainer">
+          <input type="text" id="userInput" placeholder="Type your query..." onkeyup="handleKeyPress(event)">
+          <button id="sendButton" onclick="sendMessage()">Send</button>
+      </div>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for sending messages and receiving responses -->
+        
+<script>
+  function sendMessage() {
+      // Get user input
+      var userInput = document.getElementById("userInput").value;
+
+      // Add user message to the chat interface
+      var chatDiv = document.getElementById("chatbox__messages");
+      chatDiv.innerHTML += '<p>User: ' + userInput + '</p>';
+
+      // Clear the input field
+      document.getElementById("userInput").value = '';
+
+      // Create a JSON object with the "message" key
+      var jsonData = { message: userInput };
+      // print(jsonData);
+      var csrftoken = getCookie('csrftoken');
+
+      // Send the JSON object to the server (Flask app) for processing
+      fetch('/healthchatbot/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrftoken
+          },
+          body: JSON.stringify(jsonData) 
+      }) 
+      .then(function(response) {
+          return response.json();
+      })
+      .then(function(data) {
+          // Display only the "text" value from the JSON response
+          var chatbotResponse = data.response.text; // Assuming "text" is the key in your JSON response
+          chatDiv.innerHTML += '<p>Chatbot: ' + chatbotResponse + '</p>';
+
+          // alternative to the above chatDiv line is this code till chadDiv.appendChild
+          // var chatMessage = document.createElement('p');
+          // chatMessage.textContent = 'Chatbot: ' + chatbotResponse;
+          
+          // // Apply styles
+          // chatMessage.style.display = 'flex'; // To enable flexbox layout
+          // chatMessage.style.justifyContent = 'center'; // Center content horizontally
+          // chatMessage.style.alignItems = 'center'; // Center content vertically
+          
+          // // Append the styled chat message to the chatDiv
+          // chatDiv.appendChild(chatMessage);
+            });
+  }
+
+  // Function to retrieve a cookie by name
+  function getCookie(name) {
+      var value = "; " + document.cookie;
+      var parts = value.split("; " + name + "=");
+      if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  // Function to handle Enter key press
+  function handleKeyPress(event) {
+          if (event.keyCode === 13) { // 13 is the key code for Enter
+              sendMessage();
+          }
+      }
+</script>
+
+
+
+</body>
+
+</html>

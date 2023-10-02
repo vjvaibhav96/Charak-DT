@@ -1,0 +1,71 @@
+{% extends 'user/basic_user.html' %}  
+
+{% block title %} User Health user_hdata {% endblock %}
+
+{% block css %} 
+<style>
+        #container1{
+            margin-top: 20px;
+        }
+        #container2{
+            margin-top: 10px;
+        }
+       .container1 {
+            display: flex;
+            text-decoration-line: underline;
+            font-weight: bolder;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            color: rgb(232, 30, 16);
+            margin-left: 50px;
+            padding-left: 50px;
+    }
+      .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px
+    }
+      .container3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1px
+    }    
+    .data1{
+        text-align: center;
+    }
+    </style> 
+    {% endblock %}
+    
+{% block body %} 
+<br><br><br>
+    <!-- <h3 style="color: black; font-family: 'Montserrat'; text-align:center">Your Health Data</h3> -->
+
+    <h3 style="padding-left: 55px;color: black; font-family: 'Montserrat'; text-align:center" >Basic Details</h3>
+    <table id ="container1" class = "table table-striped table-hover" style="padding-left: 50px;">
+        <thead style="padding-left: 50px;">
+        <tr>
+            <th class="data1">Patient_ID</th>
+            <th class="data1">Test Data & Time</th>
+            <th class="data1">Blood Glucose(RBS, mg/dL)</th>
+            
+        </tr>
+    </thead>
+    <tbody style="padding-left: 25px;">
+          <tr>
+            <td class="data1">7</td>
+            <td class="data1">Sept. 29, 2023, 4:10 p.m.</td>
+            <td class="data1">125</td>
+          </tr>
+          <tr>
+            <td class="data1">7</td>
+            <td class="data1">Oct. 1, 2023, 1:30 p.m.</td>
+            <td class="data1">145</td>
+          </tr>
+      </tbody>
+      
+    </table> <br><br><br>
+
+    {% endblock %}

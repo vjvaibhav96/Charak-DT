@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from Manager.models import Patient_data
 from Doctor.helper import MessageHandler
+from User.models import vitals_data
 
 # Config file vaibhav firebase
 # config = {
@@ -57,7 +58,9 @@ def pathologin(request):
             patho = Registered_Pathologist.objects.get(pemail = pathoemail)
             global pid
             pid = patho.patho_id
-            return render(request, 'pathologist/pathodashboard.html', {'patho_data' : patho})
+            print(pid)
+            print(patho.pfirstname)
+            return render(request, 'pathologist/pathoprofile.html', {'user_data' : patho})
         else:
             return render(request, 'pathologist/pathologin.html')
     return  render(request, 'pathologist/pathologin.html')
@@ -117,28 +120,23 @@ def pathoedit(request):
     patho_data = Registered_Pathologist.objects.get(patho_id = pid)
     if request.method == "POST":
         userid = request.POST['userid']
-        glucose = request.POST['glucose']
-        heartrate = request.POST['heartrate']
-        bloodpressure = request.POST['bloodpressure']
-        cholestrol = request.POST['cholestrol']
-        insulin = request.POST['insulin']
-        bmi = request.POST['bmi']
-        prediabetic = request.POST['prediabetic']
-        dpf = request.POST['dpf']
-        # patientreport = request.POST['patientreport']
-        # xray = request.POST['xray']
+        bodytemperature = request.POST['bodytemperature']
+        pulserate = request.POST['pulserate']
+        respiratoryrate = request.POST['respiratoryrate']
+        bp = request.POST['bp']
+        spo2 = request.POST['spo2']
+        weight = request.POST['weight']
+        bloodsugarfbs = request.POST['bloodsugarfbs']
+        bloodsugarrbs = request.POST['bloodsugarrbs']
+        datetime1 = request.POST['datetime1']
+        # report = request.FILES.get('report')
+        # xray = request.FILES.get('xray')
 
-        edit_instance = Patient_data.objects.get(patient_id = userid)
-        edit_instance.glucosevalue = glucose
-        edit_instance.bloodpressure = bloodpressure
-        edit_instance.cholestrol = cholestrol
-        edit_instance.insulinvalue = insulin
-        edit_instance.bmi = bmi
-        edit_instance.prediabetic = prediabetic
-        edit_instance.dpf = dpf
-        # edit_instance.patientreport = patientreport
-        # edit_instance.xray = xray
-        edit_instance.save()
+        pd = Patient_data.objects.get(patient_id = userid)
+        v_data = vitals_data(patient_id=pd, bodytemperature=bodytemperature, pulserate=pulserate, respiratoryrate=respiratoryrate, 
+        bp=bp, spo2=spo2, weight=weight, bloodsugarfbs=bloodsugarfbs, bloodsugarrbs=bloodsugarrbs, datetime=datetime1)
+        v_data.save()
+        
         return redirect('PathoEditSuccess')
     
     return render(request, 'pathologist/pathoedit.html')
@@ -190,6 +188,57 @@ def pathosingup(request):
         return redirect('CharakHome')
     return render(request, 'pathologist/pathosingup.html')
 
+def pathoesiofy2d(request):
+    if request.method == "POST":
+        userid = request.POST.get('userid')
+        firstname = request.POST.get('esiofyuserfirst')
+        foldername = request.POST.get('esiofyuserfolder')
+        patientname = request.POST.get('esiofypatientname')
+
+        patient_obj = Patient_data.objects.get(patient_id  = userid)
+        patient_obj.esio_patient_name = patientname
+        patient_obj.esio_folder_name = foldername
+        patient_obj.esio_first_name = firstname 
+
+        # print(files)
+
+        # current_directory = os.path.dirname(os.path.realpath(__file__))
+        # json_file_path = os.path.join(current_directory, 'info.json')
+        # cred = credentials.Certificate(json_file_path)
+        # firebase_admin.initialize_app(cred)
+        # bucket_url = "gs://test2-f9b1a.appspot.com"
+        # bucket_name = "test2-f9b1a.appspot.com"
+        # storage_client = storage.Client(credentials=None)
+        # bucket = storage_client.get_bucket(bucket_name)
+
+        # getting all the files from the form
+        uploaded_files = request.FILES.getlist('esiofypatientfiles')
+        uploaded_file_url = []
+
+        # iterating through each file for uploading
+        for uploaded_file in uploaded_files:
+            try:
+                destination_path = f"{patientname}/{foldername}/{uploaded_file.name}"
+                storage.child(destination_path).put(uploaded_file)
+                file_url = storage.child(f'{patientname}').child(f'{foldername}').get_url(None)
+                uploaded_file_url.append(file_url)
+            except Exception as e:
+               print(f"Error uploading file: {str(e)}")
+        # print(uploaded_file_url)
+        data = {
+            'firstname': firstname,
+            'foldername' : foldername,
+            'path' : f'{patientname}/{foldername}',
+            # 'path3d' : f'{patientname}/{foldername}/{uploaded_file}'
+            # 'file_path' : storage.child(f'{patientname}').child(f'{foldername}')
+            # 'file_path' : uploaded_file_url
+        }
+        user = database.child("data").child(patientname).push(data)
+        uploaded_file_url = []
+        return render(request, 'pathologist/pathoesiofysuccess.html')
+     
+    return render(request, 'pathologist/pathoesiofy2d.html')
+
 def pathoesiofy(request):
     if request.method == "POST":
         firstname = request.POST.get('esiofyuserfirst')
@@ -220,7 +269,6 @@ def pathoesiofy(request):
             except Exception as e:
                print(f"Error uploading file: {str(e)}")
         # print(uploaded_file_url)
-
         data = {
             'firstname': firstname,
             'foldername' : foldername,
@@ -231,7 +279,7 @@ def pathoesiofy(request):
         }
         user = database.child("data").child(patientname).push(data)
         uploaded_file_url = []
-        return HttpResponse("Files uploaded successfully!")
+        return render(request, 'pathologist/pathoesiofysuccess.html')
      
     return render(request, 'pathologist/pathoesiofy.html')
 
@@ -243,6 +291,29 @@ def pathodashboard(request):
 
 def pathoprofile(request):
     patho_data = Registered_Pathologist.objects.get(patho_id = pid)
+    if request.method== "POST":
+        # image = request.POST['image']
+        pathoid = request.POST['pathoid']
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        about = request.POST['about']
+        dob = request.POST['dob']
+        city = request.POST['city']
+        email = request.POST['email']
+        phone = request.POST['phone']
+
+        profile_obj = Registered_Pathologist.objects.get(patho_id = pathoid)
+        profile_obj.pfirstname = firstname
+        profile_obj.plastname = lastname
+        profile_obj.pabout = about
+        profile_obj.pdob = dob
+        profile_obj.pcity = city
+        profile_obj.pemail = email
+        profile_obj.pmobile = phone
+
+        profile_obj.save()
+        return render(request, 'pathologist/pathoprofile.html', {'user_data' : profile_obj})
+
     return render(request, 'pathologist/pathoprofile.html', {'user_data' : patho_data})
 
 def pathologout(request):

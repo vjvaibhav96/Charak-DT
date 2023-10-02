@@ -5,8 +5,8 @@
 {% block body %} 
 
     <div class="container mt-3 shadow-lg p-4" style="width: 35%;">
-      <h2 class="text-center"> Register Patient</h2>
-      <form action="{% url 'ManagerHome' %}" method="POST" style="align-items: center;"> {% csrf_token %}
+      <h2 class="text-center"> User Registration</h2>
+      <form action="{% url 'ManagerHome' %}" method="POST" style="align-items: center;" enctype="multipart/form-data"> {% csrf_token %}
         <div class="mb-2">
           <label for="uusername" class="form-label">Name</label>
           <input type="text" class="form-control" id="uusername" name="uusername" autocomplete="off" required>
@@ -15,6 +15,10 @@
           <label for="uemail" class="form-label">Email address</label>
           <input type="email" class="form-control" id="uemail" aria-describedby="emailHelp" name="uemail" autocomplete="off" required>
         </div>
+        <!-- <div class="mb-2">
+          <label for="abhaid" class="form-label">Abha ID</label>
+          <input type="text" class="form-control" id="abhaid" aria-describedby="emailHelp" name="abhaid" autocomplete="off" required>
+        </div> -->
         <div class="mb-2">
           <label for="upassword" class="form-label">Password</label>
           <input type="password" class="form-control" id="upassword" name="upassword" autocomplete="off" required>
@@ -26,6 +30,10 @@
         <div class="mb-2">
           <label for="umobile" class="form-label">Mobile Number</label>
           <input type="number" size="10" class="form-control" id="umobile" name="umobile" autocomplete="off" required>
+        </div>
+        <div class="mb-2">
+          <label for="patientimage" class="form-label">Image</label>
+          <input type="file" size="10" class="form-control" id="patientimage" name="patientimage" autocomplete="off" required>
         </div>
         
         <button style="margin-top: 20px;margin-left: 204px;" type="submit" class="btn btn-primary" id = "bxc"> Create </button>

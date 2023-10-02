@@ -1,0 +1,111 @@
+{% extends 'user/basic_user.html' %}
+
+{% block title %} Excercise Data {% endblock %}
+
+{% block css %}
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2{
+      color:black;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+      color: red;
+    }
+  </style>
+  {% endblock %}
+
+  {% block body %}
+
+    <div class="container1">
+        <h3>Edit Exercise Data</h3>
+    </div>
+    <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+      <form id="myForm1" action="{% url 'EditExcerciseData' %}" method="POST"> {% csrf_token %}
+        <!-- <div class="mb-2">
+          <label for="userid" class="form-label">User ID</label>
+          <input type="number" class="form-control" id="userid" name="userid" autocomplete="off"  readonly>
+        </div> -->
+        <div class="mb-2">
+          <label for="datetime1" class="form-label">Enter Datetime of your exercise</label>
+          <input type="datetime-local" class="form-control" id="datetime1" name="datetime1" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="walk" class="form-label">Walk</label>
+          <input type="number" class="form-control" id="walk" name="walk" autocomplete="off" placeholder="Enter number of steps walked" >
+        </div>
+        <div class="mb-2">
+          <label for="cycling" class="form-label">Cycling</label>
+          <input type="number" class="form-control" id="cycling" name="cycling" autocomplete="off" placeholder="Enter minutes of cycling" >
+        </div>
+        <div class="mb-2">
+          <label for="pranayam" class="form-label">Pranayam</label>
+          <input type="number" class="form-control" id="pranayam" name="pranayam" autocomplete="off" placeholder="Enter minutes of pranayam">
+        </div>
+        <div class="mb-2">
+          <label for="stairs" class="form-label">Climbing Stairs</label>
+          <input type="number" class="form-control" id="stairs" name="stairs" autocomplete="off" placeholder="Enter stairs climbed" >
+        </div>
+        
+        <!-- <div class="mb-2">
+          <label for="spo2" class="form-label">SpO2 (%)</label>
+          <input type="number" class="form-control" id="spo2" name="spo2" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="weight" class="form-label">Weight (Kg)</label>
+          <input type="number" class="form-control" id="weight" name="weight" autocomplete="off" >
+        </div>
+        <div class="mb-2">
+          <label for="bloodsugarfbs" class="form-label">Blood Sugar(FBS, mg/dL) </label>
+          <input type="number" class="form-control" id="bloodsugarfbs" name="bloodsugarfbs" autocomplete="off" >
+        </div>
+        <div class="mb-2">
+          <label for="bloodsugarrbs" class="form-label">Blood Sugar(RBS, mg/dL)</label>
+          <input type="number" class="form-control" id="bloodsugarrbs" name="bloodsugarrbs" autocomplete="off">
+        </div> -->
+        <br>
+        <div style="text-align: center;">
+        <button type="submit"  class="btn btn-primary" id = "bxc">Save</button></div>
+     </form>
+    </div>
+    <script>
+      document.getElementById("myForm1").addEventListener("submit", function(event) {
+          // Get the selected datetime value
+          const datetimeInput = document.getElementById("datetime1");
+          const selectedDatetime = datetimeInput.value;
+          
+          // Check if the time component is missing and add it
+          const formattedDatetime = selectedDatetime.includes("T")
+              ? selectedDatetime
+              : `${selectedDatetime}T00:00`;
+
+          // Replace the input value with the formatted datetime
+          datetimeInput.value = formattedDatetime;
+      });
+  </script>
+ {% endblock %}
+

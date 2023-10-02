@@ -28,3 +28,15 @@ def contactsuccess(request):
 
 def healthcareprovider(request):
     return render(request, 'healthcareprovider.html')
+
+def charakpatient(request):
+    return render(request, 'charakpatient.html')
+
+def charakdoctor(request):
+    return render(request, 'charakdoctor.html')
+
+def charakpathologist(request):
+    return render(request, 'charakpathologist.html')
+
+def apis_integration(request):
+    return render(request, 'apisintegration.html')

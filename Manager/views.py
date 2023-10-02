@@ -6,6 +6,41 @@ from django.contrib import messages
 from django.http import HttpResponse
 from datetime import datetime
 
+# dependencies for mirror
+# import os
+# import pickle
+# import cv2
+# import face_recognition
+# import imutils
+# from imutils.video import FPS
+
+# uncomment below for smart mirror
+# def create():
+#     if os.path.exists("encodings1.pickle"):
+#         print("loading encodings...")
+#         data = pickle.loads(open("encodings1.pickle", "rb").read())
+#     else:
+#         data = {"encodings": [], "names": []}
+#     print("Checking for new classes...")
+#     people = os.listdir('dataset')
+#     for i in people:
+#         if i not in data['names']:
+#             for j in os.listdir("dataset/"+i):
+#                 print("processing image {}/{}".format(i, j))
+#                 name = i
+#                 image = cv2.imread('dataset/'+i+'/'+j)
+#                 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#                 boxes = face_recognition.face_locations(rgb, model="HOG")
+#                 encodings = face_recognition.face_encodings(rgb, boxes, num_jitters=10)
+#                 for encoding in encodings:
+#                     data['encodings'].append(encoding)
+#                     data['names'].append(name)
+#     print("serializing encodings...")
+#     f = open("encodings1.pickle", "wb")
+#     f.write(pickle.dumps(data))
+#     f.close()
+#     return data
+
 # Create your views here.
 def index(request):
     return render(request, 'manager/index.html')
@@ -126,21 +161,31 @@ def prediction(request):
     return render(request, 'manager/prediction.html')
 
 def manager_home(request):
+    # from cryptography.fernet import Fernet ## library used for encryption and decryption
+    # secret_key = Fernet.generate_key()
+    # cipher_suite = Fernet(secret_key)
+
     if request.method == "POST":
         patientname = request.POST.get('uusername')
         patientemail = request.POST.get('uemail')
+        # patientabhaid = request.POST.get('abhaid')
         patientpassword = request.POST.get('upassword')
         patientmobile = request.POST.get('umobile')
-        # try:
-        #     print(patientname, patientemail, patientmobile, patientpassword)
-        # except:
-        #     print("data not found")
+        patientimage = request.FILES.get('patientimage')
+        enc_password = (patientpassword).encode('utf-8')
+        enc_email = (patientemail).encode('utf-8')
+        # hashed_password = cipher_suite.encrypt(enc_password)
+        # hashed_email = cipher_suite.encrypt(enc_email)
 
-        patient = User.objects.create_user(username=patientemail, email=patientemail, password=patientpassword)
+        patient = User.objects.create_user(username=patientemail, email=patientemail, password=patientpassword, first_name=patientname)
         patient.save()
-        data = Patient_data(fullname = patientname, email = patientemail, age=0, fulladdress='00', gender='00', chestpaintype=0, glucosevalue=0, bloodpressure=0, insulinvalue=0, bmi=0, prediabetic=0, dpf=0, cholestrol=0, dailyexercise=0, sleepinghabits=0, brushinghabits=0 )
+        data = Patient_data(fullname = patientname, email = patientemail, phone=patientmobile, password=patientpassword, image=patientimage, age=0, fulladdress='00', gender='00', chestpaintype=0, glucosevalue=0, bloodpressure=0, insulinvalue=0, bmi=0, prediabetic=0, dpf=0, cholestrol=0, dailyexercise=0, sleepinghabits=0, brushinghabits=0 )
+        # data = Patient_data(fullname = patientname, email = patientemail, phone=patientmobile, abha_id = patientabhaid, password=patientpassword, image=patientimage, age=0, fulladdress='00', gender='00', chestpaintype=0, glucosevalue=0, bloodpressure=0, insulinvalue=0, bmi=0, prediabetic=0, dpf=0, cholestrol=0, dailyexercise=0, sleepinghabits=0, brushinghabits=0 )
         data.save()
-        return render(request, 'manager/manager_home.html')
+
+        id = data.patient_id
+        return render(request, 'manager/registorsuccess.html', {'ID' : id})
+        # return render(request, 'manager/manager_home.html')
     # return render(request, 'manager/login.html', {'error_message': error_message})
     return render(request, 'manager/manager_home.html')
 
@@ -153,3 +198,30 @@ def managersingupsuccess(request):
     loginmodal = 1
     
     return render(request, 'manager/singupsuccess.html' )
+
+# uncomment below for smart mirror
+# def smartmirror(request):
+#     if request.method == "POST":
+#         username = request.POST['username']
+#         loc = 'dataset/'+ username
+#         print(loc)
+#         try:
+#             os.makedirs(loc)
+#             pass
+#         except FileExistsError:
+#             print("Directory with same name already exists!")
+#         pic_no = 0
+#         cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+#         while True:
+#             ret, frame = cap.read()
+#             frame = cv2.flip(frame, 1)
+#             cv2.imshow('Video', frame)
+#             if cv2.waitKey(10) & 0xFF == ord('c'):
+#                 pic_no += 1
+#                 cv2.imwrite(loc+'/'+str(pic_no)+'.jpg', frame)
+#                 if(pic_no > 9):
+#                     cap.release()
+#                     cv2.destroyAllWindows()
+#                     create()
+#                     return
+#     return render(request, 'manager/smartmirror.html')

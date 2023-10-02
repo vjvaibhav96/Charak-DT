@@ -1,0 +1,58 @@
+{% extends 'doctor/basic_doctor.html' %}
+
+{% block title %} Doctor User Login Page {% endblock %}
+
+{% block css %} 
+
+<style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2 {
+      color: black;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+    }
+
+  </style>
+
+{% endblock %}
+
+{% block body %} 
+<br><br>
+<div class="container1">
+    <h3>Doctor User Login Page</h3>
+</div> <br><br><br>
+<div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+  <form action="{% url 'AccessRegisteredPatients' %}" method="POST"> {% csrf_token %}
+    <div class="mb-2">
+      <label for="userid" class="form-label"> User ID</label> <br>
+      <input type="text" class="form-control" id="userid" placeholder="Enter patient user id" name="userid" autocomplete="off">
+    </div> <br><br>
+    <div style="text-align: center;">
+    <button type="submit" class="btn btn-primary" id = "lxc">Submit</button> </div>
+
+</div>
+</form>
+{% endblock %}

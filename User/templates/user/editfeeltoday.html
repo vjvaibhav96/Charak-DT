@@ -1,0 +1,225 @@
+{% extends 'user/basic_user.html' %}
+
+{% block title %} Health Conditions {% endblock %}
+
+{% block css %}
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2{
+      color:black;
+      /* display: flex; 
+      align-items: center;  */
+    }
+    .mb-1{
+      color:black;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+      color: red;
+    }
+    /* Increase the size of the checkbox */
+    input[type="checkbox"] {
+        transform: scale(1.5); /* Adjust the scale factor as needed */
+        margin-right: 35px; /* Optional: Add some spacing between the checkbox and label */
+
+
+    .hidden-field {
+        display: none; /* Initially hide these fields */
+        margin-left: 10px;
+    }
+    .checkbox-container {
+        display: flex; /* Use flexbox layout */
+        align-items: center; /* Center items vertically */
+    }
+    .form-group {
+    margin-top: 5px; /* Add margin to separate sections */
+}   
+    
+    }
+  </style>
+  {% endblock %}
+
+  {% block body %}
+   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+    <div class="container1">
+        <h3>How do you feel today</h3>
+    </div>
+    
+    <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+      <form id="myForm1" action="{% url 'EditFeelToday' %}" method="POST"> {% csrf_token %}
+        <!-- <div class="mb-1">
+          <label for="userid" class="form-label">User ID</label>
+          <input type="number" class="form-control" id="userid" name="userid" autocomplete="off" value="{{user_data.patient_id}}" readonly>
+        </div> <br> -->
+        <div class="mb-2">
+            <label for="datetime1" class="form-label">Enter Datetime</label>
+            <input type="datetime-local" class="form-control" id="datetime1" name="datetime1" autocomplete="off">
+        </div> <br>
+
+        <div class="mb-2">
+            <label for="acidity" class="form-label"> <strong> Acidity : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="acidity" class="form-label">Duration:</label>
+                <input type="text" id="acidity" name="aciditydur" autocomplete="off" size="10" value="0">
+                <label for="acidity" class="form-label">No of occurances:</label>
+                <input type="text" id="acidity" name="acidityocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="bodyache" class="form-label"> <strong> Allergies : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="allergies" class="form-label">Duration:</label>
+                <input type="text" id="allergies" name="allergiesdur" autocomplete="off" size="10" value="0">
+                <label for="diabetes" class="form-label">No of occurances:</label>
+                <input type="text" id="allergies" name="allergiesocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="backpain" class="form-label"> <strong> Backpain : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="diabetes" class="form-label">Duration:</label>
+                <input type="text" id="backpain" name="backpaindur" autocomplete="off" size="10" value="0">
+                <label for="diabetes" class="form-label">No of occurances:</label>
+                <input type="text" id="backpain" name="backpainocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="bodyache" class="form-label"> <strong> Bodyache : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="bodyache" class="form-label">Duration:</label>
+                <input type="text" id="bodyache" name="bodyachedur" autocomplete="off" size="10" value="0">
+                <label for="bodyache" class="form-label">No of occurances:</label>
+                <input type="text" id="bodyache" name="bodyacheocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="cold" class="form-label"> <strong> Common Cold : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="cold" class="form-label">Duration:</label>
+                <input type="text" id="cold" name="colddur" autocomplete="off" size="10" value="0">
+                <label for="cold" class="form-label">No of occurances:</label>
+                <input type="text" id="cold" name="coldocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="dental" class="form-label"> <strong> Dental Pain : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="dental" class="form-label">Duration:</label>
+                <input type="text" id="dental" name="dentaldur" autocomplete="off" size="10" value="0">
+                <label for="dental" class="form-label">No of occurances:</label>
+                <input type="text" id="dental" name="dentalocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="headache" class="form-label"> <strong> Headache : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="headache" class="form-label">Duration:</label>
+                <input type="text" id="headache" name="headachedur" autocomplete="off" size="10" value="0">
+                <label for="headache" class="form-label">No of occurances:</label>
+                <input type="text" id="headache" name="headacheocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="stomach" class="form-label"> <strong> Stomachache : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="stomach" class="form-label">Duration:</label>
+                <input type="text" id="stomach" name="stomachdur" autocomplete="off" size="10" value="0">
+                <label for="stomach" class="form-label">No of occurances:</label>
+                <input type="text" id="stomach" name="stomachocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="vomiting" class="form-label"> <strong> vomiting : </strong> </label> <br>
+        
+            <div class="form-group">
+                <label for="vomiting" class="form-label">Duration:</label>
+                <input type="text" id="vomiting" name="vomitingdur" autocomplete="off" size="10" value="0">
+                <label for="vomiting" class="form-label">No of occurances:</label>
+                <input type="text" id="vomiting" name="vomitingocc" autocomplete="off" size="10" value="0">
+            </div>
+        </div>
+
+        
+        <hr style="color: black solid;">
+        <br> 
+        <div style="text-align: center;">
+        <button type="submit"  class="btn btn-primary" id = "bxc">Save</button></div>
+</form>
+
+<script>
+        // Add JavaScript to toggle visibility of hidden fields when checkbox is clicked
+        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+            checkbox.addEventListener('click', function() {
+                var hiddenFields = this.parentNode.querySelector('.hidden-field');
+                if (this.checked) {
+                    hiddenFields.style.display = 'block';
+                } else {
+                    hiddenFields.style.display = 'none';
+                }
+            });
+        });
+
+        
+      document.getElementById("myForm1").addEventListener("submit", function(event) {
+          // Get the selected datetime value
+          const datetimeInput = document.getElementById("datetime1");
+          const selectedDatetime = datetimeInput.value;
+          
+          // Check if the time component is missing and add it
+          const formattedDatetime = selectedDatetime.includes("T")
+              ? selectedDatetime
+              : `${selectedDatetime}T00:00`;
+
+          // Replace the input value with the formatted datetime
+          datetimeInput.value = formattedDatetime;
+      });
+</script>
+</div>
+ {% endblock %}
+
+
+
+

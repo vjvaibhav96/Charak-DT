@@ -42,11 +42,14 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
+    <!-- <div class="logo">
+      <a  href="https://drishticps.iiti.ac.in/" target="_blank"><img src="{% static 'img/drishti_logo.png' %}" alt="" class="img-fluid"></a>
+    </div> -->
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="{% url 'CharakHome' %}" class="logo d-flex align-items-center">
+      <a href="{% url 'CharakDoctor' %}" class="logo d-flex align-items-center">
         <!-- <img src="{% static 'assets_na/img/logo.png' %}" alt=""> -->
-        <span class="d-none d-lg-block">Charak</span>
+        <span class="d-none d-lg-block">CharakDT</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -71,12 +74,12 @@
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
+            <span class="badge bg-primary badge-number">3</span>
           </a><!-- End Notification Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
-              You have 4 new notifications
+              You have 3 new notifications
               <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
             <li>
@@ -84,11 +87,25 @@
             </li>
 
             <li class="notification-item">
+              
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Mr. Sunil Mahajan</h4>
+                <p>CBC, Widal report available</p>
+                <p>1 hrs ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
               <i class="bi bi-exclamation-circle text-warning"></i>
               <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
+                <h4>Mr. Dheeraj Mandliya</h4>
+                <p>Request for an appointment for tomorrow</p>
+                <p>3 hr. ago</p>
               </div>
             </li>
 
@@ -99,9 +116,9 @@
             <li class="notification-item">
               <i class="bi bi-x-circle text-danger"></i>
               <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
+                <h4>SRL Diagnostics</h4>
+                <p>The lab services at Palasia, Indore will not be available for two days.</p>
+                <p>3 hrs. ago</p>
               </div>
             </li>
 
@@ -109,27 +126,14 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
+            <!-- <li class="notification-item">
               <i class="bi bi-info-circle text-primary"></i>
               <div>
                 <h4>Dicta reprehenderit</h4>
                 <p>Quae dolorem earum veritatis oditseno</p>
                 <p>4 hrs. ago</p>
               </div>
-            </li>
+            </li> -->
 
             <li>
               <hr class="dropdown-divider">
@@ -142,12 +146,12 @@
 
         </li><!-- End Notification Nav -->
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-chat-left-text"></i>
             <span class="badge bg-success badge-number">3</span>
-          </a><!-- End Messages Icon -->
+          </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
             <li class="dropdown-header">
@@ -204,16 +208,17 @@
               <a href="#">Show all messages</a>
             </li>
 
-          </ul><!-- End Messages Dropdown Items -->
+          </ul>
 
-        </li><!-- End Messages Nav -->
+        </li> -->
+        <!-- End Messages Nav -->
 
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{% static 'assets_na/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+            <img src="{% static 'assets_na/img/dheeraj.jpg' %}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Dr. {{user_data.dfirstname}}</span>
-          </a><!-- End Profile Iamge Icon -->
+          </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
@@ -241,7 +246,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'CharakHome' %}#contact">
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'CharakDoctor' %}#contact">
                 <i class="bi bi-question-circle"></i>
                 <span>Need Help?</span>
               </a>
@@ -257,62 +262,91 @@
               </a>
             </li>
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+          </ul>
+        </li>
+        <!-- End Profile Nav -->
 
       </ul>
+      
     </nav><!-- End Icons Navigation -->
+    <!-- <div class="logo" style="padding-left: 40px; max-height: 40px; width: 150px;">
+    <a  href="https://drishticps.iiti.ac.in/" target="_blank"><img src="{% static 'img/iitilogo.png' %}" alt="" class="img-fluid" style="padding-right: 25px;"></a>
+  </div> -->
 
   </header><!-- End Header -->
-
+  
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{% url 'DoctorDashboard' %}">
+        <a class="nav-link " href="#">
           <i class="bi bi-grid"></i>
-          <span>Doctor Dashboard</span>
+          <span>Doctor Services</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="{% url 'DoctorUserLogin' %}">
-          <i class="bi bi-menu-button-wide"></i><span>Access Health Data</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>User Specific</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <!-- <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <!-- <li>
+            <a href="{% url 'DoctorUserLogin' %}">
+              <i class="bi bi-circle"></i><span>Access Health Data</span>
+            </a>
+          </li> -->
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
+            <a class="nav-link collapsed" data-bs-target="#habits-nav" data-bs-toggle="collapse" href="#">
+              <i style="font-size: 16px;" class="bi bi-journal-text"></i><span> Registered Patients </span> <i style="font-size: 16px;" class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="habits-nav" class="nav-content collapse" data-bs-parent="#forms-nav">
+              <li style="padding-left: 20px;">
+                <a href="{% url 'AccessRegisteredPatients' %}">
+                  <i class="bi bi-circle"></i><span>Access Health Data</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link collapsed" data-bs-target="#habits-nav1" data-bs-toggle="collapse" href="#">
+              <i style="font-size: 16px;" class="bi bi-journal-text"></i><span> New Patients </span> <i style="font-size: 16px;" class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="habits-nav1" class="nav-content collapse" data-bs-parent="#forms-nav">
+              <li style="padding-left: 20px;">
+                <a href="{% url 'DoctorUserLogin' %}">
+                  <i class="bi bi-circle"></i><span>Access Health Data</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="{% url 'DEditUserData' %}">
+              <i class="bi bi-circle"></i><span>Edit Health Data</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Accordion</span>
+            <a href="{% url 'DPrescription' %}">
+              <i class="bi bi-circle"></i><span>Send Prescription</span>
             </a>
           </li>
-          <li>
-            <a href="components-badges.html">
-              <i class="bi bi-circle"></i><span>Badges</span>
+          <!-- <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Diagnostic Tools</span>
             </a>
-          </li>
-          <li>
-            <a href="components-breadcrumbs.html">
-              <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-            </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a href="components-buttons.html">
-              <i class="bi bi-circle"></i><span>Buttons</span>
+              <i class="bi bi-circle"></i><span>Approve CT Scan</span>
             </a>
           </li>
           <li>
             <a href="components-cards.html">
-              <i class="bi bi-circle"></i><span>Cards</span>
+              <i class="bi bi-circle"></i><span>View CT Scan</span>
             </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a href="components-carousel.html">
               <i class="bi bi-circle"></i><span>Carousel</span>
             </a>
@@ -351,39 +385,35 @@
             <a href="components-tooltips.html">
               <i class="bi bi-circle"></i><span>Tooltips</span>
             </a>
-          </li>
-        </ul> -->
+          </li> -->
+        </ul>
       </li><!-- End Components Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Edit Health Data</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>CT Scan</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Form Elements</span>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Approve for CT Scan</span>
             </a>
           </li>
           <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Form Layouts</span>
+            <a href="{% url 'DCTScan2D' %}">
+              <i class="bi bi-circle"></i><span>View 2D</span>
             </a>
           </li>
           <li>
-            <a href="forms-editors.html">
-              <i class="bi bi-circle"></i><span>Form Editors</span>
-            </a>
-          </li>
-          <li>
-            <a href="forms-validation.html">
-              <i class="bi bi-circle"></i><span>Form Validation</span>
+            <a href="{% url 'DCTScan3D' %}">
+              <i class="bi bi-circle"></i><span>View 3D</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Forms Nav -->
+      </li> -->
+      <!-- End Forms Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="{% url 'DPrescription' %}">
           <i class="bi bi-layout-text-window-reverse"></i><span>Send Prescription</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -399,53 +429,80 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Tables Nav -->
+      </li> -->
+      <!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="{% url 'DiagnosticTool' %}">
-          <i class="bi bi-bar-chart"></i><span>Diagnostic Tools</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Diagnostic</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="charts-chartjs.html">
-              <i class="bi bi-circle"></i><span>Chart.js</span>
+            <a href="{% url 'MobilabTest' %}">
+              <i class="bi bi-circle"></i><span>Non-Communicable Disease Management(Mobilab) </span>
             </a>
           </li>
           <li>
-            <a href="charts-apexcharts.html">
-              <i class="bi bi-circle"></i><span>ApexCharts</span>
+            <a href="{% url 'DHeartHealthPredictor' %}">
+              <i class="bi bi-circle"></i><span>Heart Health Prediction Tool</span>
             </a>
           </li>
           <li>
-            <a href="charts-echarts.html">
-              <i class="bi bi-circle"></i><span>ECharts</span>
+            <a href="{% url 'DBloodGlucosePredictor' %}">
+              <i class="bi bi-circle"></i><span>Blood Glucose Prediction Tool</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Diabetic Retinopathy Screenig</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Radio Diagnosis Decision Support(Medhini)</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Glaucoma Screening</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Retinal Detachment Screening & Grading</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Post Traumatic Jaw Rehabilitation</span>
             </a>
           </li>
         </ul>
       </li><!-- End Charts Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="icons-bootstrap.html">
-              <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+              <i class="bi bi-circle"></i><span>Chart 1</span>
             </a>
           </li>
           <li>
             <a href="icons-remix.html">
-              <i class="bi bi-circle"></i><span>Remix Icons</span>
+              <i class="bi bi-circle"></i><span>Chart 2</span>
             </a>
           </li>
           <li>
             <a href="icons-boxicons.html">
-              <i class="bi bi-circle"></i><span>Boxicons</span>
+              <i class="bi bi-circle"></i><span>Chart 3</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Icons Nav -->
+      </li> -->
+      <!-- End Icons Nav -->
 
       <li class="nav-heading">Pages</li>
 
@@ -465,7 +522,7 @@
       <!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'CharakHome' %}#contact">
+        <a class="nav-link collapsed" href="{% url 'CharakDoctor' %}#contact">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
@@ -504,15 +561,16 @@
 
     </ul>
 
-  </aside><!-- End Sidebar-->
+  </aside>
+  <!-- End Sidebar-->
 
-  <main id="main" class="main">
+  <main id="main" class="main" style="background-color: #fff9f7;">
     <div class="pagetitle">
       <h1>Dr. {{user_data.dfirstname}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'DoctorDashboard' %}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{% url 'DoctorDashboard' %}">Dashboard</a></li>
+          <!-- <li class="breadcrumb-item"><a href="{% url 'DoctorDashboard' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'DoctorDashboard' %}">Dashboard</a></li> -->
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -524,7 +582,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{% static 'assets_na/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+              <img src="{% static 'assets_na/img/dheeraj.jpg' %}" alt="Profile" class="rounded-circle">
               <h2>{{user_data.fullname}}</h2>
               <!-- <h3>{{user_data.fullname}}</h3> -->
               <div class="social-links mt-2">
@@ -614,7 +672,7 @@
                     <div class="row mb-3">
                       <label for="image" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="{% static 'assets_na/img/profile-img.jpg' %}" alt="Profile">
+                        <img src="{% static 'assets_na/img/dheeraj.jpg' %}" alt="Profile">
                         <!-- <input type="file" name="image" id="image"> -->
                         <div class="pt-2">
                           <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
@@ -800,16 +858,16 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footer" style="background-color: #fff;">
     <div class="copyright">
-      &copy; Copyright <strong><span>Charak</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>CharakDT</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://drishticps.iiti.ac.in/" target="_blank">IITI Drishti CPS Foundation</a>
     </div>
   </footer><!-- End Footer -->
 

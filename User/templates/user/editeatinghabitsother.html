@@ -1,0 +1,260 @@
+{% extends 'user/basic_user.html' %}
+
+{% block title %} Eating Habits {% endblock %}
+
+{% block css %}
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <style>
+    .container2 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .container1 {
+      display: flex;
+      font-family: 'Montserrat';
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      margin-top: 25px;
+      color: black;
+    }
+    .mb-2{
+      color:black;
+      display: flex;
+      justify-content: space-between; /* Move items to both ends of the container */
+      align-items: center; /* Center items vertically */
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-size: x-large;
+      font-family: cursive;
+      font-style: italic;
+      color: red;
+    }
+
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#heading{
+    text-align: center;
+}
+
+.options{
+    margin:2.5rem;
+}
+  </style>
+  {% endblock %}
+
+  {% block body %}
+
+    <div class="container1">
+        <h3>Eating Habits</h3>
+    </div>
+    <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+      <form id="myForm" action="{% url 'EditEatingHabitsOther' %}" method="POST" > {% csrf_token %}
+       
+        <!-- <div class="mb-2">
+          <label for="userid" class="form-label">User ID</label>
+          <input type="number" class="form-control" id="userid" name="userid" autocomplete="off"  readonly>
+        </div> <br> -->
+        <div class="mb-2">
+          <label for="datetime1" class="form-label">Select Datetime of your Meal</label>
+          <input type="datetime-local" class="form-control" id="datetime1" name="datetime1" autocomplete="off">
+        </div> <br>
+        <h3 class="mb-2">Breakfast</h3>
+        <div class="mb-2">
+          <label for="breakfast" class="form-label">Enter your brakfast</label>
+          <textarea name="breakfast" id="breakfast" cols="30" rows="10"></textarea>
+
+          <!-- <input type=""  id="bjeerarice" name="bjeerarice" autocomplete="off" value="Jeera Rice - 200-250 calories"> -->
+        </div>
+        <!-- <div class="mb-2">
+          <label for="bbiryani" class="form-label">Biryani - 400-500 calories</label>
+          <input type="checkbox"  id="bbiryani" name="bbiryani" autocomplete="off" value="Biryani - 400-500 calories">
+        </div> -->
+        <!-- <div class="mb-2">
+          <label for="bdal" class="form-label">Dal (Lentil Curry) - 100-150 calories</label>
+          <input type="checkbox"  id="bdal" name="bdal" autocomplete="off" value="Dal (Lentil Curry) - 100-150 calories">
+        </div>
+        <div class="mb-2">
+          <label for="btikka" class="form-label">Paneer Tikka - 150-200 calories</label>
+          <input type="checkbox"  id="btikka" name="btikka" autocomplete="off" value="Paneer Tikka - 150-200 calories">
+        </div>
+        <div class="mb-2">
+          <label for="bbchicken" class="form-label">Butter Chicken - 300-400 calories</label>
+          <input type="checkbox"  id="bbchicken" name="bbchicken" autocomplete="off" value="Butter Chicken - 300-400 calories">
+        </div>
+        <div class="mb-2">
+          <label for="bchole" class="form-label">Chole (Chickpea Curry) - 150-200 calories</label>
+          <input type="checkbox"  id="bchole" name="bchole" autocomplete="off" value="Chole (Chickpea Curry) - 150-200 calories">
+        </div><div class="mb-2">
+          <label for="baloogobi" class="form-label">Aloo Gobi (Potato and Cauliflower Curry) - 150-200 calories</label>
+          <input type="checkbox"  id="baloogobi" name="baloogobi" autocomplete="off" value="Aloo Gobi (Potato and Cauliflower Curry) - 150-200 calories">
+        </div>
+        <div class="mb-2">
+          <label for="bmixveg" class="form-label">Mixed Vegetable Sabzi - 100-150 calories</label>
+          <input type="checkbox"  id="bmixveg" name="bmixveg" autocomplete="off" value="Mixed Vegetable Sabzi - 100-150 calories">
+        </div>
+       <div class="mb-2">
+          <label for="bchickencurry" class="form-label">Chicken Curry - 250-350 calories</label>
+          <input type="checkbox"  id="bchickencurry" name="bchickencurry" autocomplete="off" value="Chicken Curry - 250-350 calories">
+        </div>  -->
+        <br>
+
+      <h3 class="mb-2">Lunch</h3>
+
+      <div class="mb-2">
+        <label for="lunch" class="form-label">Enter your lunch meal</label>
+        <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
+        <!-- <input type="checkbox"  id="lbutterchicken" name="lbutterchicken" autocomplete="off" value="Butter Chicken - 300-400 calories"> -->
+      </div>
+      <!-- <div class="mb-2">
+        <label for="lchole" class="form-label">Chole (Chickpea Curry) - 150-200 calories</label>
+        <input type="checkbox"  id="lchole" name="lchole" autocomplete="off" value="Chole (Chickpea Curry) - 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="laloogobi" class="form-label">Aloo Gobi (Potato and Cauliflower Curry) - 150-200 calories</label>
+        <input type="checkbox"  id="laloogobi" name="laloogobi" autocomplete="off" value="Aloo Gobi (Potato and Cauliflower Curry) - 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="lupma" class="form-label">Upma (1 serving - 150g) - approx. 150-200 calories</label>
+        <input type="checkbox"  id="lupma" name="lupma" autocomplete="off" value="Upma (1 serving - 150g) - approx. 150-200 caloriess">
+      </div>
+      <div class="mb-2">
+        <label for="lpoha" class="form-label">Poha (1 serving - 150g) - approx. 200-250 calories</label>
+        <input type="checkbox"  id="lpoha" name="lpoha" autocomplete="off" value="Poha (1 serving - 150g) - approx. 200-250 calories">
+      </div>
+      <div class="mb-2">
+        <label for="lidli" class="form-label">Idli (2 idlis with chutney - 200g) - approx. 150-200 calories</label>
+        <input type="checkbox"  id="lidli" name="lidli" autocomplete="off" value="Idli (2 idlis with chutney - 200g) - approx. 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="ldosa" class="form-label">Dosa (1 plain dosa - 100g) - approx. 100-150 calories</label>
+        <input type="checkbox"  id="ldosa" name="ldosa" autocomplete="off" value="Dosa (1 plain dosa - 100g) - approx. 100-150 calories">
+      </div>
+      <div class="mb-2">
+        <label for="lalooparatha" class="form-label">Aloo Paratha (1 medium-sized - 100g) - approx. 250-350 calories</label>
+        <input type="checkbox"  id="lalooparatha" name="lalooparatha" autocomplete="off" value="Aloo Paratha (1 medium-sized - 100g) - approx. 250-350 calories">
+      </div>
+      <div class="mb-2">
+        <label for="lpoori" class="form-label">Poori (1 poori - 30g) - approx. 80-100 calories</label>
+        <input type="checkbox"  id="lpoori" name="lpoori" autocomplete="off" value="Poori (1 poori - 30g) - approx. 80-100 calories">
+      </div>
+      <div class="mb-2">
+        <label for="lbhature" class="form-label">Chole Bhature (1 serving - 250g) - approx. 450-550 calories</label>
+        <input type="checkbox"  id="lbhature" name="lbhature" autocomplete="off" value="Chole Bhature (1 serving - 250g) - approx. 450-550 calories">
+      </div>
+      <div class="mb-2">
+        <label for="lmeduvada" class="form-label">Medu Vada (2 vadas with chutney - 100g) - approx. 200-250 calories</label>
+        <input type="checkbox"  id="lmeduvada" name="lmeduvada" autocomplete="off" value="Medu Vada (2 vadas with chutney - 100g) - approx. 200-250 calories">
+      </div>
+      <div class="mb-2">
+        <label for="lsamosa" class="form-label">Samosa (1 samosa - 60g) - approx. 150-200 calories</label>
+        <input type="checkbox"  id="lsamosa" name="lsamosa" autocomplete="off" value="Samosa (1 samosa - 60g) - approx. 150-200 calories">
+      </div> <br> -->
+      <br>
+      <h3 class="mb-2">High Tea</h3>  
+      <div class="mb-2">
+        <label for="high_tea" class="form-label">Enter your High Tea</label>
+        <textarea name="high_tea" id="high_tea" cols="30" rows="10"></textarea>
+        <!-- <input type="checkbox"  id="dtikka" name="dtikka" autocomplete="off" value="Paneer Tikka - 150-200 calories"> -->
+      </div>
+      <br>
+
+      <h3 class="mb-2">Dinner</h3>  
+      <div class="mb-2">
+        <label for="dinner" class="form-label">Enter your dinner meal</label>
+        <textarea name="dinner" id="dinner" cols="30" rows="10"></textarea>
+        <!-- <input type="checkbox"  id="dtikka" name="dtikka" autocomplete="off" value="Paneer Tikka - 150-200 calories"> -->
+      </div>
+      <!-- <div class="mb-2">
+        <label for="dbutterchecken" class="form-label">Butter Chicken - 300-400 calories</label>
+        <input type="checkbox"  id="dbutterchecken" name="dbutterchecken" autocomplete="off" value="Butter Chicken - 300-400 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dchole" class="form-label">Chole (Chickpea Curry) - 150-200 calories</label>
+        <input type="checkbox"  id="dchole" name="dchole" autocomplete="off" value="Chole (Chickpea Curry) - 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="daloogobi" class="form-label">Aloo Gobi (Potato and Cauliflower Curry) - 150-200 calories</label>
+        <input type="checkbox"  id="daloogobi" name="daloogobi" autocomplete="off" value="Aloo Gobi (Potato and Cauliflower Curry) - 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dmixveg" class="form-label">Mixed Vegetable Sabzi - 100-150 calories</label>
+        <input type="checkbox"  id="dmixveg" name="dmixveg" autocomplete="off" value="Mixed Vegetable Sabzi - 100-150 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dupma" class="form-label">Upma (1 serving - 150g) - approx. 150-200 calories</label>
+        <input type="checkbox"  id="dupma" name="dupma" autocomplete="off" value="Upma (1 serving - 150g) - approx. 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dpoha" class="form-label">Poha (1 serving - 150g) - approx. 200-250 calories</label>
+        <input type="checkbox"  id="dpoha" name="dpoha" autocomplete="off" value="Poha (1 serving - 150g) - approx. 200-250 calories">
+      </div>
+      <div class="mb-2">
+        <label for="didli" class="form-label">Idli (2 idlis with chutney - 200g) - approx. 150-200 calories</label>
+        <input type="checkbox"  id="didli" name="didli" autocomplete="off" value="Idli (2 idlis with chutney - 200g) - approx. 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dbhature" class="form-label">Chole Bhature (1 serving - 250g) - approx. 450-550 calories</label>
+        <input type="checkbox"  id="dbhature" name="dbhature" autocomplete="off" value="Chole Bhature (1 serving - 250g) - approx. 450-550 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dmeduvada" class="form-label">Medu Vada (2 vadas with chutney - 100g) - approx. 200-250 calories</label>
+        <input type="checkbox"  id="dmeduvada" name="dmeduvada" autocomplete="off" value="Medu Vada (2 vadas with chutney - 100g) - approx. 200-250 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dsamosa" class="form-label">Samosa (1 samosa - 60g) - approx. 150-200 calories</label>
+        <input type="checkbox"  id="dsamosa" name="dsamosa" autocomplete="off" value="Samosa (1 samosa - 60g) - approx. 150-200 calories">
+      </div>
+      <div class="mb-2">
+        <label for="ddosa" class="form-label">Dosa (1 plain dosa - 100g) - approx. 100-150 calories</label>
+        <input type="checkbox"  id="ddosa" name="ddosa" autocomplete="off" value="Dosa (1 plain dosa - 100g) - approx. 100-150 calories">
+      </div>
+      <div class="mb-2">
+        <label for="dpoori" class="form-label">Poori (1 poori - 30g) - approx. 80-100 calories</label>
+        <input type="checkbox"  id="dpoori" name="dpoori" autocomplete="off" value="Poori (1 poori - 30g) - approx. 80-100 calories">
+      </div> -->
+      <!-- <h5 class="mb-2"> Toat Calories : </h5> -->
+      <br>
+        <div style="text-align: center;">
+          <br>
+        <button type="submit"  class="btn btn-primary" id = "bxc">Save</button></div>
+     </form>
+
+    </div>
+    </div>
+
+    <script>
+      document.getElementById("myForm").addEventListener("submit", function(event) {
+          // Get the selected datetime value
+          const datetimeInput = document.getElementById("datetime1");
+          const selectedDatetime = datetimeInput.value;
+          
+          // Check if the time component is missing and add it
+          const formattedDatetime = selectedDatetime.includes("T")
+              ? selectedDatetime
+              : `${selectedDatetime}T00:00`;
+
+          // Replace the input value with the formatted datetime
+          datetimeInput.value = formattedDatetime;
+      });
+  </script>
+
+    <script  src="main.js"></script>
+
+ {% endblock %}
+

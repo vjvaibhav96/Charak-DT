@@ -1,0 +1,53 @@
+{% extends 'manager/basic_manager.html'%}
+    
+{% block title %}Create DT{% endblock %}
+
+{% block body %} 
+<br><br><br><br>
+    <div class="container mt-3 shadow-lg p-4" style="width: 35%;">
+      <h2 class="text-center"> Smart Mirror </h2>
+      <form action="{% url 'SmartMirror' %}" method="POST" style="align-items: center;" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="mb-2">
+          <label for="username" class="form-label">Enter your Name :</label>
+          <input type="text" class="form-control" id="username" name="username" autocomplete="off" required>
+        </div>
+        <!-- <div class="mb-2">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" autocomplete="off" required>
+        </div> -->
+
+        <br><br>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary" id = "bxc"> Submit </button>
+        </div>
+      </form>
+    </div>
+    
+{% endblock %}
+
+{% block js %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("myForm");
+  
+      form.addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent the form from submitting normally
+          
+          // Simulate a successful submission (you should replace this with your actual submission logic)
+          setTimeout(function () {
+              alert("Data recorded successfully!");
+              window.closePopupAndRedirect();
+          }, 2000); // 2000 milliseconds (2 seconds) for demonstration purposes
+      });
+  
+      window.closePopupAndRedirect = function () {
+          // Close the pop-up and redirect after 3 seconds
+          setTimeout(function () {
+              window.alert("Redirecting to Home Page...");
+              window.location.href = "{% url 'ManagerHome' %}"; // Replace "/home" with your home page URL
+          }, 3000); // 3000 milliseconds (3 seconds)
+      };
+  });
+</script>
+  {% endblock %}
+  

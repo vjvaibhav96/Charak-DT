@@ -42,61 +42,54 @@
 
 {% block body %}
 
-<div class = "container1">
-    <h3>Upload Reports</h3>
-   </div>
-  <div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
-    <form action="{% url 'PathoEdit' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-      <div class="mb-2">
-        <label for="userid" class="form-label">User ID</label>
-        <input type="number" class="form-control" placeholder="Enter your user id" id="userid" name="userid" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="glucose" class="form-label">Glucose Value</label>
-        <input type="number" class="form-control" id="glucose" name="glucose" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="heartrate" class="form-label">Heart Rate</label>
-        <input type="number" class="form-control" id="heartrate" name="heartrate" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="bloodpressure" class="form-label">Blood Pressure</label>
-        <input type="number" class="form-control" id="bloodpressure" name="bloodpressure" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="cholestrol" class="form-label">Cholestrol Level**</label>
-        <input type="number" class="form-control" id="cholestrol" name="cholestrol" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="insulin" class="form-label">Insulin Value</label>
-        <input type="number" class="form-control" id="insulin" name="insulin" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="bmi" class="form-label">Body Mass Index</label>
-        <input type="number" class="form-control" id="bmi" name="bmi" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="prediabetic" class="form-label">Prediabetic [0-No, 1-Yes]</label>
-        <input type="number" class="form-control" id="prediabetic" name="prediabetic" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="dpf" class="form-label">Diabetic Pedigree Function</label>
-        <input type="number" class="form-control" id="dpf" name="dpf" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="patientreport" class="form-label">Upload Patient Report [pdf]</label>
-        <input type="file" class="form-control" id="patientreport" name="patientreport" autocomplete="off">
-      </div>
-      <div class="mb-2">
-        <label for="xray" class="form-label">Upload X-ray Image [jpeg/jpg/png]**</label>
-        <input type="file" class="form-control" id="xray" name="xray" autocomplete="off">
-      </div> <br> 
-      <div style="text-align: center;">
-      <button type="submit" class="btn btn-primary" id = "bxc">Upload</button></div>
-      <!-- </div> -->
-  <div class="container2">
-  <h5 class="my-4" style="text-align: center; color: black; ">Click on Save button to save the edited data of user</h5>
+<div class="container1">
+  <h3>Vital Sings</h3>
+</div>
+<div class="container mt-3 shadow-lg p-4" style="width: 40%; margin-bottom: 10px;color:aliceblue">
+<form action="{% url 'PathoEdit' %}" method="POST"> {% csrf_token %}
+  <div class="mb-2">
+    <label for="userid" class="form-label">User ID</label>
+    <input type="number" class="form-control" id="userid" name="userid" autocomplete="off">
   </div>
-  </form>
+  <div class="mb-2">
+    <label for="bodytemperature" class="form-label">Body Temperature (°C)</label>
+    <input type="number" class="form-control" id="bodytemperature" name="bodytemperature" autocomplete="off" >
   </div>
+  <div class="mb-2">
+    <label for="pulserate" class="form-label">Pulse Rate (BPM)</label>
+    <input type="number" class="form-control" id="pulserate" name="pulserate" autocomplete="off" >
+  </div>
+  <div class="mb-2">
+    <label for="respiratoryrate" class="form-label">Respiratory Rate (per minute)</label>
+    <input type="number" class="form-control" id="respiratoryrate" name="respiratoryrate" autocomplete="off" >
+  </div>
+  <div class="mb-2">
+    <label for="bp" class="form-label">BP (mmHg) (systolic/diastolic) </label>
+    <input type="text" class="form-control" id="bp" name="bp" autocomplete="off" placeholder="XXX/XX" >
+  </div>
+  <div class="mb-2">
+    <label for="spo2" class="form-label">SpO2 (%)</label>
+    <input type="number" class="form-control" id="spo2" name="spo2" autocomplete="off">
+  </div>
+  <div class="mb-2">
+    <label for="weight" class="form-label">Weight (Kg)</label>
+    <input type="number" class="form-control" id="weight" name="weight" autocomplete="off" >
+  </div>
+  <div class="mb-2">
+    <label for="bloodsugarfbs" class="form-label">Blood Sugar(FBS, mg/dL) </label>
+    <input type="number" class="form-control" id="bloodsugarfbs" name="bloodsugarfbs" autocomplete="off" >
+  </div>
+  <div class="mb-2">
+    <label for="bloodsugarrbs" class="form-label">Blood Sugar(RBS, mg/dL)</label>
+    <input type="number" class="form-control" id="bloodsugarrbs" name="bloodsugarrbs" autocomplete="off">
+  </div>
+  <div class="mb-2">
+    <label for="datetime1" class="form-label">Datetime</label>
+    <input type="datetime-local" class="form-control" id="datetime1" name="datetime1" autocomplete="off">
+  </div>
+  <br>
+  <div style="text-align: center;">
+  <button type="submit"  class="btn btn-primary" id = "bxc">Save</button></div>
+</form>
+</div>
   {% endblock %}
